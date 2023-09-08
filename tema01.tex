@@ -1,0 +1,374 @@
+\documentclass{tufte-handout}
+
+%\geometry{showframe}% for debugging purposes -- displays the margins
+
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{amsmath}
+
+% Set up the images/graphics package
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{graphics/}}
+
+\title[Química Física II: Tema 1, Antecedentes]{
+Tema 1: Antecedentes de la Mecánica Cuántica}
+%\author{David De Sancho}
+\date{}  % if the \date{} command is left out, the current date will be used
+
+% The following package makes prettier tables.  We're all about the bling!
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better spacing
+% for units.
+\usepackage{units}
+
+% The fancyvrb package lets us customize the formatting of verbatim
+% environments.  We use a slightly smaller font.
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+
+% Small sections of multiple columns
+\usepackage{multicol}
+
+% Provides paragraphs of dummy text
+\usepackage{lipsum}
+
+% These commands are used to pretty-print LaTeX commands
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+
+\begin{document}
+
+\maketitle% this prints the handout title, author, and date
+
+\begin{abstract}
+\noindent En el s. XIX, las leyes de la Física Clásica que describían 
+el comportamiento de partículas y ondas parecía tener la madurez
+suficiente como para que, en palabras atribuidas a Lord Kelvin,
+``sólo restase la toma de medidas cada vez más 
+precisas''\sidenote{``There is nothing new to be discovered in
+physics now. All that remains is more and more precise measurement.''
+En realidad, la cita es apócrifa.}. Sin embargo, 
+es entonces cuando se producen una serie de cambios muy 
+importantes  en la Física debido, en primer término, a
+observaciones experimentales que la descripción 
+clásica  no era capaz de explicar.
+\end{abstract}
+
+%\printclassoptions
+
+\section{Radiación del Cuerpo Negro}
+La primera de estas observaciones está relacionada con un
+fenómeno que podemos observar cotidianamente. Cuando calentamos un metal 
+a muy elevadas temperaturas vemos que empieza a cambiar de 
+color, adquiriendo tonalidades primero rojizas y luego azuladas.
+Esto se debe a que  el cuerpo calentado emite una radiación
+electromagnética. Y el cambio de coloración se debe a que 
+en esta radiación, no todas las frecuencias 
+están igualmente presentes. Si estudiamos cómo cambia la 
+distribución de longitudes de onda, $\lambda$,  a medida que va 
+aumentando la temperatura, veremos que el máximo de la distribución
+se desplaza hacia longitudes de onda más bajas. Esta observación la
+captura la \textbf{ley de desplazamiento de Wien},
+\begin{equation}
+\lambda_\mathrm{max}T=\mathrm{constante}
+\label{eq:Wien}
+\end{equation}
+que fue el primer esfuerzo en sistematizar el comportamiento
+de la radiación del denominado ``cuerpo negro''.
+Definimos el \textbf{cuerpo negro} como un objeto 
+idealizado que es capaz de absorber y emitir 
+todas las longitudes de onda uniformemente\sidenote{
+Kirchoff es quien define el cuerpo negro en 1859.}. 
+Una buena
+representación del cuerpo negro sería un dispositivo experimental 
+con una cavidad cuyo interior es reflectante, que se prepara en
+equilibrio a una temperatura constante $T$, y en el que hay apenas 
+un pequeño orificio, que nos permite medir la radiación. 
+
+Muchos físicos teóricos intentaron explicar esta observación
+en el s. XIX. \textbf{Lord Rayleigh} trató este problema de manera
+clásica, asumiendo que el campo electromagnético se podía describir
+como una colección de osciladores con todas las frecuencias o
+longitudes de onda posibles. Si había una radiación de una longitud
+de onda determinada, esta radiación se correspondería con un oscilador
+excitado. A partir de una descripción que asumía que la temperatura
+distribuiría su energía de acuerdo con el \textbf{principio de
+equipartición de la energía}, llegó con la ayuda de \textbf{James
+Jeans} a la siguiente relación:
+\begin{equation}
+\rho=\frac{8\pi k_BT}{\lambda^4},
+\label{eq:rayleigh-jeans}
+\end{equation}
+donde $\rho$ es la densidad de estados para una longitud de onda
+$\lambda$, y $k_B$ es la constante de Boltzmann 
+($k_B=R/N_A=1.381\times 10^{−23}$ J K$^{−1}$).
+Esta ecuación, conocida como la \textbf{ecuación de Rayleigh-Jeans},
+expresa la contribución a la energía de la radiación para cada una de las 
+longitudes de onda a la densidad de estados. 
+Como vemos la dependencia con  $\lambda$ es inversa con la
+cuarta potencia.  A valores elevados de $\lambda$, la predicción
+es acertada, pero a longitudes de onda bajas (correspondiente a
+radiación de muy alta energía), la densidad aumentaría 
+monotónicamente. Esto  conduciría a la denominada ``catástrofe 
+ultravioleta'', porque de acuerdo con el aumento monotónico de
+la densidad de estados, la cantidad de radiación de alta energía 
+nunca dejaría de aumentar. 
+Este resultado revelaba inequívocamente un fallo en la descripción
+clásica del sistema.
+
+En 1900, \textbf{Max Planck} resolvió este problema asumiendo
+que la energía de cada oscilador estaba limitada a una serie 
+de valores discretos, es decir, estaba cuantizada.
+\sidenote{Planck recibió el Premio Nobel en 1918 
+``como reconocimiento 
+por sus servicios para el avance de la Física por
+el descubrimiento de los cuantos de energía''.
+Max Planck tardó en
+aceptar las implicaciones de su descubrimiento, hasta decir ya en 
+1911 que ``La hipótesis de los cuantos nunca se
+desvanecerá del mundo" y ``No creo que esté yendo demasiado lejos si expreso la opinión de que con esta hipótesis se sientan las 
+bases para la construcción de una teoría que algún día está destinada a impregnar los rápidos y delicados eventos del mundo molecular con una nueva luz''. }
+En la aproximación de Raleigh y Jeans se asumía que las energías 
+de los osciladores podía asumir cualquier valor, y eran por tanto
+continuas. Planck, en cambio, introdujo la revolucionaria idea
+de que las energías de los osciladores podían transmitirse en
+forma de paquetes discretos, cuyas energías debían
+ser proporcionales a múltiplos enteros de las frecuencias
+$\nu$, es decir, 
+\begin{equation}
+E=nh\nu,
+\end{equation}
+donde $n=1,2,3...$. La expresión resultante
+para la densidad de estados de acuerdo con esta descripción
+es la denominada \textbf{distribución de Planck},
+\begin{equation}
+    \rho=\frac{8\pi h c}{\lambda^5(\mathrm{e}^{hc/\lambda k_BT}-1)}\
+\label{eq:planck}
+\end{equation}
+Para longitudes de onda bajas, $\rho$ se hace cero debido al 
+término exponencial del denominador, que tiende a $\infty$ más 
+rápidamente que el decaimiento del término $\lambda^5$, 
+evitando así la catástrofe ultravioleta.
+En la teoría de Planck, la constante $h$ era indeterminada,
+pero ajustando a los datos experimentales se pudo recuperar 
+su valor de $h=6.626\times 10^{-34}$J$\cdot$s. 
+\sidenote{A lo largo de este curso, haremos uso de esta 
+\textbf{constante de Planck} y de su forma reducida,
+$\hbar=h/2\pi=1.055\times 10^{-34}$  m$^2$kg/s.} 
+De acuerdo con
+esta nueva interpretación ``cuántica'', los osciladores se 
+excitan sólo cuando hay suficiente energía disponible para 
+alcanzar la energía $h\nu$.
+
+\section{El Efecto Fotoeléctrico}
+La segunda evidencia experimental que iba más allá de lo que la 
+Física clásica era capaz de predecir es el denominado efecto
+fotoeléctrico. 
+En este caso, el experimento, realizado por el científico
+alemán \textbf{Heinritz Hertz} entre 1886 y 1887 para
+verificar la teoría de Maxwell, consistía en 
+exponer a un material determinado a una radiación ultravioleta.
+La predicción clásica era que al ir aumentando la intensidad
+de la radiación, los electrones de la superficie del material
+oscilarían más violentamente y acabarían por desprenderse
+con una energía cinética dependiente de la intensidad.
+Asimismo, la expectativa era que los electrones se liberasen
+para cualquier valor de la frecuencia incidente.
+Las observaciones experimentales contradijeron estas predicciones.
+Fueron las siguientes:
+\begin{enumerate}
+    \item Hasta alcanzar una determinada frecuencia de radiación
+    umbral, $\nu_0$, no se observaba nada. Solo a
+    partir de una frecuencia umbral, $\nu_0$, característica
+    de cada material, empezaban a liberarse electrones.
+    \item La energía cinética de los electrones dependía de la frecuencia de la radiación incidente, y era independiente de
+    la intensidad de esta radiación.
+\end{enumerate}
+En particular, este segundo punto era contrario a las predicciones de
+Maxwell. Incluso con muy bajas intensidades de radiación
+se producía la ionización del material con tal de que se cumpliese
+la condici\'on $\nu>\nu_0$.
+El efecto fotoeléctrico indica que la radiación
+tiene comportamiento de partícula, y que sus partículas 
+constituyentes, los fotones, son capaces de colisionar
+con otras partículas como los electrones de un metal. 
+
+¿De qué manera se resolvió este problema? Ya en el s. XX, 
+\textbf{Albert Einstein} propuso una solución a esta paradoja
+usando la hipótesis de Planck pero extendiéndola de manera
+importante.
+\sidenote{Einstein resolvió este problema en 1905, su 
+``annus mirabilis'', cuando también describió el movimiento 
+Browniano y la Teoría de la Relatividad Especial. Fue
+el efecto fotoeléctrico por el que recibió
+del Premio Nobel en 1921.}
+Mientras que Planck creía que una vez se producía la emisión
+de luz, ésta se comportaba como una onda clásica, Einstein
+propuso que la misma radiación existía en pequeños
+paquetes de energía $E=h\nu$, conocidos como 
+\textbf{cuantos de energía} o \textbf{fotones}.
+\sidenote{Quien los llamó así en 1926 fue G. N. Lewis, 
+más conocido por su 
+definición de ácidos y bases.}
+Para liberar un electrón, Einstein teorizó, es
+necesario un cuanto de energía con frecuencia
+superior a un umbral 
+$\nu_0$ característico de cada material. 
+Usando un simple argumento de conservación de energía,
+mostró que la energía excedente se liberaría en forma de energía 
+cinética. Por tanto
+podemos escribir la siguiente expresión
+\begin{equation}
+\frac{1}{2}m_ev^2=h\nu - \Phi \label{eq:work}
+\end{equation}
+En la lado izquierdo de la ecuación nos encontramos con la 
+expresión familiar de la energía cinética. En el lado
+derecho, $h\nu$ es la energía de la radiación incidente, y 
+$\Phi$ es la llamada \textbf{``función trabajo''} o 
+\textbf{``work function''}, es decir, el umbral necesario para 
+producir la emisión del electrón. En el caso de que
+$h\nu<\Phi$ no se produce liberación de electrones, pero si
+por el contrario $h\nu>\Phi$ entonces sí que se produce
+ionización y con una cantidad de energía que podemos calcular.
+
+La ecuación \ref{eq:work} pudo utilizarse para determinar 
+la constante de Planck, $j$. En su momento, este fue un resultado
+sorprendente, dada la dificultad para aceptar la misteriosa
+teoría cuántica. A partir de dos experimentos diferentes
+era posible determinar con alta precisión una misma constante.
+
+\section{Hipótesis de de Broglie}
+La explicación del efecto fotoeléctrico estableció el carácter de
+partícula de las ondas, en forma de fotones. 
+Experimentos similares sirvieron para 
+establecer el aun más revolucionario comportamiento como onda 
+de la materia. El experimento más importante lo llevaron a cabo 
+\textbf{Davisson} y \textbf{Germer}, 
+que observaron la difracción de electrones en un cristal. 
+La difracción es la interferencia causada por un objeto 
+interpuesto en el camino de una onda, que puede ser constructiva
+o destructiva. Al hacer este experimento se observó que también 
+los electrones, comportándose como ondas, difractaban.
+Otras partículas también son capaces de difractar, como han 
+revelado después experimentos en partículas $\alpha$ o en
+el hidrógeno molecular, confirmando que las partículas tienen
+características de ondas. 
+
+¿Pero cómo racionalizamos esta dualidad de ondas y cuerpos?
+Una primera indicación nos la da la relación del físico Francés
+\textbf{Louis de Broglie}, que propuso que una partícula que viajase
+con un momento lineal $p$ tendría una longitud de onda asociada
+\begin{equation}
+\lambda=\frac{h}{p}\label{eq:debroglie}
+\end{equation}
+Esta expresión captura la \textbf{dualidad onda-partícula},
+que se opone de manera frontal a la descripción de la Física 
+Clásica.
+Los cuerpos de gran tamaño tienen momentos lineales enormes, debido
+a su gran masa. Por eso sus longitudes de onda son indetectables
+y las propiedades oscilatorias de los cuerpos macroscópicos no 
+pueden ser observados.	
+
+\section{Principio de Incertidumbre de Heisenberg}
+Otra de las grandes rupturas que establece la Mecánica Cuántica 
+con la Mecánica Clásica es nuestra capacidad de medir una 
+determinada propiedad con precisión arbitraria. Dentro de la 
+formulación de la Mecánica Cuántica es muy importante el Principio
+de Incertidumbre, enunciado por \textbf{Werner Heisenberg} en 1927
+y que le valió un Premio Nobel en 1932 por "la creación de la Mecánica
+Cuántica". 
+Establece que es imposible determinar simultáneamente el momento 
+y la posición de una partícula. 
+
+Aunque veremos este principio en 
+mayor profundidad más adelante en el curso, la precisión de una
+medida viene determinada por
+\begin{equation}
+    \Delta x\Delta q\geq 1/2\hbar\label{eq:heiss}
+\end{equation}
+donde $\Delta p=(\langle p^2\rangle-\langle p \rangle^2)^{1/2}$ y
+$\Delta q=(\langle q^2\rangle-\langle q\rangle^2)^{1/2}$. En realidad
+el principio de incertidumbre no sólo afecta al momento y a la posición, sino a 
+cualquier par de \textbf{variables complementarias}. Del mismo modo
+que en la Ecuación \ref{eq:heiss} para posición y momento, para 
+la duración de un proceso cuántico $t$ y su energía $E$ podemos
+escribir
+\begin{equation}
+    \Delta E\Delta t\geq 1/2\hbar.
+\end{equation}
+
+\section{Espectros atómicos}
+La última evidencia experimental que comentaremos procede de los 
+espectros atómicos. Si  obtenemos un espectro de emisión
+de un elemento como el hidrógeno, con lo que nos encontramos
+es que el espectro es discontinuo. Por tanto, la emisión de un
+átomo se produce sólo a unos determinados valores de la longitud
+de onda. De paso podemos decir que en el caso de una molécula 
+también el espectro de absorción, que corresponde a frecuencias
+que permiten a una molécula cambiar de estado, es discontinuo.
+
+Esto hizo que tuvieran que reformularse los modelos atómicos que 
+se empleaban, y que parecían incompatibles con esta discontinuidad.
+El primer modelo que tuvo en consideración esta propiedad fue
+el de \textbf{Niels Bohr}, que partía de dos suposiciones: 
+\begin{enumerate}
+    \item La primera es que un electrón orbita alrededor del
+    núcleo en un conjunto discreto de estados estacionarios, 
+    correspondientes a órbitas circulares que satisfacen que la
+    fuerza centrífuga y la fuerza de atracción entre el núcleo y el
+    electrón son iguales
+    \begin{equation}
+        \frac{e^2}{4\pi \epsilon_0 r^2}=m_e\frac{v^2}{r}
+    \end{equation}
+    \item La segunda suposición era la que introducía la cuantización
+    y asumía que las órbitas permitidas debían satisfacer la relación
+    $n\hbar=m_evr$.
+\end{enumerate}
+Reorganizando estas ecuaciones podemos calcular el radio de las órbitas,
+\begin{equation}
+    r_n=\bigg(\frac{4\pi \epsilon_0\hbar^2}{m_ee^2}\bigg)n^2=a_0n^2    
+\end{equation}
+y la correspondiente energía de los diferentes niveles
+\begin{equation}
+    \begin{split}
+%    A & = \frac{\pi r^2}{2} \\
+% & = \frac{1}{2} \pi r^2
+    E_n= & \frac{1}{2}m_ev^2 - \frac{1}{4\pi \epsilon_0}\frac{e^2}{r}=\\
+    & -\frac{m_e}{2\hbar^2}\bigg(\frac{e^2}{4\pi\epsilon_0}\bigg)\bigg(\frac{1}{n^2}\bigg)
+    \end{split}
+\end{equation}
+Para el hidrógeno, esta descripción es satisfactoria, y fue capaz de
+explicar transiciones entre niveles de acuerdo con la siguiente 
+expresión
+\begin{equation}
+    \tilde{\nu}=R_H\bigg(\frac{1}{n^2_1} -\frac{1}{n^2_2}\bigg) 
+    \label{eq:Rydberg}
+\end{equation}
+donde $\tilde{\nu}=1/\lambda$ es el número de onda, $R_H$=109677 cm$^{-1}$ 
+es la constante de Rydberg del átomo de hidrógeno. La Ecuación 
+\ref{eq:Rydberg} explica las líneas espectrales de Lyman, Balmer, 
+y Paschen, donde $n_1=1,2, 3$ y $n_2=2,3,4$, respectivamente.
+
+
+\begin{thebibliography}{}
+\bibitem{atkins_depaula} Atkins, P and De Paula, J. 2006. ``Physical Chemistry, 8th Edition''. Oxford University Press.
+
+\bibitem{atkins} Atkins, P and Friedman, R. 2005. ``Molecular Quantum Mechanics, 4th Edition''. Oxford University Press.
+
+\bibitem{fleisch} Fleisch, Daniel A. 2020. ``A student's guide to the Schr{\"o}dinger equation''. Cambridge University Press
+
+\bibitem{levine} Levine, I. N. 2013. ``Quantum
+Chemistry, 7th Edition''. Pearson.
+\end{thebibliography}
+\bibliographystyle{plainnat}
+
+
+
+\end{document}
