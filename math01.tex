@@ -1,0 +1,342 @@
+\documentclass{tufte-handout}
+
+%\geometry{showframe}% for debugging purposes -- displays the margins
+
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{amsmath}
+
+% Set up the images/graphics package
+\usepackage{gensymb}
+\usepackage{physics}
+
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{graphics/}}
+
+\title[Química Física II: M1 Vectores]{
+Laboratorio Matemáticas 1: Vectores}
+%\author{David De Sancho}
+\date{}  % if the \date{} command is left out, the current date will be used
+
+% The following package makes prettier tables.  We're all about the bling!
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better spacing
+% for units.
+\usepackage{units}
+
+% The fancyvrb package lets us customize the formatting of verbatim
+% environments.  We use a slightly smaller font.
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+
+% Small sections of multiple columns
+\usepackage{multicol}
+
+% Provides paragraphs of dummy text
+\usepackage{lipsum}
+
+% These commands are used to pretty-print LaTeX commands
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+
+\begin{document}
+
+\maketitle% this prints the handout title, author, and date
+
+\begin{abstract}
+\noindent En nuestro viaje introductorio
+en el mundo de la Mecánica Cuántica vamos a escribir las soluciones
+de la ecuación de Schr\=odinger como funciones de onda. Sin
+embargo, para su tratamiento tomaremos prestado el lenguaje de los vectores. 
+Es por tanto importante que refresquemos una serie de nociones sobre el uso de vectores 
+que estudiamos en bachillerato.
+\end{abstract}
+
+%\printclassoptions
+
+\section{Fundamentos}
+Un vector es un objeto matemático que tiene una magnitud 
+o un módulo (su longitud) y una dirección (definida por 
+los ángulos con respecto a unos ejes de referencia).
+Típicamente, escribimos el vector $\vec{A}$ como
+\begin{equation}
+    \vec{A}=A_x\vec{i} + A_y\vec{j} + A_z\vec{k}
+\end{equation}
+donde $A_x$, $A_y$ y $A_z$ son los \textit{componentes} del 
+vector $\vec{A}$ y los vectores $\vec{i}$, $\vec{j}$
+y $\vec{k}$ forman la \textit{base} del sistema
+de coordenadas en el que expresamos el vector $\vec{A}$.
+De la misma manera que hemos usado la base formada por 
+$\vec{i}$, $\vec{j}$ y $\vec{k}$, podríamos haber usado
+cualquier otra base. Estos vectores son los \textit{vectores
+unidad}, porque su longitud es $|\vec{i}|=|\vec{j}|=|\vec{k}|=1$.
+Para conocer el módulo de un vector, usamos la ecuación
+\begin{equation}
+    |\vec{A}|=\sqrt{A_x^2+A_y^2+A_z^2}
+\end{equation}
+El vector $-\vec{A}$ es un vector con la misma longitud que
+$\vec{A}$ pero que apunta en sentido contrario.
+
+Recordemos una serie de operaciones básicas de vectores.
+Dos vectores $\vec{A}$ y $\vec{B}$ se suman sumando sus 
+componentes
+\begin{equation}
+     \vec{A}+\vec{B}=(A_x+B_x)\vec{i} + (A_y+B_y)\vec{j} + (A_z+B_z)\vec{k}
+\end{equation}
+y si multiplicamos un vector $\vec{A}$ por un número $\alpha$
+lo que cambia es su longitud, pero no su dirección\sidenote{Puedes probar
+a demostrar cómo en realidad $|\alpha \vec{A}|=\alpha |\vec{A}|$}
+\begin{equation}
+    \alpha\vec{A}=\alpha A_x\vec{i} + \alpha A_y\vec{j} + \alpha A_z\vec{k}
+\end{equation}
+Además de la multiplicación por números, debemos recordar la
+multiplicación de vectores. El \textit{producto escalar}
+entre dos vectores $\vec{A}$ y $\vec{B}$ es 
+\begin{equation}
+    \vec{A}\cdot \vec{B} =   |\vec{A}||\vec{B}|\cos\theta
+    \label{eq:scalar}
+\end{equation}
+donde $\theta$ es el ángulo entre  $\vec{A}$ y $\vec{B}$.
+Usando las componentes del vector, podemos escribir su
+producto escalar como 
+\begin{equation}
+    \vec{A}\cdot \vec{B} =   A_xB_x + A_yB_y + A_zB_z
+    \label{eq:dot_sum}
+\end{equation}
+Es importante recordar que en la Ecuación \ref{eq:scalar},
+el término $|\vec{B}|\cos\theta$ nos está dando la proyección
+de $\vec{B}$ en la dirección de $\vec{A}$. Esto nos permite
+definir los conceptos de \textit{normalización} y 
+\textit{ortogonalidad}. Un vector está normalizado cuando
+su producto escalar al multiplicarlo por sí mismo es uno.
+En el caso de los vectores de base,
+\begin{align}
+    \vec{i}\cdot\vec{i}&=|\vec{i}||\vec{i}|\cos\theta=(1)(1) \cos 0\degree= 1\\
+    \vec{j}\cdot\vec{j}&=|\vec{j}||\vec{j}|\cos\theta=(1)(1) \cos 0\degree = 1 \\
+    \vec{k}\cdot\vec{k}&=|\vec{k}||\vec{k}|\cos\theta=(1)(1) \cos 0\degree = 1
+\end{align}
+Por otro lado, dos vectores
+son ortogonales entre sí cuando la proyección de uno sobre otro,
+y por tanto su producto escalar es cero. Por ejemplo, los vectores
+unidad son ortogonales entre sí
+\begin{align}
+    \vec{i}\cdot\vec{j}&=|\vec{i}||\vec{j}|\cos\theta=(1)(1) \cos 90\degree= 0\\
+    \vec{i}\cdot\vec{k}&=|\vec{i}||\vec{k}|\cos\theta=(1)(1) \cos 90\degree = 0 \\
+    \vec{j}\cdot\vec{k}&=|\vec{j}||\vec{k}|\cos\theta=(1)(1) \cos 90\degree = 0
+\end{align}
+Los vectores Cartesianos son vectores ``ortonormales'' porque son
+ortogonales y además están normalizados. 
+Estas propiedades nos permite conocer las componentes de un vector
+haciendo uso del producto escalar, e.g. $A_x=\vec{i}\cdot\vec{A}$.
+
+\section{Notación de Dirac}
+Además de escribir vectores como hemos hecho hasta ahora, podemos expresarlos
+en forma de matriz columna
+\begin{equation}
+    \vec{A} = \begin{pmatrix}
+    A_x\\
+    A_y\\
+    A_z
+    \end{pmatrix}
+\end{equation}
+aunque para que esta matriz tenga sentido debemos conocer la base en la que está expresada, en esta caso los vectores Cartesianos $\vec{i}$, 
+$\vec{j}$ y $\vec{k}$.
+
+En nuestro tratamiento de la Mecánica Cuántica, y en muchos libros de
+texto, usaremos \textit{kets}, escritos como $\ket{A}$,
+para representar a los vectores
+\begin{equation}
+    \ket{A} = A_x\ket{i} + A_y\ket{j} + A_z\ket{k} = \begin{pmatrix}
+    A_x\\
+    A_y\\
+    A_z
+    \end{pmatrix}=A_x\vec{i} + A_y\vec{j} + A_z\vec{k}
+\end{equation}
+Asimismo, usaremos \textit{bras}, $\bra{A}$, que son el \textit{complejo 
+conjugado} de los correspondientes kets. En notación matricial,
+podemos escribir un bra $\bra{A}$ como matriz fila
+\begin{equation}
+    \bra{A} = \begin{pmatrix}
+    A_x^\star & A_y^\star & A_z^\star
+    \end{pmatrix}
+\end{equation}
+
+Usando  esta notación, expresamos el producto escalar entre los vectores $\vec{A}$ y $\vec{B}$ usando el \textit{bracket} $\braket{A}{B}$
+\begin{equation}
+    \bra{A}\ket{B} = \begin{pmatrix}
+    A_x^\star & A_y^\star & A_z^\star
+    \end{pmatrix}
+    \begin{pmatrix}
+    B_x\\
+    B_y\\
+    B_z
+    \end{pmatrix}=
+    A_xB_x + A_yB_y + A_zB_z
+\end{equation}
+Los bras y kets son por tanto miembros de un \textit{espacio vectorial}
+o \textit{espacio lineal}, lo que significa que entre miembros del
+espacio podemos realizar operaciones como la suma, o que cuando multiplicamos
+un miembro del espacio vectorial por una constante obtenemos otro miembro
+del mismo espacio. En adelante resultará útil que todo lo que hemos
+dicho para vectores del espacio Cartesiano es generalizable para 
+espacios de más dimensiones.
+
+\section{Vectores y funciones}
+Hasta ahora hemos estado visualizando los vectores en un espacio de 
+tres dimensiones representándolos en el espacio físico tridimensional.
+Pero las distintas componentes de un vector $\vec{A}$, es decir, 
+$A_x$, $A_y$ y $A_z$ podrían mostrarse en un solo eje, alineando
+las componentes y mostrando en el eje de ordenadas sus amplitudes. 
+Si nos interesa trabajar con más de tres dimensiones esta representación
+se vuelve particularmente útil, específicamente cuando queremos
+trabajar con \textit{espacios abstractos} que ya no representan 
+dimensiones físicas en coordenadas Cartesianas, sino cualesquiera
+otros parámetros que queramos expresar.
+
+En Mecánica Cuántica, habitualmente hablamos
+sobre \textit{espacios de Hilbert}\sidenote{Denominados así por el matemático alemán David Hilbert (1862-1943).}, que cumplen las propiedades de los
+espacios lineales que hemos mencionado con
+anterioridad. Además, un espacio de Hilbert
+tiene propiedades especiales en relación
+al producto de vectores. Nótese que al ir aumentando el número de dimensiones de un vector,
+este va pareciéndose cada vez más a una \textit{función} continua ``$f$'' que va
+conectando la punta de las $N$
+componentes. En lugar de enumerar estas 
+componentes, en el caso de la función etiquetamos
+el eje con una variable $x$ y la función que
+recoge las amplitudes para diferentes valores de $x$ se define como $f(x)$.
+
+Considerando la similitud entre vectores y
+funciones, no es sorprendente que estas y 
+aquellos compartan propiedades de suma y 
+multiplicación por un escalar: al sumar
+dos funciones $f(x)$ y $g(x)$ y al multiplicar
+una función por un escalar obtenemos
+una nueva función definida para todo $x$.
+En el caso del producto escalar o producto
+interno, también existe una equivalencia.
+Como hemos visto en el caso de los vectores
+$\vec{A}$ y $\vec{B}$
+(Ecuación \ref{eq:dot_sum}), definíamos
+este producto $\vec{A}\cdot\vec{B}=\braket{A}{B}$ como $A_xB_x + A_yB_y + A_zB_z$.
+Análogamente, en el caso de las funciones $f(x)$
+y $g(x)$, podemos escribir usando la 
+notación de Dirac
+\begin{equation}
+    \braket{f(x)}{g(x)}=\int_{-\infty}^\infty f^\star(x)g(x)dx
+\end{equation}
+La interpretación del producto escalar que hacíamos con vectores como proyección de uno
+sobre otro también es válida en el caso de las
+funciones. Su producto escalar nos dice cómo
+de ``alineadas'' están dos funciones. La 
+condición que debe cumplir un espacio de Hilbert
+con respecto al producto es que su cuadrado 
+debe ser finito, es decir
+\begin{equation}
+    |f(x)|^2=\braket{f(x)}{f(x)}=\int_{-\infty}^\infty f^\star(x)f(x)dx<\infty
+\end{equation}
+De este tipo de funciones se dice que tienen un
+cuadrado integrable.
+
+\section{Números, vectores y funciones complejas}
+Hasta ahora hemos introducido sin llegar a explicar la razón por la que en los productos
+escalares de vectores o funciones estamos usando el complejo conjugado.
+En las soluciones de la Ecuación de Schr\=odinger
+veremos que aparece de manera habitual el número 
+imaginario $i=\sqrt{-1}$. Las funciones de onda
+son complejas, por lo que conviene que recordemos cómo se trabaja con este tipo de números.
+
+En primer lugar, ¿qué son las magnitudes complejas?
+De forma general, son aquellas que tienen una parte real y una parte imaginaria. Por ejemplo,
+el número complejo $z$ se puede expresar como
+\begin{equation}
+    z= x + iy
+\end{equation}
+donde $x$ e $y$ son las partes real e imaginaria,
+respectivamente. Números de de este tipo pueden
+representarse en el \textit{plano complejo} y 
+tienen una magnitud dada por el teorema de Pitágoras
+\begin{equation}
+    |z|^2=x^2+y^2
+\end{equation}
+Sin embargo, al intentar hacer el cuadrado
+del número complejo $z$, nos encontraremos con la 
+dificultad de tener que trabajar con la parte
+imaginaria. La manera correcta de encontrar 
+la magnitud de un número complejo no es
+a través de su multiplicación por sí mismo,
+sino por su complejo conjugado
+\begin{equation}
+    z^\star=x-iy
+\end{equation}
+Así, el producto será un número real y 
+positivo
+\begin{equation}
+    |z|^2=z^\star\times z= (x-iy)\times(x+iy)=x^2+y^2
+\end{equation}
+como es de esperar. 
+
+Ahora establecemos la conexión con los vectores.
+La manera en que calculamos el módulo de un vector
+es haciendo la raíz cuadrada de su producto
+interno. Para garantizar que sea real y positivo,
+usamos el complejo conjugado en lugar de su 
+cuadrado
+\begin{equation}
+    |A|=\sqrt{\vec{A}\cdot\vec{A}}=
+    \sqrt{A_x^\star A_x + A_y^\star A_y + A_z^\star A_z}
+\end{equation}
+Todo esto se aplica de la misma manera a las
+funciones complejas
+\begin{equation}
+    |f(x)|=\sqrt{\braket{f(x)^\star}{f(x)}}=
+    \sqrt{\int_{-\infty}^\infty f^\star(x)f(x)dx}
+\end{equation}
+Si un producto interno implica a dos funciones
+diferentes, también usamos el complejo conjugado
+\begin{equation}
+    \braket{f(x)^\star}{g(x)}=\int_{-\infty}^\infty f^\star(x)g(x)dx
+\end{equation}
+\section{Funciones ortogonales}
+En el caso de los vectores, hemos introducido
+el concepto de ortogonalidad haciendo uso de
+su producto escalar, esto es
+\begin{equation}
+    \vec{A}\cdot\vec{B}=A_xB_x + A_yB_y=0
+\end{equation}
+Esto establece una relación que debe cumplirse
+entre las componentes de dos vectores cuando
+estos son ortogonales
+\begin{equation}
+    \frac{A_x}{A_y}=-\frac{B_y}{B_x}
+\end{equation}
+Para que esto sea cierto, una componentes del vector $\vec{A}$ debe tener signo opuesto a una componente del vector $\vec{B}$. Lo mismo
+se aplica si estamos trabajando con vectores
+$N$-dimensionales o funciones. En el caso
+de estas últimas la condición de ortogonalidad se
+cumple cuando su producto interno es igual a
+cero
+\begin{equation}
+    \braket{f(x)^\star}{g(x)}=\int_{-\infty}^\infty f^\star(x)g(x)dx=0
+\end{equation}
+Esto implica que durante parte de su dominio,
+las funciones tendrán signo diferente.
+
+%\section{Producto interno}
+
+
+\begin{thebibliography}{}
+\bibitem{fleisch} 
+Fleisch, Daniel A. 2020. A student's guide to the Schr{\"o}dinger equation. {Cambridge University Press}
+\bibliographystyle{plainnat}
+\end{thebibliography}
+
+
+\end{document}

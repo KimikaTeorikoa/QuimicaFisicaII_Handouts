@@ -1,0 +1,485 @@
+\documentclass{tufte-handout}
+
+%\geometry{showframe}% for debugging purposes -- displays the margins
+
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{amsmath}
+\newtheorem{theorem}{Postulado}
+\usepackage{csquotes}
+\usepackage{mathabx}
+\usepackage{physics}
+% Set up the images/graphics package
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{graphics/}}
+
+\title[Química Física II: Tema 7 - Átomos Polielectrónicos ]{
+Tema 7: Átomos Polielectrónicos}
+%\author{David De Sancho}
+\date{}  % if the \date{} command is left out, the current date will be used
+
+% The following package makes prettier tables.  We're all about the bling!
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better spacing
+% for units.
+\usepackage{units}
+
+% The fancyvrb package lets us customize the formatting of verbatim
+% environments.  We use a slightly smaller font.
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+
+% Small sections of multiple columns
+\usepackage{multicol}
+
+% Provides paragraphs of dummy text
+\usepackage{lipsum}
+
+% These commands are used to pretty-print LaTeX commands
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+
+\begin{document}
+
+\maketitle% this prints the handout title, author, and date
+
+\begin{abstract}
+\noindent 
+En este tema, veremos los conceptos más importantes para determinar 
+la estructura electrónica en átomos con múltiples electrones. 
+Primero haremos una discusión cualitativa sobre cómo escribir
+las funciones de onda, introduciremos el
+principio de  exclusión de Pauli y, finalmente, la regla de Hund para
+el llenado de orbitales.
+\end{abstract}
+
+%\printclassoptions
+
+\subsection{La función de onda para átomos polielectrónicos}
+Un \textbf{átomo polielectrónico} es, sencillamente, aquél que
+tiene más de un electrón. En un átomo con un sólo electrón, en 
+el que se considera al núcleo fijo en el origen de coordenadas, 
+la función de onda depende de las tres coordenadas, ya
+sean cartesianas o esféricas, del electrón. Del mismo modo, para
+un átomo con $N$ electrones, la correspondiente función de onda
+contiene $3N$ coordenadas, tres por cada uno 
+de los electrones presentes en el átomo. 
+
+A la hora de escribir la ecuación de Schrödinger de un átomo
+polielectrónico debemos tener en cuenta la atracción coulombiana
+del núcleo hacia todos los electrones, así como las repulsiones
+interelectrónicas. De forma general podremos escribir
+\begin{equation}
+    \hat{H}=  
+    -\sum_{i=1}^N\frac{\hbar^2}{2m_e}\nabla_i^2  
+    -\sum_{i=1}^N\frac{Ze^2}{4\pi \varepsilon_0r_{iN}} 
+    +\sum_{i=1}^N\sum_{j>i}^N\frac{e^2}{4\pi \varepsilon_0r_{ij}}
+\end{equation}
+donde el primer término corresponde a la energía cinética 
+de cada uno de los $N$ electrones, el segundo corresponde
+a la interacción de cada electrón con un núcleo con número
+atómico $Z$ y el último es la repulsión interelectrónica. 
+Muchas veces, usamos unidades atómicas para expresar este 
+hamiltoniano de manera simplificada,
+\begin{equation}
+    \hat{H}=  
+    -\sum_{i=1}^N\frac{1}{2}\nabla_i^2  
+    -\sum_{i=1}^N\frac{Z}{r_{iN}} 
+    +\sum_{i=1}^N\sum_{j>i}^N\frac{1}{r_{ij}}
+    \label{eq:hamiltonian_poly}
+\end{equation}
+Como hemos adelantado en el tema anterior, la ecuación de
+Schrödinger no tiene una solución analítica ni siquiera 
+para el más sencillo de los átomos polielectrónicos, el 
+átomo de Helio. Por ello recurrimos a los métodos aproximados.
+
+Para describir las propiedades de los electrones en los átomos
+usamos la \textbf{aproximación orbital}. Así, suponemos que cada
+electrón ocupa su “propio” orbital. Esto nos permite escribir la
+función de onda 
+$\psi(\mathbf{r}_1,\mathbf{r}_2,...\mathbf{r}_N)$
+como producto de las funciones de onda de cada uno de
+los electrones
+\begin{equation}
+    \psi(\mathbf{r}_1, \mathbf{r}_2, ..., \mathbf{r}_N) = \psi(\mathbf{r}_1)\psi(\mathbf{r}_2)...\psi(\mathbf{r}_ N)
+\end{equation}
+donde $\mathbf{r}_i$ es el vector que determina la posición 
+del electrón $i$. Podemos considerar a los orbitales individuales
+similares a orbitales hidrogenoides, pero sometidos a cargas
+nucleares influidas por la presencia del resto de los electrones
+en el átomo. Esta aproximación sería exacta si no hubiese
+interacciones entre electrones. Por tanto la descripción 
+que obtenemos a partir de la aproximación orbital es sólo
+aproximada. Aun así, es un modelo útil para explicar
+las propiedades químicas de los átomos y el punto de partida de 
+descripciones más complejas de la estructura atómica. 
+
+\section{Principio de Pauli}
+Hasta ahora, en nuestra discusión hemos obviado el principio de 
+exclusión introducido por Wolfgang Pauli en 1924, que
+establece en su forma general lo siguiente: 
+\begin{displayquote}
+La función de onda de un colectivo de partículas 
+debe ser simétrica frente al intercambio de dos cualesquiera de las partículas
+idénticas en el caso de los bosones, mientras que
+será antisimétrica en el caso de los fermiones.
+\end{displayquote}
+Por tanto en el caso de los \textbf{bosones} (como son, por ejemplo,
+los fotones) la función de onda tendrá que ser
+\textbf{simétrica}
+\begin{equation}
+    \Psi_s(\mathbf{r}_1,\mathbf{r}_2)=\Psi(\mathbf{r}_2,\mathbf{r}_1)
+\end{equation}
+mientras que para los \textbf{fermiones} (como los electrones)
+la función de onda será \textbf{antisimétrica}
+\begin{equation}
+    \Psi(\mathbf{r}_1,\mathbf{r}_2)=-\Psi(\mathbf{r}_2,\mathbf{r}_1)
+\end{equation}
+
+La consecuencia del principio de Pauli de cara a definir 
+un átomo polielectrónico es que no puede haber dos electrones con
+los cuatro números cuánticos iguales. Como introdujimos en el 
+Tema 5, el estado de cada uno de los electrones se define por medio
+de cuatro números cuánticos: tres de ellos, $n$, $l$ y $m$, 
+definen el orbital; y el cuarto, $m_s$, su espín, que puede
+tener valores de $-1/2$ y $1/2$, para las funciones propias $\alpha$
+(o espín hacia arriba, $\uparrow$) y $\beta$ (o espín hacia abajo, $\downarrow$).
+A continuación veremos
+cómo, debido al requerimiento de antisimetría en la funcion de onda, 
+si dos electrones se encuentran en el mismo orbital necesariamente 
+tendrán diferente espín (estarán apareados, $\updownarrows$).
+%
+%Para el caso de dos electron que no interaccionan podemos escribir la
+%ecuación de Schrödinger como
+%\begin{equation}
+%    \hat{H}\Psi=(\hat{H}_1 + \hat{H}_2)\Psi=E\Psi
+%\end{equation}
+
+\section{Construyendo la función de onda}
+Partamos de la situación en que tenemos dos orbitales
+atómicos diferentes, $\psi_\alpha$ y $\psi_\beta$. 
+La función de onda correspondiente al electrón 1 en el 
+orbital $\psi_\alpha$ y el electrón 2 en el orbital 
+$\psi_\beta$ se puede escribir como
+\begin{equation}
+    \Psi(\mathbf{r}_1, \mathbf{r}_2) = \psi_\alpha (\mathbf{r}_1)\psi_\beta (\mathbf{r}_2)
+\end{equation}
+Esta función de onda no satisface el principio
+de indiscernibilidad, porque sabemos qué electrón está en
+cada uno de nuestros orbitales. Mediante combinaciones
+lineales se pueden obtener funciones simétricas, $\Psi_s$,
+y antisimétricas, $\Psi_a$, que sí satisfagan la condición
+de indiscernibilidad
+\begin{align}
+    \Psi_s(\mathbf{r}_1, \mathbf{r}_2) &= \frac{1}{2^{1/2}} \big[\psi_\alpha(\mathbf{r}_1) \psi_\beta(\mathbf{r}_2) +  \psi_\alpha(\mathbf{r}_2) \psi_\beta(\mathbf{r}_1)\big]\\
+    \Psi_a(\mathbf{r}_1, \mathbf{r}_2) &=\frac{1}{2^{1/2}}  \big[\psi_\alpha(\mathbf{r}_1) \psi_\beta(\mathbf{r}_2) -  \psi_\alpha(\mathbf{r}_2) \psi_\beta(\mathbf{r}_1)\big]
+\end{align}
+Por conveniencia, la función de onda antisimétrica se puede 
+escribir también en forma de \textbf{determinante 
+de Slater}\sidenote{Introducidos por J. C. Slater en 1929, aunque este tipo de expresiones había aparecido
+ya en el trabajo de Heisenberg y Dirac.}
+\begin{equation}
+    \Psi_a(\mathbf{r}_1,\mathbf{r}_2) = \frac{1}{2^{1/2}}
+    \begin{vmatrix} 
+    \psi_\alpha(\mathbf{r}_1) & \psi_\beta(\mathbf{r}_1)   \\
+    \psi_\alpha(\mathbf{r}_2) & \psi_\beta(\mathbf{r}_2)  \\
+    \end{vmatrix}
+\end{equation}
+
+Estas expresiones se pueden generalizar para $N$ funciones de onda.
+Por tanto para un sistema con $N$ bosones, la función de onda 
+será
+\begin{equation}
+    \Psi_s(\mathbf{r}_1,\mathbf{r}_2, ..., \mathbf{r}_N) = \frac{1}{(N!)^{1/2}}
+    \sum\hat{P}\psi(\mathbf{r}_1,\mathbf{r}_2 ... \mathbf{r}_N),
+\end{equation}
+donde estamos usando el operador permutación, $\hat{P}$, que
+intercambia los índices de los electrones.
+Para fermiones, la función de onda se escribirá como
+el correspondiente determinante de Slater:
+\begin{equation}
+    \Psi_a(\mathbf{r}_1,\mathbf{r}_2, ..., \mathbf{r}_N) = \frac{1}{(N!)^{1/2}}
+    \begin{vmatrix} 
+    \psi_\alpha(\mathbf{r}_1) & \psi_\beta(\mathbf{r}_1) & ... & \psi_\omega(\mathbf{r}_1)  \\
+    \psi_\alpha(\mathbf{r}_2) & \psi_\beta(\mathbf{r}_2) & ... & \psi_\omega(\mathbf{r}_2)  \\
+    \vdots & \vdots & \vdots& \vdots\\
+    \psi_\alpha(\mathbf{r}_N) & \psi_\beta(\mathbf{r}_N) & ... & \psi_\omega(\mathbf{r}_N)  \\
+    \end{vmatrix}
+\end{equation}
+
+%En el caso de partículas no interaccionantes, se puede hablar no sólo del
+%estado total del sistema $\psi$, sino también de los estados unipartícula
+%(spin-orbitales). Es decir, podemos decir que una partícula se encuentra 
+%en el estado $\psi_\alpha$ y otra en $\psi_\beta$, (pero no podemos 
+%especificar cual de las $N$ partículas es la que ocupa cada estado).
+%En el caso de partículas interaccionantes, no podemos estrictamente hablar
+%de estados unipartícula, porque
+%\begin{equation}
+%    \psi_a(\mathbf{r}_1,\mathbf{r}_2, ..., \mathbf{r}_N) \neq \psi_\alpha(\mathbf{r}_1)\psi_\beta(\mathbf{r}_2)...\psi_\omega(\mathbf{r}_N)
+%\end{equation}
+% Por eso la descripción del estado en términos de spin-orbitales es una aproximación: Aproximación Orbital.
+ 
+Supongamos ahora que tenemos dos electrones que se encuentran en el mismo
+orbital, $\psi=\psi_\alpha = \psi_\beta$. Si escribimos el 
+correspondiente determinante de Slater 
+\begin{equation}
+    \Psi_a(\mathbf{r}_1,\mathbf{r}_2) = \frac{1}{2^{1/2}}
+    \begin{vmatrix} 
+    \psi(\mathbf{r}_1) & \psi(\mathbf{r}_1)   \\
+    \psi(\mathbf{r}_2) & \psi(\mathbf{r}_2)  \\
+    \end{vmatrix}=0
+\end{equation}
+vemos que la función de onda antisimétrica resultante 
+es cero, por tener dos columnas iguales. Por tanto, 
+debemos tener en consideración
+la función de onda incluyendo no solo el orbital,
+sino también el \textbf{espín}, que puede ser $\alpha$
+o $\beta$ para cada uno de los electrones. 
+
+Para la contribución de spin tenemos cuatro combinaciones 
+diferentes posibles, correspondientes a los dos electrones 
+con espín $\alpha$, los dos con espín $\beta$, y uno con 
+$\alpha$ y otro con $\beta$. Esta última opción genera
+dos posibles combinaciones lineales, con signo positivo y 
+negativo. Así, las cuatro posibilidades para el espín son
+\begin{align*}
+\small
+    &\alpha(1)\alpha(2) \\
+    &\beta(1)\beta(2) \\
+    1/\sqrt{2}\big[\alpha(1)\beta(2)+&\beta(1)\alpha(2)\big] = \sigma_{+}(1,2)\\
+    1/\sqrt{2}\big[\alpha(1)\beta(2)-&\beta(1)\alpha(2)\big] = \sigma_{-}(1,2)
+\end{align*}
+Entre estas combinaciones, sólo la última nos permite escribir una función de onda antisimétrica, $\psi(1)\psi(2)\sigma_{-}(1,2)$, y por
+tanto apropiada para fermiones. 
+
+En conclusión, en el caso de un átomo con dos electrones en 
+un mismo orbital $1s$, el determinante de Slater se escribirá
+como
+\begin{equation}
+\begin{split}
+    \Psi = 1s(1)1s(2)\frac{1}{2^{1/2}}[\alpha(1)\beta(2)-\beta(1)\alpha(2)] = \\
+=    \frac{1}{2^{1/2}}
+    \begin{vmatrix} 
+    1s\alpha(1) & 1s\beta(1)   \\
+    1s\alpha(2) & 1s\beta(2)  \\
+    \end{vmatrix}
+    \end{split}
+    \label{eq:fundamental}
+\end{equation}
+donde vemos que los dos electrones aparecen con espines opuestos. 
+
+Una vez somos capaces de escribir funciones de onda para
+átomos polielectrónicos de manera general, podremos
+utilizar el método variacional para optimizar la 
+parte espacial de la función de onda. Esto permite 
+estimar su forma óptima y estimar energías de ionización,
+que como veremos aproximan muy bien los valores
+experimentales.
+
+\section{Energía del estado fundamental del átomo de Helio}
+En el caso del átomo de Helio, podemos calcular la
+energía usando el hamiltoniano de la
+Ecuación \ref{eq:hamiltonian_poly}, que puede escribirse
+usando la notación de Dirac como 
+\begin{equation}
+    E=\bra{\Psi}-\frac{1}{2}\nabla^2_1 -\frac{Z}{r_1}-\frac{1}{2}\nabla^2_2 -\frac{Z}{r_2}+\frac{1}{r_{12}}\ket{\Psi}
+\end{equation}
+Para resolver esta integral podemos separar la parte
+espacial de la contribución de espín
+\begin{equation}
+    E=\bra{1s(1)1s(2)}-\frac{1}{2}\nabla^2_1 -\frac{Z}{r_1}-\frac{1}{2}\nabla^2_2 -\frac{Z}{r_2}+\frac{1}{r_{12}}\ket{1s(1)1s(2)}\braket{\Sigma}
+\end{equation}
+donde $\braket{\Sigma}$ representa la contribución de espín, que al estar normalizada es 1.
+Así, nos quedamos exclusivamente con contribuciones 
+para un solo electrón ($\hat{h}_i$) y una contribución 
+que contiene la repulsión interelectrónica
+\begin{align}
+\begin{split}
+    E=&\bra{1s(1)}\hat{h}_{1}\ket{1s(1)}\braket{1s(2)} +
+    \bra{1s(1)}\hat{h}_2\ket{1s(1)}\braket{1s(1)} + \\
+    & \bra{1s(1)1s(2)} \frac{1}{r_{12}} \ket{1s(1)1s(2)}=
+    2h_{1s}+J_{1s,1s}
+\end{split}
+\end{align}
+En esta ecuación estamos introduciendo la integral de 
+Coulomb $J$ para dos electrones ocupando orbitales 1s.
+Es importante notar el significado intuitivo de esta 
+integral, $\bra{1s(1)1s(2)} \frac{1}{r_{12}} \ket{1s(1)1s(2)}$, donde tenemos la energía correspondiente a la interacción electrostática (y por tanto con dependencia $1/r$) 
+para el producto de las densidades electrónicas de los
+electrones 1 y 2. 
+
+\section{Energía del primer estado excitado}
+En el caso del primer estado excitado, debemos cambiar la función 
+de onda, que puede ser tanto simétrica como antisimétrica 
+dependiendo de que sea un estado \textbf{singlete} o 
+\textbf{triplete}, con su correspondiente parte de espín. 
+En el caso del singlete, la función de onda será
+\begin{equation}
+    \Psi_s=\frac{1}{\sqrt{2}}[1s(1)2s(2)+2s(1)1s(2)]\times
+    \frac{1}{\sqrt{2}}[\alpha(1)\beta(2)-\alpha(2)\beta(1)]
+\end{equation}
+mientras que en el triplete tenemos tres combinaciones diferentes
+\begin{equation}
+\Psi_t=\frac{1}{\sqrt{2}}[1s(1)2s(2)-2s(1)1s(2)]\times
+\begin{cases}
+\alpha(1)\alpha(2)\\
+\beta(1)\beta(2) \\
+\alpha(1)\beta(2) + \beta(1)\alpha(2)
+\end{cases}
+\end{equation}
+Dado que el hamiltoniano no depende de la parte de espín
+las energías dependen exclusivamente de la contribución
+orbitálica. En el caso del triplete tenemos tres estados 
+degenerados. Las energías asociadas a los estados excitados
+son 
+\begin{equation}
+    E=2h_{1s} + J_{1s,2s} \pm K_{1s,2s}
+\end{equation}
+donde aparece, de nuevo, la integral de Coulomb $J_{1s,2s}$
+y tenemos un nuevo término de \textbf{intercambio}, $K_{1s,2s}$, que se
+suma en el caso del singlete ($\Psi_s$) y se resta en el del triplete ($\Psi_t$). Así, se rompe la degeneración energética
+entre las dos posibles combinaciones lineales de los orbitales
+1s y 2s, que difieren en energía por una magnitud $2K_{1s,2s}$.
+
+Mientras que $J_{1s,2s}$ tiene una interpretación clásica
+(la interacción entre densidades electrónicas), 
+$K_{1s,2s}$ es de naturaleza puramente cuántica. Aun así, 
+podemos intentar desarrollar una intuición sobre su significado. En el caso de la función espacial antisimétrica,
+es decir para electrones con el mismo espín, 
+cuando $\mathbf{r}_1\simeq\mathbf{r}_2$ se produce una
+disminución en la densidad de probabilidad $|\Psi_t^2|$,
+a la que llamamos \textbf{hueco de Fermi}. Sin embargo,
+para electrones con espín diferente (con función espacial $\Psi_s$) se produce un aumento de la densidad de probabilidad.
+La consecuencia de este fenómeno es que los electrones con 
+función de onda $\Psi_t$ tienden a evitarse entre ellos y
+por ello tienen una corrección favorable a la repulsión de Coulomb (de $J$ a $J-K$), mientras que esta contribución es desfavorable cuando los electrones tienen el mismo 
+espín (de $J$ a $J+K$).
+ 
+\section{Átomos polielectrónicos: penetración y apantallamiento}
+Hasta ahora hemos limitado nuestra discusión a los átomos
+hidrogenoides y al átomo de helio. ¿Qué sucede cuando
+empezamos a llenar los orbitales con un mayor número de
+electrones? Los electrones pasan a experimentar una
+repulsión electrostática ejercida por los demás electrones. 
+Este efecto se puede incorporar como una carga negativa neta 
+localizada en el núcleo, que reduce la carga nuclear desde $Z$ 
+a $Z_{ef}$, la \textbf{carga nuclear efectiva}.
+Hablamos entonces de un apantallamiento, y la \textbf{constante de apantallamiento}
+$\sigma$ es 
+\begin{equation}
+    Z_{ef}= Z-\sigma
+\end{equation}
+Esta constante es diferente para los orbitales $s$ y $p$, 
+dado que los orbitales $s$ tienen mayor penetración que los 
+orbitales $p$ y por tanto experimentan menor apantallamiento. 
+Por ello, se dice que los electrones en orbitales $s$ están 
+más estrechamente ligados. 
+
+La consecuencia de todo ello es que,
+al contrario de lo que veíamos en el caso de los átomos hidrogenoides, los orbitales $2s$ y $2p$ ya no son degenerados.
+Para una misma capa (mismo número cuántico $n$) la energía de las 
+subcapas (mismo $l$) se distribuye, de manera general, de acuerdo con
+\begin{equation*}
+    s<p<d<f
+\end{equation*}
+Así, en el caso del átomo de litio (Li) la configuración más
+estable, el estado fundamental, será $1s^22s^1$, dado que los
+orbitales $2s$ son más bajos en energía que los orbitales $2p$.
+Los electrones más externos son los denominados \textbf{electrones 
+de valencia}.
+
+\subsection{El orden de ocupación}
+Por extensión de este argumento, definimos el orden de ocupación,
+o principio \textit{aufbau}, que define el siguiente orden para el 
+llenado de los orbitales:
+\begin{equation*}
+    1s < 2s < 2p < 3s<  3p <4s < 3d < 4p < 5s < 4d < 5p < 6s
+\end{equation*}
+donde cada orbital puede ser ocupado por dos electrones.
+
+Dada la multiplicidad de los orbitales $p$, el llenado podría
+producirse de tal manera que los electrones ocupasen
+ el mismo orbital u orbitales diferentes. Por otro lado,
+ podrían tener tanto espín paralelo ($\upuparrows$) como espín 
+ antiparalelo  ($\updownarrows$). En primer lugar, al ocupar orbitales diferentes los electrones están menos apantallados, por lo que 
+ una configuración en la que están ocupando orbitales distintos
+ minimiza la energía debido a una interacción más fuerte con el núcleo. En segundo lugar la configuración paralela resulta más estable por estar los electrones, en promedio, más alejados el uno del otro, de tal modo que se repelen menos. 
+ Esto es debido a los mismos efectos que ya hemos descrito para el helio. Esto resulta en la denominada \textbf{regla de máxima multiplicidad de Hund}\sidenote{Debida al científico alemán Friedrich Hermann Hund, quien también descubrió el efecto túnel}, que podemos formular así:
+ \begin{displayquote}
+Los electrones ocupan orbitales diferentes de una subcapa antes 
+de ocupar doblemente un mismo orbital.
+\end{displayquote}
+
+Es por este motivo que los electrones desapareados en los átomos de C, N y O tienen el mismo espín.
+Así, por ejemplo para el carbono (C) la configuración de más baja energía 
+es [He] $2s^2$ $2p_x^1$ $2p_y^1$. 
+En el caso del nitrógeno (N) su configuración fundamental es [He] $2s^2$ $2p_x^1$ $2p_y^1$ $2p_z^1$ y para el oxígeno (O), [He] $2s^2$ 
+$2p_x^2$ $2p_y^1$ $2p_z^1$.
+
+\section{El método de Hartree-Fock}
+El último paso necesario es darle una forma concreta a los
+orbitales 1s, para lo cual la opción más sencilla
+es usar orbitales tipo Slater
+\begin{equation}
+    1s=\chi_{1s}(r)Y_{00}(\theta, \phi)
+\end{equation}
+donde $\chi_{1s}$ depende del parámetro variacional 
+$\zeta$ y la parte angular de la función de onda está
+descrita por un armónico esférico (en este caso, 
+para $l=0$ y $m_l=0$). Usando el método variacional 
+simple podemos identificar el valor de $\zeta$ 
+que nos da la mejor aproximación posible para este tipo
+de función (donde $dE/d\zeta=0$).
+Para mejorar esta aproximación, podemos usar el método
+variacional lineal, donde la función radial 
+se define como combinación lineal de funciones de onda
+\begin{equation}
+    \chi_{1s}(r)=\sum_{k=1}^nc_k\chi_{n_k,\zeta_k}(r).
+\end{equation}
+En este caso buscamos los coeficientes $c_k$ que minimicen
+la energía. 
+
+El problema asociado a este cálculo es que queremos
+obtener las funciones para los orbitales, pero la forma
+de estos a su vez están influyendo en los demás electrones. 
+Douglas Hartree y Vladimir Fock sistematizaron este problema
+en el método que lleva su nombre. 
+Para cada electrón $i$ podemos escribir las ecuaciones de
+Fock
+\begin{equation}
+    \bigg[\hat{h}_i+\hat{V}^\mathrm{eff}_i\bigg]\chi_{1s}(1)=
+    \varepsilon\chi_{1s}(1).
+\end{equation}
+En este hamiltoniano, estamos usando el término $\hat{V}^\mathrm{eff}_i$,
+que contiene de manera promediada el potencial ejercido por los 
+demás electrones sobre el electrón 1. Este potencial 
+no se puede calcular sin antes saber la función de onda de todos
+estos electrones, que a su vez se afectan entre sí. Por ello, estas
+ecuaciones se resuelven de manera iterativa en el denominado 
+método de Hartree-Fock, hasta alcanzar una solución autoconsistente. 
+Las energías $\varepsilon$ obtenidas usando este método son equivalentes
+a las energías de ionización, y comparan muy bien con los valores
+experimentales.
+
+%\begin{thebibliography}{}
+%\bibitem{atkins_depaula} Atkins, P and De Paula, J. 2006. ``Physical Chemistry, 8th Edition''. Oxford University Press.
+%
+%\bibitem{atkins} Atkins, P and Friedman, R. 2005. ``Molecular Quantum Mechanics, 4th Edition''. Oxford University Press.
+%
+%\bibitem{fleisch} Fleisch, Daniel A. 2020. ``A student's guide to the Schr{\"o}dinger equation''. Cambridge University Press
+%
+%\bibitem{levine} Levine, I. N. 2013. ``Quantum
+%Chemistry, 7th Edition''. Pearson.
+%\end{thebibliography}
+\bibliographystyle{plainnat}
+
+
+
+\end{document}

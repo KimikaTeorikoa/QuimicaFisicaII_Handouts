@@ -1,0 +1,623 @@
+\documentclass{tufte-handout}
+
+%\geometry{showframe}% for debugging purposes -- displays the margins
+
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{amsmath}
+\newtheorem{theorem}{Postulado}
+
+% Set up the images/graphics package
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{graphics/}}
+
+\title[Química Física II: Tema 6 - Métodos Aproximados]{
+Tema 6: Métodos Aproximados}
+%\author{David De Sancho}
+\date{}  % if the \date{} command is left out, the current date will be used
+
+% The following package makes prettier tables.  We're all about the bling!
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better spacing
+% for units.
+\usepackage{units}
+
+% The fancyvrb package lets us customize the formatting of verbatim
+% environments.  We use a slightly smaller font.
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+
+% Small sections of multiple columns
+\usepackage{multicol}
+
+% Provides paragraphs of dummy text
+\usepackage{lipsum}
+
+% These commands are used to pretty-print LaTeX commands
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+
+\begin{document}
+
+\maketitle% this prints the handout title, author, and date
+
+\begin{abstract}
+\noindent Como comentamos en el Tema anterior, la ecuación de 
+Schrödinger sólo se puede resolver de manera exacta 
+para átomos mono-electrónicos. Cuando un sistema tiene 
+dos o más electrones es necesario recurrir
+a métodos aproximados, que son principalmente dos: el
+método variacional y los métodos perturbativos. 
+
+\end{abstract}
+
+%\printclassoptions
+
+\section{El teorema variacional}
+Sea $\hat{H}$ el operador de Hamilton y $\psi$ una función 
+de onda arbitraria que utilizamos para definir un sistema, 
+el \textbf{teorema variacional} nos dice que el valor 
+esperado de la energía al aplicar el operador
+sobre la función es siempre superior a la verdadera 
+energía del estado fundamental ($E_0$). Matemáticamente, 
+podemos escribir este teorema de la siguiente forma:
+\begin{equation}
+    E=\frac{\int{\psi^\star\hat{H}\psi d\tau}}{\int{\psi^\star \psi d\tau}} \geq E_0
+    \label{eq:evar}
+\end{equation}
+Al cociente de la Ecuación \ref{eq:evar} lo llamamos
+\textbf{integral variacional}, donde sencillamente estamos 
+calculando el valor esperado de la energía para una función de
+onda arbitraria, la \textbf{función de prueba}. Como no 
+asumimos de partida que esta función esté normalizada,
+incluimos en el denominador el término 
+${\int{\psi^\star \psi d\tau}}$. 
+
+El principio establece
+que si modificamos esta función de tal manera que minimicemos
+la energía, entonces nos acercaremos al máximo a la función 
+de onda real. La igualdad en la Ecuación \ref{eq:evar} se 
+cumple sólo en el caso en el que la función de onda de prueba 
+sea idéntica a la función de onda real. El teorema variacional
+proporciona una manera objetiva de aproximar la verdadera función
+de onda. Este principio es la base de todos los métodos modernos
+de  cálculo de estructura electrónica.
+
+Supongamos que partimos de las funciones $\{\psi_k\}$
+que son funciones propias del hamiltoniano , de tal manera que
+a cada una de las funciones de onda corresponde un valor propio
+para la energía,
+$\hat{H}\psi_k=E_k\psi_k$. Supongamos asimismo que este conjunto
+de funciones de onda forma un conjunto ortonormal. Así, la función
+de onda para el estado del sistema se podrá expresar como
+combinación lineal de las funciones $\psi_k$
+\begin{equation}
+    \psi=\sum_kc_k\psi_k
+\end{equation}
+y la energía correspondiente a ese estado será
+\begin{equation}\begin{split}
+    E=\frac{\int{\psi^\star\hat{H}\psi d\tau}}{\int{\psi^\star \psi d\tau}}=  
+    \frac{\sum_i\sum_jc_i^\star c_j\int{\psi_i^\star\hat{H}\psi_j d\tau}}{\sum_i\sum_jc_i^\star c_j\int{\psi_i^\star\psi_j d\tau}}= \\
+ = \frac{\sum_i\sum_jc_i^\star c_jE_{j}\delta_{ij}}{\sum_i\sum_jc_i^\star c_j\delta_{ij}}=
+    \frac{\sum_ic_i^\star c_iE_{i}}{\sum_ic_i^\star c_i}
+\end{split}
+\end{equation}
+A partir del teorema variacional podemos utilizar dos tipos
+de técnicas aproximadas: el método variacional simple y el 
+método de variaciones lineal.
+
+\subsection{El método variacional simple}
+En este método construimos una función de onda de prueba con 
+una serie de parámetros libres ($\lambda$) y minimizamos la
+energía $E$ con respecto a estos parámetros. Los pasos a dar
+para identificar el valor de $\lambda$ que mejor aproxima
+la función real son los siguientes:
+\begin{enumerate}
+    \item Definir la función de prueba.
+    \item Resolver las integrales en el denominador y el numerador de la Ecuación \ref{eq:evar}.
+    \item Calcular la energía aproximada como cociente del
+    numerador y el denominador.
+    \item Derivar la energía, $E$, con respecto a $\lambda$.
+    \begin{equation}
+        \frac{dE}{d\lambda} = 0  
+    \end{equation}
+    \item Obtener el valor de $\lambda_\mathrm{min}$ y calcular la energía para la mejor aproximación al
+    estado fundamental.
+\end{enumerate}
+
+%Usaremos como ejemplo el caso del oscilador armónico, que 
+%hemos resuelto de manera exacta en el Tema 3. Para describir
+%el estado fundamental de este sistema, con hamiltoniano
+%\begin{equation}
+%    \hat{H}=-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2} + 
+%    \frac{1}{2}kx^2
+%\end{equation}
+%podemos usar como función de prueba la función
+%\begin{equation}
+% \phi=\cos\lambda x   
+%\end{equation}
+%con $-\frac{\pi}{2\lambda}<x<\frac{\pi}{2\lambda}$. En
+%este ejemplo, $\lambda$ es el parámetro variacional. 
+%Dada la definición de la integral variacional (Ecuación 
+%\ref{eq:evar}), los pasos para encontrar los valores de 
+%$\lambda$ que minimizan la energía serán:
+%\begin{enumerate}
+%    \item Resolver la integral del denominador y el numerador:
+%    operamos por separado la parte correspondiente al numerador 
+%    y la energía potencial ($\hat{V}=1/2k\hat{x}^2$) y cinética 
+%    ($\hat{K}$).
+%    \begin{align}
+%    & \int{\phi^\star\phi d\tau } = \frac{\pi}{2\lambda} \\
+%    & \int{\phi^\star\hat{x}^2\phi d\tau} =  \frac{\pi^3}{24\lambda^3}-\frac{\pi}{4\lambda^3} \\
+%    & \int{\phi^\star\hat{K}\phi d\tau}
+%    =\frac{\lambda^2\hbar^2}{2m}\int{\phi^\star\phi d\tau}
+%    \end{align}
+%    Por tanto, la energía en función del parámetro $\lambda$ es
+%    \begin{equation}
+%        E(\lambda) = \frac{\lambda^2\hbar^2}{2m} + \frac{k}{\lambda^2}\bigg(\frac{\pi^2}{24}-\frac{1}{4}\bigg)
+%    \end{equation}
+%
+%    \item Minimizar $E$ con respecto a $\lambda$
+%    \begin{equation}
+%        \frac{dE}{d\lambda} = 0 \Rightarrow 
+%        \lambda^2_{min}=\frac{2^{1/2}}{\hbar}k^{1/2}m^{1/2}\bigg(\frac{\pi^2}{24}-\frac{1}{4}\bigg)^{1/2}
+%    \end{equation}
+%    
+%    \item Calcular la energía para la mejor aproximación al
+%    estado fundamental.
+%    \begin{equation}
+%        E(\lambda_{min})=1.14\frac{1}{2}\hbar\sqrt{\frac{k}{m}}
+%    \end{equation}
+%    En este ejemplo, dado que la energía del oscilador armónico
+%    es $1/2\hbar\omega$ estamos sobreestimando la energía en un
+%    14 \%.
+%\end{enumerate}
+
+\subsection{El método de variaciones lineal}
+Supongamos ahora que nuestra función de prueba es una
+suma de funciones reales linealmente independientes,
+$\{\varphi_1$, $\varphi_2$, ..., $\varphi_N\}$, que
+pueden ser o no ortonormales, cada una de ellas con
+un coeficiente $c_j$,
+\begin{equation}
+    \phi=\sum_{j=1}^{N}c_j\varphi_j
+\end{equation}
+y que lo que queremos optimizar son los valores de los 
+coeficientes $c_j$. Tenemos por tanto más de un parámetro 
+variacional. El método que acabamos de ver puede volverse 
+algo tedioso para resolver este problema. Afortunadamente,
+hay una alternativa sistemática, el método de variaciones lineal. 
+ 
+Dado que tenemos una suma de términos en nuestra función de
+prueba, podemos calcular la energía a partir de la Ecuación
+\ref{eq:evar} de tal manera que la energía dependerá de los
+coeficientes $c_k$
+\begin{equation}
+    E=\frac{\sum_{j=1}^N\sum_{i=1}^Nc_jc_iH_{ji}}{\sum_{j=1}^N\sum_{i=1}^N c_j c_iS_{ji}}
+\end{equation}
+donde estamos usando la \textbf{integral de solapamiento}
+$S_{ji}=\int \varphi^\star\varphi d\tau=S^\star_{ij}=S_{ij}$.
+Reorganizando los términos de esta expresión podemos obtener 
+\begin{equation}
+    E\sum_{j=1}^N\sum_{i=1}^N c_j c_iS_{ji}=\sum_{j=1}^N\sum_{i=1}^Nc_jc_iH_{ji}
+\end{equation}
+De acuerdo con el principio variacional, la condición que nos 
+permite llegar a la combinación lineal de mínima energía es
+\begin{equation}
+    \frac{\partial E}{\partial c_k}=0
+    \label{eq:var_deriv}
+\end{equation}
+
+Dado que el método variacional lineal se vuelve complicado
+incluso para sistemas muy pequeños, trabajaremos con el ejemplo
+más sencillo, correspondiente a un sistema que aproximamos
+con una función de onda 
+\begin{equation}
+    \psi=c_1\phi_1 + c_2\phi_2
+\end{equation}
+Si desarrollamos la integral variacional, obtenemos lo siguiente
+\begin{equation}
+\begin{split}
+    E&=\frac{\int\psi^\star\hat{H}\psi d\tau}{\int\psi^\star\psi d\tau}  
+    = \frac{\int( c_1\phi_1+ c_2\phi_2)\hat{H}(c_1\phi_1+ c_2\phi_2)d\tau}{\int (c_1\phi_1+ c_2\phi_2)(c_1\phi_ 1+ c_2\phi_2)d\tau}= \\
+    &= \frac{c_1^2\int\phi_1\hat{H}\phi_1 d\tau +
+    c_2^2\int\phi_2\hat{H}\phi_2 d\tau  +
+    2c_1c_2\int\phi_1\hat{H}\phi_2 d\tau}
+    {c_1^2\int\phi_1\phi_1 d\tau  +
+    c_2^2\int\phi_2\phi_2 d\tau  +
+    2c_1c_2\int\phi_1\phi_2 d\tau} = \\
+    & = \frac{c_1^2H_{11} + c_2^2H_{22} + 2c_1c_2H_{12}}
+    {c_1^2 + c_2^2 + 2c_1c_2S_{12}}
+    \end{split}
+\end{equation}
+Podemos reorganizar esta ecuación para la energía como
+\begin{equation}
+    E(c_1^2S_{11} + c_2^2S_{22} + 2c_1c_2S_{12})=c_1^2H_{11} + c_2^2H_{22} + 2c_1c_2H_{12}
+    \label{eq:var_exp}
+\end{equation}
+En este caso, al tener únicamente dos funciones de onda, 
+la Ecuación \ref{eq:var_deriv} pasa a ser
+\begin{align}
+    \frac{\partial E}{\partial c_1}&=0       & \frac{\partial E}{\partial c_2}&=0
+\end{align}
+Podemos por tanto derivar la Ecuación \ref{eq:var_exp}
+con respecto a $c_1$ y $c_2$, y así obtenener
+\begin{align}
+ E(2c_1S_{11} +2c_2S_{12})    &=2c_1H_{11} +2c_2H_{12} \label{eq:seq1}\\
+ E(2c_2S_{22} +2c_1S_{12})    &=2c_2H_{22} +2c_1H_{12}
+ \label{eq:seq2}
+\end{align}
+Estas dos ecuaciones forman un sistema de ecuaciones 
+lineales cuyas variables son $c_1$ y $c_2$, que 
+podemos reescribir en forma matricial
+\begin{equation}
+\begin{pmatrix}
+ H_{11}-ES_{11} &  H_{12}-ES_{12}  \\ 
+ H_{21}-ES_{21} &  H_{22}-ES_{22}
+\end{pmatrix}
+\begin{pmatrix}
+c_{1}  \\ 
+c_{2}
+\end{pmatrix}=
+\begin{pmatrix}
+0\\
+0
+\end{pmatrix}
+\end{equation}
+Este sistema tiene una solución no trivial, es decir,
+una solución que no sea $c_1=c_2=0$, sólo cuando resolvemos 
+el \textbf{determinante secular}
+\begin{equation}
+\begin{vmatrix}
+ H_{11}-ES_{11} &  H_{12}-ES_{12}  \\ 
+ H_{21}-ES_{21} &  H_{22}-ES_{22}
+\end{vmatrix}= 0
+\end{equation}
+El determinante secular arroja dos valores posibles
+para la energía. Entre ellas, la más pequeña es 
+la que nos quedaremos como aproximación para la energía
+del estado fundamental. A partir de la energía, y usando
+las Ecuaciones \ref{eq:seq1} y \ref{eq:seq2} podemos
+encontrar los coeficientes $c_1$ y $c_2$ que permiten
+recuperar la función de onda variacional.
+
+\section{Los métodos perturbativos}
+Otra posibilidad es que nos enfrentemos a un problema 
+para el que no sepamos resolver la ecuación de Schrödinger,
+$\hat{H}\psi=E\psi$, pero que sí sepamos resolverla para
+un problema similar, pero más sencillo.
+Si es así, podemos aproximar el hamiltoniano como suma 
+de un término fundamental, $H^{(0)}$, cuyas funciones propias 
+$\psi^{(0)}$ y valores propios $E^{(0)}$ son conocidos,
+más otros términos, que llamamos \textbf{perturbación}, 
+\begin{equation}
+    \hat{H}=\hat{H}^{(0)} + \lambda\hat{H}^{(1)} + 
+    \lambda^2 \hat{H}^{(2)} + ...
+    \label{eq:H_pert}
+\end{equation}
+En esta ecuación, los términos $\hat{H}^{(1)}$ y 
+$\hat{H}^{(2)}$ representan la diferencia entre el
+hamiltoniano real y el modelo. En general,
+$\lambda \ll 1$, de modo que las potencias
+$\lambda^i\hat{H}^{(i)}$ decrecen sustancialmente 
+a medida que aumenta $i$. En los desarrollos que 
+incluimos a continuación, consideramos únicamente los
+términos correspondientes a $\hat{H}^{(0)}$ y 
+$\hat{H}^{(1)}$.
+
+Del mismo modo que hemos hecho para el hamiltoniano, 
+podemos escribir las funciones de onda para el estado $k$
+del sistema que nos interesa describir y su energía 
+como suma de un término fundamental y sus perturbaciones
+\begin{align}
+    \psi =& \psi_k^{(0)} + \lambda\psi_k^{(1)} + \lambda^2\psi_k^{(2)} + ... \label{eq:psi_pert}\\
+    E =& E_k^{(0)} + \lambda E_k^{(1)} + \lambda^2E_k^{(2)}+ ...
+    \label{eq:E_pert}
+\end{align}
+En esta ecuación, $E_k^{(1)}$ es la corrección de primer orden
+para la energía,  $E_k^{(2)}$ es la corrección de segundo orden 
+para la energía del
+estado $k$, etc. 
+
+Como sabemos que podemos obtener la energía
+a partir de $\hat{H}\psi = E\psi$, podemos desarrollar la 
+expresión del hamiltoniano en función de los términos de las Ecuaciones
+\ref{eq:H_pert}, \ref{eq:psi_pert} y \ref{eq:E_pert}:
+\begin{equation}
+\begin{split}
+    \hat{H}\psi =& (\hat{H}^{(0)} + \lambda \hat{H}^{(1)} + ...)(\psi^{(0)} + \lambda\psi^{(1)} +  + \lambda\psi^{(2)} + ...) = \\
+    =& \hat{H}^{(0)}\psi^{(0)} + 
+    \lambda (\hat{H}^{(1)}\psi^{(0)} + \hat{H}^{(0)}\psi^{(1)}) + \\ 
+    &+ \lambda^2 (\hat{H}^{(2)}\psi^{(0)} + \hat{H}^{(1)}\psi^{(1)} + \hat{H}^{(2)}\psi^{(0)} ) =  \\
+    =& E^{(0)}\psi^{(0)} + \lambda (E^{(1)}\psi^{(0)} + E^{(0)}\psi^{(1)}) + \\
+    &+ \lambda^2 (E^{(2)}\psi^{(0)} + E^{(1)}\psi^{(1)} + E^{(2)}\psi^{(0)})
+\end{split}
+\end{equation}
+Podemos agrupar los términos en esta ecuación en función del
+exponente de $\lambda$ para obtener
+\begin{align}
+    \lambda^0\mathrm{:} & \hat{H}^{(0)}\psi^{(0)}= E^{(0)}\psi^{(0)}\label{eq:HE_pert0}\\
+    \lambda^1\mathrm{:}&
+    \hat{H}^{(1)}\psi^{(0)} + \hat{H}^{(0)}\psi^{(1)} = E^{(1)}\psi^{(0)} + E^{(0)}\psi^{(1)} \label{eq:HE_pert1}\\
+    \lambda^2\mathrm{:}  &     
+     \hat{H}^{(0)}\psi^{(2)} + \hat{H}^{(1)}\psi^{(1)} = E^{(2)}\psi^{(0)} + E^{(1)}\psi^{(1)}+ E^{(0)}\psi^{(2)}
+\end{align}
+
+A partir de este conjunto de ecuaciones, podemos empezar a trabajar
+con la función de onda del estado fundamental, $\psi_0$. La Ecuación
+\ref{eq:HE_pert0} pasa a ser
+\begin{equation}
+    \hat{H}^{(0)}\psi_0^{(0)} = E_0^{(0)}\psi_0^{(0)}
+\end{equation}
+donde tenemos la energía y la función de onda conocidas. La segunda ecuación
+, correspondiente al exponente $\lambda^1$ (Ec. \ref{eq:HE_pert1}), 
+es 
+\begin{equation}
+    \hat{H}^{(1)}\psi_0^{(0)} + \hat{H}^{(1)}\psi_0^{(1)} = 
+    E_0^{(0)}\psi_0^{(1)} + E_0^{(1)}\psi_0^{(0)}
+\end{equation}
+Podemos expresar la perturbación de la función de onda $\psi_0^{(1)}$ 
+como combinación lineal de las funciones propias de $\hat{H}^{(0)}$,
+de modo que $\psi_0^{(1)}=\sum_nc_n\psi_n^{(0)}$. Sustituyendo
+dentro de la expresión anterior, obtenemos
+\begin{equation}
+    \hat{H}^{(1)}\psi_0^{(0)} + \sum_nc_n\hat{H}^{(0)}\psi_n^{(0)} = 
+    \sum_nc_nE_0^{(0)}\psi_n^{(0)} + E_0^{(1)}\psi_0^{(0)}
+\end{equation}
+Si multiplicamos esta ecuación por la izquierda por $\psi_0^{(0)}^\star$
+e integramos llegamos a
+\begin{equation}
+\begin{split}
+  \int \psi_0^{(0)}^\star \hat{H}^{(1)}\psi_0^{(0)}d\tau +  \sum_nc_n\int \psi_0^{(0)}^\star\hat{H}^{(0)}\psi_n^{(0)}d\tau = \\
+    = \sum_nc_nE_0^{(0)}\int \psi_0^{(0)}^\star\psi_n^{(0)}d\tau + \int \psi_0^{(0)}^\star E_0^{(1)}\psi_0^{(0)}d\tau
+\end{split}
+\end{equation}
+Dada la condición de ortonormalidad, el segundo término a la izquierda de
+la igualdad y el primero por la derecha serán $0$ para $n\neq 0$. Por otra
+parte, dada la condición de normalización, el último término es igual a 
+$E_0^{(1)}$. De este modo llegamos a una expresión compacta para el
+valor promedio de la perturbación que obtenemos a partir de la función 
+de onda sin perturbar
+\begin{equation}
+    E_0^{(1)}= \int \psi_0^{(0)}^\star \hat{H}^{(1)}\psi_0^{(0)}d\tau 
+\end{equation}
+
+Haciendo otra manipulación, podemos obtener los valores de los 
+coeficientes $c_k$ de la combinación lineal. Si multiplicamos la
+Ecuación \ref{eq:HE_pert1} por $\psi_k^{(0)}^\star$ para $k\neq 0$,
+obtenemos
+\begin{equation}
+    \begin{split}
+        \int \psi_k^{(0)}^\star \hat{H}^{(1)}\psi_0^{(0)}d\tau +  \sum_nc_n\int \psi_k^{(0)}^\star\hat{H}^{(0)}\psi_n^{(0)}d\tau = \\
+    = \sum_nc_nE_0^{(0)}\int \psi_k^{(0)}^\star\psi_n^{(0)}d\tau + \int \psi_k^{(0)}^\star E_0^{(1)}\psi_0^{(0)}d\tau
+    \end{split}
+\end{equation}
+Esta expresión se puede simplificar usando las condiciones de
+ortogonalidad y normalización de las funciones de onda 
+$\{\psi_n^{(0)}\}$ para alcanzar la siguiente ecuación:
+\begin{equation}
+    c_k=-\frac{\int \psi_k^{(0)}\hat{H}^{(1)}\psi_0^{(0)}}{E_k^{(0)} - E_0^{(0)}}
+\end{equation}
+
+Finalmente, aunque no haremos esta derivación de manera explícita,
+a partir de los términos correspondientes a $\lambda^2$
+podemos derivar la expresión para la corrección de segundo orden de
+la energía
+\begin{equation}
+    E_0^{(2)} = \sum_{n\neq 0}\frac{|\int\psi_n^{(0)}^\star\hat{H}^{(1)}\psi_0^{(0)}d\tau|^2}{E_0^{(0)} - E_n^{(0)}} = 
+    \sum_{n\neq 0}\frac{|H_{n0}^{(1)}|^2}{E_0^{(0)} - E_n^{(0)}}
+\end{equation}
+
+%\section{Método de Rayleigh-Schrödinger}
+%Este método permite obtener $\psi^{(i)}_k$ como combinación 
+%lineal de las funciones funciones propias sin 
+%perturbar del hamiltoniano $\hat{H}^{(0)}$ (funciones de orden cero ):
+%\begin{equation}
+%    \psi_k^{(i)} = \sum_{j=0}^\infty \psi_j^{(0)}c_{kj}^{(i)}
+%\end{equation}
+%El subíndice $k$ en $c_{kj}^{(i)}$ representa el estado estacionario
+%que tratamos de corregir, $(i)$ es el orden de la perturbación y $j$
+%las funciones de orden cero para todos los estados estacionarios.
+%Sustituyendo la expresión para la función de onda en la Ecuación
+%\ref{eq:H_pert} obtenemos
+%\begin{equation}
+%    \sum c_{kj}(\hat{H}^{(0)}-E_k^{(0)})=
+%    -(\hat{H}^{(1)}-E_k^{(1)}))\psi_k^{(0)}
+%\end{equation}
+%Hay dos casos a considerar.
+%\begin{enumerate}
+%    \item Caso en el que $n=k$:
+%    \begin{equation}
+%        E_n^{(1)} = \int \psi_n^{(0)}^\star \hat{H}^{(1)}\psi_n^{(0)} d\tau
+%    \end{equation}
+%    En este caso la corrección de primer orden se obtiene promediando
+%    la perturbación $\hat{H}^{(1)}$ sobre las correspondientes
+%    funciones de onda sin perturbar. Para evaluar la corrección de 
+%    primer orden a la energía basta con conocer la función de onda
+%    sin perturbar. Por tanto, la calcularemos usando la 
+%    expresión
+%    \begin{equation}
+%        E_n\simeq E_n^{(0)} +  E_n^{(1)} = E_n^{(0)} +  \int \psi_n^{(0)}^\star \hat{H}^{(1)}\psi_n^{(0)} d\tau
+%    \end{equation}
+%
+%    \item Caso en el que $n\neq k$: 
+%    \begin{equation}
+%        c_{kn} = -\frac{\int \psi_n^{(0)}^\star {\hat{H}}^{(1)}\psi_k^{(0)} d\tau}
+%        {E_k^{(0)} - E_n^{(0)}}
+%    \end{equation}
+%    En este caso los coeficicentes $c_{kn}$ se calculan usando esta
+%    ecuación. Para corregir a primer orden la energía de un estado
+%    sólo necesitamos evaluar $\hat{H}^{(1)}$ en este estado y
+%    conocer la función de onda sin perturbar. Las correcciones
+%    se vuelven más y más complicadas al aumentar el orden de la
+%    perturbación.
+%\end{enumerate}
+%Las ecuaciones que hemos introducido proporcionan la 
+%siguiente expresión para la corrección de primer 
+%orden de la función de onda:
+%\begin{equation}
+%    \psi_{k}^{(1)} = \sum_{n\neq k}\frac{\int {\psi_n^{(0)}}^\star \hat{H}^{(1)}\psi_k^{(0)} d\tau}{E_k^{(0)} - E_n^{(0)}}
+%\end{equation}
+%Haciendo $\lambda=1$ usando solamente la corrección de primer orden de la
+%función de onda obtenemos como aproximación a la función de onda 
+%perturbada
+%\begin{equation}
+%    \psi_k = \psi_k^{(0)} +  
+%    \sum_{n\neq k}\frac{\int {\psi_n^{(0)}}^\star\hat{H}^{(1)}\psi_k^{(0)} d\tau}
+%    {E_k^{(0)} - E_n^{(0)}}\psi_n^{(0)}
+%\end{equation}
+
+\subsection{Soluciones variacional y perturbativa del átomo del Helio}
+En el próximo tema estudiaremos de manera sistemática 
+los átomos polielectrónicos. Sin embargo, para ver cómo 
+podemos utilizar los métodos aproximados que hemos introducido
+aquí para resolver
+problemas realistas, veremos su aplicación al
+átomo de Helio, el más sencillo de los sistemas que
+implican más de dos partículas. 
+
+Bajo la aproximación de masa
+nuclear infinita ($m_N/m_e\rightarrow \infty$)
+el hamiltoniano para el átomo de Helio es
+\begin{equation}
+    \hat{H} = -\frac{\hbar^2}{2m_{e1}}\nabla^2_1 
+    - \frac{2e^2}{4\pi\varepsilon_0r_1} 
+    -\frac{\hbar^2}{2m_{e2}}\nabla^2_2 
+    - \frac{2e^2}{4\pi\varepsilon_0r_2} 
+            + \frac{e^2}{4\pi\varepsilon_0r_{12}}
+\end{equation}
+En el lado derecho de esta ecuación encontramos, en
+primer lugar, los términos de energía
+cinética y potencial correspondientes a los dos electrones
+con respecto al núcleo. El último término corresponde a
+la repulsión interelectrónica, donde $r_1$ y $r_2$ son las
+distancias entre el núcleo y los electrones, y 
+$r_{12}=|\mathbf{r}_2 - \mathbf{r}_1|$ 
+es la distancia interelectrónica.
+
+La manera más drástica de solventar este problema 
+sería ignorar completamente la repulsión entre los electrones
+1 y 2. Si truncásemos el hamiltoniano, excluyendo su último
+término, el problema sería perfectamente resoluble, dado
+que sería equivalente a tener dos electrones para un átomo
+hidrogenoide con $Z=2$,
+\begin{equation}
+\hat{H} = \hat{H}_1+ \hat{H}_2
+\end{equation}
+Si escribimos nuestra función de onda como
+el producto de dos funciones 1s,
+\begin{equation}
+    \psi(\mathbf{r}_1, \mathbf{r}_2)=\psi_{1s}(\mathbf{r}_1)\psi_{1s}(\mathbf{r}_2)
+\end{equation}
+entonces la energía será, simplemente
+\begin{equation}
+    E = E_1 + E_2 
+\end{equation}
+En el caso del Helio, nuestra estimación de la energía
+como suma de dos átomos hidrogenoides, sería -4$E_h$, 
+donde $E_h$ es la energía del estado fundamental
+del átomo de hidrógeno (i.e.
+$E_h=m_ee^4/(16\pi^2\varepsilon_0^2\hbar^2$). El valor 
+experimental es solo -2.903$E_h$, con lo cual esta aproximación
+claramente sobrestima la estabilidad del Helio, como
+esperábamos al ignorar la interacción repulsiva
+de los dos electrones.
+
+Usando el método variacional simple, podemos intentar mejorar 
+esta aproximación. Para ello, podemos usar como funciones
+de prueba expresiones del tipo
+\begin{equation}
+    \phi(\mathbf{r}_1, \mathbf{r}_2)=\psi_{1s}(\mathbf{r}_1)\psi_{1s}(\mathbf{r}_2)
+    \label{eq:varphi}
+\end{equation}
+donde ahora los orbitales atómicos dependen de un 
+parámetro variacional, $Z$
+\begin{equation}
+    \psi_\mathrm{1s}(r_j)=\bigg(\frac{\zeta^3}{\pi a_0}\bigg)^{1/2}e^{-\zeta r_j/a_0}
+\end{equation}
+Usando la expresión de la Ecuación \ref{eq:varphi} y el 
+hamiltoniano podemos obtener la energía en función de $\zeta$,
+$E(\zeta)=\frac{m_ee^4}{16\pi^2\epsilon_0^2\hbar^2}$.
+De acuerdo con el método variacional simple, la mejor aproximación
+corresponderá al valor de $\zeta$ que minimice la energía, donde
+$dE/d\zeta=0$. Realizando este cálculo, el valor de la energía
+resultante es -2.848$E_h$, mucho más próximo al valor 
+experimental de -2.903$E_h$. Vemos así que el uso de una
+función de prueba es enormemente provechoso para aproximar
+la energía. Además, la solución resultante tiene significado
+físico: el valor óptimo para $\zeta$ es 1.69, un valor algo
+inferior a 2, que refleja el apantallamiento de la carga del
+núcleo del átomo de Helio por parte de los electrones. 
+
+Hay muchas otras funciones que pueden usarse como función de
+prueba para intentar mejorar esta solución, entre las cuales
+son particularmente populares los \textbf{orbitales de tipo Slater},
+descritos como
+\begin{equation}
+    S_{nlm}(r, \theta, \phi)=N_{nl}r^{n-1}e^{-\zeta r}Y_l^{ml}(\theta, \phi)
+\end{equation}
+Aquí, $N_{nl}$ es la constante de normalización y $Y_l^{ml}(\theta, \phi)$ son los armónicos esféricos.
+
+Finalmente, también podemos usar el método perturbativo para
+abordar el problema que presenta el átomo de Helio. En este caso, 
+definimos $\hat{H}^{(0)}$ como el hamiltoniano para un solo electrón, 
+mientras que la perturbación $\hat{H}^{(1)}$ corresponderá a la
+repulsión interelectrónica, 
+\begin{equation}
+\hat{H}^{(1)}=\frac{e^2}{4\pi \varepsilon_0r_{12}}
+\end{equation}
+En este caso, podemos evaluar la perturbación de primer orden usando
+la integral
+\begin{equation}
+E^{(1)}=\frac{e^2}{4\pi \epsilon_0}\int\int d\mathbf{r}_1d\mathbf{r}_2\psi_{1s}^\star(\mathbf{r}_1)\psi_{1s}^\star(\mathbf{r}_2)\frac{1}{r_{12}}\psi_{1s}(\mathbf{r}_1)\psi_{1s}(\mathbf{r}_2)
+\end{equation}
+Para poder realizar esta integral con 
+respecto a $\mathbf{r}_1$ y $\mathbf{r}_2$, debemos sustituir 
+$r_{12}=(r_1+r_2-2r_1r_2\cos\theta)^{1/2}$
+La estimación usando la perturbación de primer orden para la energía
+calculada con este método es -2.75$E_h$, e incluyendo los 
+términos de segundo orden, es -2.908$E_h$. Así, vemos que también 
+el método perturbativo pueden proporcionar 
+muy buenas estimaciones de la energía exacta del sistema a pesar
+de carecer de soluciones analíticas.
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{ | l | c |}
+    \hline
+        \textbf{Método} & \textbf{Energía/$E_h$} \\
+         \hline
+         Experimento &  -2.9033 \\
+         Ignorando $H_{12}$ & -4.0000 \\
+         Variacional & -2.8477 \\
+         Perturbación 1$^\mathrm{er}$ orden & -2.7500 \\
+         Perturbación 2º orden & -2.9077 \\
+     \hline    
+    \end{tabular}
+    \caption{Estimaciones de la energía del átomo de 
+    Helio a partir de  diferentes aproximaciones.}
+    \label{tab:my_label}
+\end{table}
+
+%\begin{thebibliography}{}
+%\bibitem{atkins_depaula} Atkins, P and De Paula, J. 2006. ``Physical Chemistry, 8th Edition''. Oxford University Press.
+%
+%\bibitem{atkins} Atkins, P and Friedman, R. 2005. ``Molecular Quantum Mechanics, 4th Edition''. Oxford University Press.
+%
+%\bibitem{fleisch} Fleisch, Daniel A. 2020. ``A student's guide to the Schr{\"o}dinger equation''. Cambridge University Press
+%
+%\bibitem{levine} Levine, I. N. 2013. ``Quantum
+%Chemistry, 7th Edition''. Pearson.
+%\end{thebibliography}
+\bibliographystyle{plainnat}
+
+
+
+\end{document}

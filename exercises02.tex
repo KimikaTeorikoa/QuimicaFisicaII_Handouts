@@ -1,0 +1,93 @@
+\documentclass{tufte-handout}
+
+%\geometry{showframe}% for debugging purposes -- displays the margins
+
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{amsmath}
+
+% Set up the images/graphics package
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{graphics/}}
+
+\title[Química Física II: Ejercicios 2$^{o}$ Set]{
+Química Física II: Ejercicios 2$^{o}$ Parcial}
+%\author{David De Sancho}
+\date{}  % if the \date{} command is left out, the current date will be used
+
+% The following package makes prettier tables.  We're all about the bling!
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better spacing
+% for units.
+\usepackage{units}
+
+% The fancyvrb package lets us customize the formatting of verbatim
+% environments.  We use a slightly smaller font.
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+
+% Small sections of multiple columns
+\usepackage{multicol}
+
+% Provides paragraphs of dummy text
+\usepackage{lipsum}
+
+% These commands are used to pretty-print LaTeX commands
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+
+\begin{document}
+\maketitle
+\large
+\begin{enumerate}
+    \item Calcula la probabilidad de que un electrón descrito por la
+    función de onda 1s del átomo de hidrógeno se encuentre a una distancia del 
+    núcleo igual o inferior al primer radio de Bohr.
+    
+    \item Calcula el radio más probable al que se encontrará un
+    electrón cuando ocupe un orbital 1s de un átomo 
+    hidrogenoide con número atómico Z.
+    
+    \item Calcula la posición exacta de los nodos de las funciones
+    radiales de los orbitales 1s, 2s, 2p y 3s del átomo de hidrógeno.
+    
+    \item Una partícula se encuentra sometida al siguiente potencial
+    \begin{equation*}
+\hat{V}(x)=
+\begin{cases}
+  \infty & \text{ si } L<x<0\\
+  0  & \text{ si } 0\leq x\leq \frac{L}{4}\text{  o  }\frac{3L}{4}\leq x\leq L
+\\
+  V_0, & \text{si } \frac{L}{4}<x<\frac{3L}{4}
+\end{cases}
+\end{equation*}
+    donde $V_0$ es una constante pequeña. Usa la teoría de perturbaciones
+    para calcular las correcciones de primer orden de la energía, utilizando
+    como hamiltoniano de orden cero el correspondiente a la partícula en 
+    una caja.
+    
+    \item Calcula la corrección de primer orden a la energía del 
+    estado fundamental de un oscilador armónico cuya energía potencial 
+    es 
+    \begin{equation*}
+        V(x)=\frac{1}{2}kx^2 + \frac{1}{6}\gamma x^3  + \frac{1}{24}bx^4
+    \end{equation*}
+\end{enumerate}
+
+\newpage
+\subsection{\textbf{Soluciones:}}
+\begin{enumerate}
+\item $P(r<=a_0)=0.323$
+\item $r=a_0/Z$
+\item 1s: No tiene nodos; 2s: $r=2a_0$; 2p: No tiene nodos (excepto $r=0$); 3s: nodos en $1.9a_0$ y $7.1a_0$.
+\item $E_n^{(1)}=\frac{V_0}{2}  - \frac{V_0}{2n\pi}(\sin(3n\pi/2) - \sin(n\pi/2))$
+\item $E_{v=0}^{(1)}= \frac{b\hbar^2}{32km}$; $E=E_{v=0}^{(0)}+E_{v=0}^{(1)}= 1/2\hbar\omega +  \frac{b\hbar^2}{32km}$.
+\end{enumerate}
+\end{document}

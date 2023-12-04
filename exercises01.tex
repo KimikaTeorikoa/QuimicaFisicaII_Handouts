@@ -1,0 +1,173 @@
+\documentclass{tufte-handout}
+
+%\geometry{showframe}% for debugging purposes -- displays the margins
+
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{amsmath}
+
+% Set up the images/graphics package
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{graphics/}}
+
+\title[Química Física II: Ejercicios 1$^{er}$ Set]{
+Química Física II: Ejercicios 1$^{er}$ Parcial}
+%\author{David De Sancho}
+\date{}  % if the \date{} command is left out, the current date will be used
+
+% The following package makes prettier tables.  We're all about the bling!
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better spacing
+% for units.
+\usepackage{units}
+
+% The fancyvrb package lets us customize the formatting of verbatim
+% environments.  We use a slightly smaller font.
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+
+% Small sections of multiple columns
+\usepackage{multicol}
+
+% Provides paragraphs of dummy text
+\usepackage{lipsum}
+
+% These commands are used to pretty-print LaTeX commands
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+
+\begin{document}
+\maketitle
+\large
+\begin{enumerate}
+    \item La función trabajo (\textit{work
+    function}) para el potasio es de 2.24
+    eV. Si se ilumina el potasio metálico
+    con luz de longitud de onda de 480 nm,
+    calcula (a) la energía cinética máxima
+    de los fotoelectrones y (b) la longitud
+    de onda umbral.
+    
+    \item Se lanza una roca con masa de 
+    50 g con velocidad de 40 m/s. ¿Cuál es
+    su longitud de onda de De Broglie?
+    
+    \item Se mide la velocidad de un
+    electrón y resulta ser de $5\times10^3$
+    m/s $\pm$0.003\%. ¿Dentro de qué
+    límites puede conocerse la posición de
+    dicho electrón a lo largo de la
+    dirección del vector velocidad?
+    
+    \item Suponiendo que $\psi_1$ y
+    $\psi_2$ son dos funciones reales que 
+    están normalizadas y son ortogonales, 
+    normaliza las siguientes funciones:
+    (a) $\psi_1+\psi_2$, (b) 
+    $\psi_1-\psi_2$.
+    
+    \item ¿Cuál de las siguientes funciones
+    es función propia del operador
+    $\hat{D}=\frac{d}{dx}$? (a) $kx^2$
+    (b) $\sin x$ (c) $\exp (kx)$ 
+    (d) $\exp(kx^2)$ (e) $\exp(ikx)$.
+    
+    \item Los operadores para la posición y
+    el momento lineal vienen dados por 
+    \begin{equation}
+        \begin{array}{cc}
+             \hat{x}& =x  \\
+            \hat{p}_x& =\frac{\hbar}{i}\big(\frac{\partial}{\partial x}\big)
+        \end{array}
+    \end{equation}
+    (a) ¿Son estos operadores hermíticos?
+    (b) ¿Conmutan estos operadores?
+    (c) ¿Son los operadores citados lineales
+    o no lineales?
+    (d) ¿Es la función $\psi_1=A\sin (n\pi
+    x/a)$, donde $A$, $n$ y $a$ son
+    constantes, una función propia de ambos
+    operadores?
+   
+   \item Normaliza la función del ejercicio
+   6d en el dominio $0\leq x\leq a$.
+   
+   \item Determina las condiciones necesarias 
+   para que la función $\psi(x)=x\exp(-\alpha
+   x^2)$ sea función propia del operador 
+   $\hat{\Omega}=\frac{d^2}{dx^2} + bx^2$.
+   Normalizar la función y calcular el valor 
+   propio de $x$ para un
+   sistema descrito por dicha función. Para resolver
+   este ejercicio es necesaria la integral
+   \begin{equation}
+       \int_0^{\infty}x^{2n}e^{-ax^2}dx = 
+       \frac{1\cdot 3\cdot 5... (2n-1)}{2^{n+1}a^n}\sqrt{\frac{\pi}{a}}
+   \end{equation}
+   
+   \item Calcula el valor medio del momento y
+   la posición para el caso de una partícula de
+   masa $m$ en una caja unidimensional de anchura
+   $L$. Comprueba que se cumple el principio de
+   incertidumbre.
+   
+   \item Sea una partícula de masa $m$ que se
+   mueve en una caja de potencial de anchura $L$.
+   (a) Calcula la probabilidad de que la partícula
+   se encuentre entre $L/4$ y $3L/4$. (b) Evalua el
+   límite clásico.
+   
+  \item Un rodamiento de masa 1 g se encuentra
+  en una caja unidimensional de anchura 10 cm
+  moviéndose a una velocidad de 1 cm/s. (a) Calcula
+  el número cuántico. (b) Muestra cuál es el especiamiento
+  entre dos niveles para el valor del número cuántico 
+  obtenido en el apartado anterior. (c) ¿Qué ilustran los 
+  resultados?
+  
+  \item Una masa de 45 g en un muelle oscila a la 
+  frecuencia de 2.4 vibraciones por segundo con 
+  una amplitud de 4 cm. (a) Calcula la constante 
+  de fuerza del muelle. (b) ¿Cuál sería el número
+  cuántico $v$ si el sistema se tratase 
+  mecanocuánticamente?
+  
+  \item Calcula la frecuencia de la radiación emitida
+  cuando un oscilador armónico de frecuencia $6\times 10^{13}$
+  s$^{-1}$ salta del nivel 8 al 7.
+  
+  \item Comprueba que el armónico esférico $Y_{10}$ es una solución 
+  de la ecuación $\Lambda^2Y_{l,m_l}=-l(l+1)Y_{l,m_l}$.
+\end{enumerate}
+
+\newpage
+\subsection{\textbf{Soluciones:}}
+\begin{enumerate}
+    \item (a) $E_{max}=5.56\times 10^{-20}$ J$=0.34$ eV. (b) $\lambda=554$ nm.
+    \item $\lambda=3.32\times 10^{-34}$ m.
+    \item $\Delta x=3.85\times 10^{-4}$m.
+    \item (a) $\psi=(\frac{1}{\sqrt{2}})(\psi_1+\psi_2)$. (b) $\psi=(\frac{1}{\sqrt{2}})(\psi_1-\psi_2)$
+    \item (a) No. (d) No. (c) Sí. (d) No. (e) Sí.
+    \item (a) Tanto $\hat{x}$ como $\hat{p}_x$ son hermíticos. (b) No conmutan. (c) Ambos son lineales. (d) La función $\psi$ no es función propia ni de $\hat{x}$ ni de $\hat{p}_x$.
+    \item La constante de normalización es $A=\sqrt{2/a}$ (ver partícula en una caja).
+    \item La función $\psi$ es función propia si $b=-4\alpha^2$. La constante de normalización es
+    $N=(\frac{2}{\sqrt{\pi/(2a)^3}})^{1/2}$. El valor
+    promedio de la posición es $\langle x \rangle=0$ (la función que debemos integrar es una función impar).
+    \item $\langle p_x\rangle =0$;  $\langle x\rangle =L/2$. El principio de incertidumbre
+    se cumple (para verificarlo, hemos de probar que $\Delta x \Delta p_x\geq \hbar/2$; para lo que nos hace faltan $\langle x^2\rangle$ y $p_x^2$).
+   \item $P=\frac{1}{2}-\frac{1}{2n\pi}(\sin \frac{3n\pi}{2} - \sin\frac{n\pi}{2})$. En el límite clásico: $\lim_{n\rightarrow \infty}P=1/2$.
+   \item (a) $n=3\times 10^{27}$. (b) $\Delta E\simeq 3\times 10^{-35}$ J. (c) Principio de
+   correspondencia.
+   \item (a) $k=10.2$ N/m. (b) $v=5.16\times 10^{30}$.
+  \item $\nu=6\times 10^{13}$s$^{-1}$.   
+  \item El valor propio del operador es -2, que en
+  efecto es igual a $-l(l+1)$ para $l=1$.
+\end{enumerate}
+\end{document}
