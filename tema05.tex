@@ -1,0 +1,469 @@
+\documentclass{tufte-handout}
+
+%\geometry{showframe}% for debugging purposes -- displays the margins
+
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{amsmath}
+\newtheorem{theorem}{Postulado}
+\usepackage{physics}
+
+% Set up the images/graphics package
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{graphics/}}
+
+\title[Química Física II: Tema 5 - Átomos hidrogenoides]{
+Tema 5: Átomos Hidrogenoides}
+%\author{David De Sancho}
+\date{}  % if the \date{} command is left out, the current date will be used
+
+% The following package makes prettier tables.  We're all about the bling!
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better spacing
+% for units.
+\usepackage{units}
+
+% The fancyvrb package lets us customize the formatting of verbatim
+% environments.  We use a slightly smaller font.
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+
+% Small sections of multiple columns
+\usepackage{multicol}
+
+% Provides paragraphs of dummy text
+\usepackage{lipsum}
+
+% These commands are used to pretty-print LaTeX commands
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+
+\begin{document}
+
+\maketitle% this prints the handout title, author, and date
+
+\begin{abstract}
+\noindent Una vez hemos descrito una serie de sistemas modelo, podemos
+pasar a aplicar sus soluciones en el estudio de sistemas
+relevantes para la Química. En primer lugar, estudiaremos 
+átomos hidrogenoides, es decir, átomos con tan sólo un
+electrón (H, He$^+$, Li$^{2+}$, O$^{7+}$...). La importancia
+de estos sistemas radica, en parte, en que para ellos
+podemos obtener una solución exacta para la ecuación de
+Schrödinger.
+\end{abstract}
+
+%\printclassoptions
+
+
+\section{Unidades atómicas}
+En este Tema, a menudo nos resultará de utilidad expresar las 
+magnitudes en unidades atómicas, es decir, normalizando la carga, 
+la masa, la longitud, el momento angular o la energía, por los 
+valores que mostramos en la Tabla \ref{tb:au}.
+
+\begin{table}[h!]
+    \centering
+    \small{}
+    \begin{tabular}{|l|l|c|l|}
+    \hline
+         Propiedad & Unidad & Equivalencia SI& Nombre  \\
+    \hline
+    \hline
+         Carga elemental & $e$ & 1.602e$^{-19}$ C & \\ 
+         Masa & $m_e$ & 9.109e$^{-31}$ kg & \\ 
+         Momento angular & $\hbar$ & 1.055e$^{-34}$ J$\cdot$s & \\ 
+         Constante eléctrica & $4\pi \varepsilon_0$ & 1.113e$^{-10}$ C$^2\cdot$J$^{-1}\cdot$m$^{-1}$ \\
+         Longitud & $a_0=4\pi \varepsilon_0\hbar^2/m_ee^2$ & 5.291e$^{-10}$ m & bohr \\ 
+         Energía & $E_h=e^2/4\pi \varepsilon_0a_0$  & 4.359e$^{-18}$ J & hartree \\ 
+    \hline
+    \end{tabular}
+    \caption{Conversión entre unidades atómicas y del SI.}
+    \label{tb:au}
+\end{table}
+
+\section{Hamiltoniano para el átomo hidrogenoide}
+En este caso podremos reducir el problema a la suma de dos problemas 
+más sencillos de una sola partícula. Por un lado, el sistema se 
+desplaza como si toda la masa estuviera concentrada en un solo punto,
+el centro de masas. Por otra parte, podemos describir el movimiento 
+relativo de rotación y vibración de una partícula ficticia sometida 
+a un potencial central. Esta simplificación no se puede aplicar en 
+general a problemas de tres o más cuerpos.
+
+Para átomos hidrogenoides expresamos el hamiltoniano con la siguiente
+expresión
+\begin{equation}
+    \hat{H}=\hat{K}_N(\mathbf{R}_N) + \hat{K}_e(\mathbf{r}_e) + \hat{V}_{eN}(r_{eN})
+\end{equation}
+donde el primer y segundo término en el lado derecho de la ecuación 
+corresponden a la energía cinética del núcleo y del electrón, 
+respectivamente, y el último término es el potencial electróstático 
+entre núcleo y electrón. 
+
+La parte correspondiente a la energía cinética del núcleo la
+podremos resolver usando un modelo como el de la partícula
+libre. Por tanto, nos podemos centrar en los términos 
+correspondientes al movimiento relativo del electrón en torno
+al núcleo y la atracción entre núcleo y electrón. Desarrollando 
+los diferentes términos y usando las soluciones del Tema 4,
+obtenemos
+\begin{equation}
+    \hat{H}=-\frac{\hbar^2}{2\mu}\nabla_r^2+ \frac{\hat{l}^2}{2\mu r^2} - \frac{Ze^2}{4\pi \varepsilon_0r}
+\end{equation}
+donde el primer término en el lado derecho de la ecuación
+contiene la contribución radial del hamiltoniano, el segundo 
+término corresponde a la parte angular y el último término
+representa la interacción electrostática núcleo-electrón.
+El operador $\hat{H}$ conmuta con $\hat{l}_z$ y $\hat{l}^2$. Estos
+operadores tienen funciones propias comunes y los estados estacionarios
+se pueden caracterizar por $E$, $l^2$ y $l_z$. 
+
+\section{Soluciones de la ecuación de Schrödinger}
+Dado que la energía potencial es centrosimétrica (independiente
+de la componente angular), la ecuación de Schrödinger es separable
+en componentes radial y angular. Así, las funciones de onda
+hidrogenoides, denominadas \textbf{orbitales de Mulliken}, son de la forma
+\begin{equation}
+    \psi=R_{n,l}(r)Y^{m_l}_l(\theta,\phi)
+\end{equation}
+Los orbitales son funciones de onda monoelectrónicas para un
+electrón en un átomo.
+
+\subsection{Solución de la parte angular}
+Comenzamos centrándonos en la parte angular, 
+\begin{equation}
+    \Lambda^2Y=-l(l+1)Y
+\end{equation}
+que ya resolvimos en el tema anterior. Las funciones angulares $Y$ 
+son los armónicos esféricos, especificados por los números cuánticos
+angular ($l$) y magnético ($m_l$). Estas funciones dependen únicamente
+de la dirección y son independientes de la distancia. 
+
+
+\subsection{Solución radial}
+La parte radial de la ecuación de Schrödinger es
+\begin{equation}
+    \bigg\{-\frac{\hbar^2}{2\mu r^2}\frac{\partial}{\partial r}\bigg(r^2\frac{\partial}{\partial r}\bigg) 
+    +  \frac{l(l+1)\hbar^2}{2\mu r^2}
+    - \frac{Ze^2}{4\pi \epsilon_0r}  \bigg\}
+    R(r)
+    = ER(r)
+\end{equation}
+Aunque no vamos a desarrollar la solución de esta ecuación, la función
+radial tiene la siguiente estructura
+\begin{equation}
+    R(r)=(\textrm{polinomio en }r)\times(\textrm{exponencial en }r)
+\end{equation}
+Estas funciones radiales se expresan con mayor facilidad 
+en función de la magnitud adimensional $\rho$, que definimos como
+\begin{equation}
+    \rho = \frac{2Zr}{na_0}
+\end{equation}
+En concreto la forma funcional, dependiente de los números
+cuánticos principal ($n$) y angular ($l$), es la siguiente
+\begin{equation}
+  R_{n,l} = N_{n,l}\rho^l L^{2l+1}_{n+l}(\rho)\exp(-\rho/2)
+\end{equation}
+donde $n=1,2,3...$ y $l=0,...,n-1$, y $L$ es un polinomio
+asociado de Laguerre. A pesar de la complejidad de esta función,
+los polinomios dependientes de $n$ y $l$ son relativamente
+sencillos. 
+
+Mostramos las 
+funciones resultantes para los primeros números cuánticos en
+la Tabla \ref{tb:radial_hydrogenoid}. La parte exponencial de
+la función garantiza que la función decae hasta cero cuando
+el electrón se aleja del núcleo, el término $\rho^l$ hace
+que, para $l>0$, la función de onda sea cero en el núcleo, 
+mientras que el polinomio de Laguerre genera una serie de 
+oscilaciones entre valores positivos y negativos, que resulta
+en la presencia de $(n-l)$ nodos. 
+\begin{table}[b!]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+         Orbital & $n$  & $l$ &$R_{n,l}$ \\
+    \hline
+    \hline
+         1s & 1 & 0 & 
+         $2\bigg(\frac{Z}{a}\bigg)^{3/2}\mathrm{e}^{-\rho/2}$ \\
+         2s & 2 & 0 & 
+         $\frac{1}{8^{1/2}}\bigg(\frac{Z}{a}\bigg)^{3/2}(2-\rho) \mathrm{e}^{-\rho/2}$\\
+         2p & 2 & 1 & 
+         $\frac{1}{24^{1/2}}\bigg(\frac{Z}{a}\bigg)^{3/2}\rho \mathrm{e}^{-\rho/2}$\\
+         3s & 3 & 0 & 
+         $\frac{1}{243^{1/2}}\bigg(\frac{Z}{a})^{3/2}(6-6\rho+\rho^2)\mathrm{e}^{-\rho/2}$ \\
+         3p & 3 & 1 &
+         $\frac{1}{486^{1/2}}\bigg(\frac{Z}{a}\bigg)^{3/2}(4-\rho)\rho \mathrm{e}^{-\rho/2}$ \\
+         3d & 3 & 2 & $\frac{1}{2430^{1/2}}\bigg(\frac{Z}{a}\bigg)^{3/2}\rho^2\mathrm{e}^{-\rho/2}$ \\
+    \hline
+    \end{tabular}
+    \caption{Funciones de onda radiales de átomos hidrogenoides. En estas expresiones, 
+    usamos $a=4 \pi \varepsilon_0\hbar^2/\mu e^2$}. %$e'=e/\sqrt{4\pi\varepsilon_0}$,
+% y $E'_h=e'^2/a$.
+    \label{tb:radial_hydrogenoid}
+\end{table}
+
+
+
+Asimismo llegamos a expresiones compactas para la energía de 
+los estados ligados de los átomos hidrogenoides
+\begin{equation}
+    %E_n=-\frac{Z^2}{2n^2}\frac{\mu e'^4}{\hbar^2}=
+    %-\frac{Z^2}{2n^2}\frac{\mu e'^4}{a}= -\frac{Z^2}{2n^2}E'_h
+    E_n=-\frac{Z^2\mu e^4}{32\pi^2\varepsilon_0^2\hbar^2 n^2}
+    \label{eq:Eh}
+\end{equation}
+que dependen exclusivamente del número cuántico $n$. 
+En el caso del hidrógeno, podemos aproximar la masa reducida
+a la masa del electrón $\mu\simeq m_e$. 
+
+\section{Orbitales atómicos del hidrógeno}
+A partir de la función de onda podemos derivar una 
+propiedades de los orbitales del átomo de hidrógeno, 
+caracterizados por los tres números cuánticos $n$, $l$ y
+$m$. Cuando un electrón ocupa un orbital descrito por la
+función de onda $\psi_{nlm}$, decimos que se
+encuentra en el estado $|nlm\rangle$.
+
+Como venimos diciendo, el número cuántico principal
+es el número $n$, que puede tomar valores enteros $n=1,2,3...$
+y determina la energía del electrón, descrita por la ecuación \ref{eq:Eh}.
+Todas las energías de los estados ligados del átomo son negativas,
+es decir, inferiores a la del electrón infinitamente separado
+del núcleo que corresponde al cero en energía.
+
+Los otros dos números cuánticos, $l$ y $m$, proceden de la solución
+angular y especifican el momento angular del electrón en torno al 
+núcleo. Un electrón con número cuántico $l$ tiene un momento angular
+de magnitud $\{l(l+1)\}^{1/2}\hbar$, con $l=0,1,2,...n-1$. 
+Las contribuciones al momento angular, sin embargo, no pueden
+determinar con precisión de acuerdo con el principio de
+incertidumbre de Heisenberg. La contribución en el eje $z$ del 
+momento angular sí que se puede determinar con precisión, y su valor 
+será $l_z=m_l\hbar$, con $m=0,\pm 1,...\pm l$.
+
+\subsection{Capas y subcapas}
+En general, las funciones con un número cuántico principal común $n$
+tienen la misma energía y su región de máxima densidad a distancias
+muy similares. Esto resulta en una estructura de capas. Los orbitales
+con $n=1,2,3,4...$ resultan en las capas $K$, $L$, $M$ y $N$, respectivamente.
+Los orbitales con el mismo número cuántico principal pero diferente 
+número cuántico $l$ forman subcapas correspondientes a $l=0,1,2,3,4...$,
+llamadas $s$, $p$, $d$, $f$, $g$... Para una capa con número cuántico 
+$n$, hay un total de $n$ subcapas (de 0 hasta $n-1$). El número de 
+orbitales atómicos en una capa correspondiente al número cuántico 
+principal $n$ es $n^2$, con lo cual el un átomo hidrogenoide
+la degeneración energética es de $n^2$.
+
+\subsection{Geometría de los orbitales atómicos}
+El orbital ocupado en el estado fundamental es el que tiene $n=1$
+y $l=m_l=0$. El valor de $R$ lo podemos tomar de la Tabla~
+\ref{tb:radial_hydrogenoid} y la función de onda angular en 
+este caso es una constante, $Y_{00}=1/\sqrt{4\pi}$.
+Esto resulta en una función de onda 
+\begin{equation}
+    \psi=\frac{1}{(\pi a_0^3)^{1/2}}\mathrm{e}^{-r/a_0}
+\end{equation}
+con simetría esférica que decae exponencialmente desde un máximo
+que se encuentra en el núcleo ($r=0$). Por tanto la \textbf{densidad 
+electrónica} $|\psi_{nlm}|^2=R^2_{nl}|Y_{lm}|^2$ 
+será máxima en el núcleo mismo y decaerá al alejarnos de él. 
+En el caso de los orbitales p ($l=1$) la función angular no 
+es constante y la probabilidad de encontrar el electrón a 
+una distancia $r$ difiere en función de la orientación.
+
+La función de onda nos dice, a partir del valor de $\psi_{nlm_l}^2$,
+la probabilidad de encontrar un electrón en una región determinada.
+Si queremos calcular la probabilidad de encontrar a un electrón
+en una región correspondiente a un casquete esférico ubicado 
+a una distancia $r$ del núcleo y con grosor $dr$ y volumen 
+$4\pi r^2dr$ entonces debemos calcular la \textbf{función de distribución 
+radial}
+\begin{equation}
+    P(r)=4\pi r^2\psi^2(r)
+\end{equation}
+o de manera más general para orbitales de simetría no esférica
+\begin{equation}
+    P(r)=r^2R(r)^2
+\end{equation}
+La función de distribución radial  nos permite conocer la densidad de
+probabilidad de que el electrón
+se encuentre en un casquete esférico de radio $r$. Al multiplicar
+esta densidad de probabilidad por $dr$ obtenemos la probabilidad de
+encontrar el electrón en cualquier lugar del casquete esférico 
+correspondiente. Para un orbital 1s, el valor de la función de
+distribución radial es 
+\begin{equation}
+    P(r)=\frac{4Z^3}{a_0^3}r^2\exp(-2Zr/a_0)
+\end{equation}
+A partir de esta expresión podemos ver fácilmente que en el núcleo, donde
+$r=0$ y por tanto $r^2=0$, $P(0)=0$. En segundo lugar, al alejarnos mucho
+del núcleo, $r\xrightarrow{}\infty$, $P(r)$ también tiende a cero. Finalmente,
+la función tienen un máximo a valores intermedios de $r$, que pueden determinarse
+mediante diferenciación. En particular, en el caso del orbital 1s del
+hidrógeno el máximo se encuentra en $r=a_0$. Para el orbital 2s, el radio
+más probable está en $5.2a_0$. 
+
+%En el caso de los orbitales p, con $l=1$, 
+%$\vec{l}^2=2\hbar^2$. La contribución en el eje $z$ del momento angular
+%para los orbitales p es $l_z=-\hbar$ (para $m=-1$), $l_z=0$ 
+%(para $m=0$) y $l_z=\hbar$ (para $m=1$). El valor definido de $l_z$ implica
+%que no podemos determinar el ángulo $\varphi$ con respecto al eje $z$, que
+%todas las orientaciones con respecto al eje $z$ son igualmente probables y 
+%por tanto la nube electrónica es simétrica y que estos orbitales tienen simetría
+%axial.
+
+\section{Efecto Zeeman}
+En 1896 Zeeman descubre que la aplicación de un campo magnético conlleva un
+desdoblamiento de líneas espectrales. El denominado efecto Zeeman es la 
+modificación del espectro atómico por la aplicación de un campo magnético
+fuerte. Surge de la interacción entre el campo magnético aplicado y los
+momentos magnéticos debidos al momento angular orbital y de spin.
+
+Para entender este efecto, es importante
+que recordemos conceptos fundamentales de magnetismo. En general, el
+dipolo magnético $\mathbf{m}$ generado por una carga eléctrica $q$
+que gira en una órbita se expresa como
+\begin{equation}
+    \mathbf{m}=\frac{q(\mathbf{r}\times\mathbf{v})}{2}
+\end{equation}
+donde $\mathbf{r}$ y $\mathbf{v}$ son los vectores posición y velocidad
+correspondientes a la carga. El momento magnético se puede expresar en
+términos del momento angular, $\mathbf{l}=\mathbf{r}\times\mathbf{p}$,
+para obtener
+\begin{equation}
+    \mathbf{m}=\frac{q}{2m}\mathbf{l}
+\end{equation}
+donde tanto $\mathbf{m}$ como $\mathbf{l}$ son perpendiculares al plano 
+de movimiento. Particularizando para el caso del electrón, obtenemos
+\begin{equation}
+    \mathbf{m}=-\frac{e}{2m_e}\mathbf{l}
+\end{equation}
+
+La energía potencial asociada a la interacción de un dipolo magnético 
+con un campo magnético $\mathbf{B}$ viene dado por 
+\begin{equation}
+    V=-\mathbf{m}\cdot\mathbf{B}
+\end{equation}
+Típicamente, asumimos que el campo magnético se aplica en el eje $z$,
+por lo que el potencial pasa a ser
+\begin{equation}
+    V=-m_zB_z=\frac{eB_z}{2m_e}l_z
+\end{equation}
+Si remplazamos $l_z$ por el correspondiente operador $\hat{l}_z$,
+podemos añadir este término de energía potencial para 
+escribir el operador hamiltoniano en presencia de un campo
+magnético
+\begin{equation}
+    \hat{H}=\hat{H}_o + \frac{eB_z}{2m_e}\hat{l}_z
+\end{equation}
+donde $\hat{H}_o$ es el hamiltoniano en ausencia de un campo
+magnético.
+
+Los orbitales atómicos son funciones propias tanto del operador
+$\hat{H}_o$ como del operador $\hat{l}_z$. Por consiguiente, 
+lo son también del operador $\hat{H}$. Las energías asociadas
+a los orbitales en presencia del campo magnético son
+\begin{equation}
+    E=E_n + \beta_Bm_lB_z \label{eq:ener_zeeman}
+\end{equation}
+donde estamos definiendo el magnetón de Bohr, 
+$\beta_B=e\hbar/2m_e=9.3e-24$ JT$^{-1}$.
+Claramente, en ausencia de un campo magnético la energía de un
+átomo de hidrógeno es independiente del número cuántico $m_l$. 
+Pero en presencia de un campo magnético la energía de un átomo de hidrógeno depende de $m_l$ y es por tanto diferente 
+para las posibles orientaciones del vector momento angular. 
+
+El efecto Zeeman resulta en una pérdida de la degeneración energética
+de los orbitales. Supongamos un estado con valores de los números 
+cuánticos $n$  y $l$. A partir de la Ecuación \ref{eq:Eh} todos los
+orbitales tendrían la misma energía. Sin embargo, dado que este estado
+tiene $2l+1$ valores de $m$, en presencia de un campo magnético estará 
+dividido en $2l+1$ niveles, cuyos valores vendrán dados por la
+Ecuación \ref{eq:ener_zeeman}.
+
+Un estado s de un átomo de hidrógeno no experimenta este desdoblamiento.
+Pero el estado p se divide en tres subniveles, correspondientes
+a las diferentes orientaciones de $l_z$. De acuerdo con esto, al aplicar 
+un campo magnético a un átomo de hidrógeno en su estado fundamental (1s), 
+no deberíamos observar ningún desdoblamiento. Sin embargo, experimentalmente
+sí que se pueden observar dos bandas diferentes, lo cual indica un momento
+magnético adicional.
+
+\section{Stern-Gerlach y el spin electrónico}
+La influencia de los campos magnéticos sobre el átomo no concluye 
+con el efecto Zeeman. En 1921, el físico americano Arthur H. Compton
+afirmaba que ``el electrón, dando vueltas como un pequeño giroscopio,
+es probablamente la última partícula magnética''.
+Un año más tarde Otto Stern y Walther Gerlach realizaron un afamado
+experimento haciendo pasar un 
+haz de átomos de plata, cuya configuración es 4d$^{10}$5s$^1$ y tiene
+por tanto un solo electrón en la última capa,
+a través de un campo magnético, en el que observaron
+un desdoblamiento en dos bandas. Por tanto, los átomos de plata 
+debían tener un momento
+magnético cuya orientación con respecto al eje $z$ estaba cuantizada. 
+Estas dos bandas contradecían las $2l+1$ orientaciones posibles del
+momento angular determinado por $l$. Además, la aparición de dos 
+bandas sugería un valor de $l=1/2$, en lugar de los valores 
+enteros de $l$ permitidos.
+
+En 1925, Wolfgang Pauli propuso que estas observaciones podrían
+explicarse si el electrón existía en dos estados diferenciables. 
+Pauli introdujo \textit{ad hoc} un misterioso 
+cuarto número cuántico, $m_s$,
+restringido a tener valores de $m_s=\pm 1/2$, aunque no le dio
+interpretación alguna.
+Los físicos holandeses Goudsmith y Uhlenbeck propusieron el mismo año 
+la existencia de un momento angular intrínseco del electrón,  que fue 
+denominado momento angular de \textbf{espín}. La magnitud correspondiente 
+es el momento angular intrínseco 
+\begin{equation}
+    |\vec{s}|=\sqrt{s(s+1)}\hbar
+\end{equation}
+y su componente en el eje $z$ es $s_z=m_s\hbar$, donde $m_s=-s,...,s$.
+En el caso del electrón, $s=1/2$, lo que resulta en dos orientaciones
+posibles: $m_s=+1/2$, o espin hacia arriba y $m_s=-1/2$ o
+espin hacia abajo. Las funciones de onda de spin, $\alpha$ y $\beta$,
+respectivamente, son ortonormales
+\begin{align}
+    \int\alpha^\star\alpha d\sigma=\int \beta^\star\beta d\sigma=1 \\
+    \int\alpha^\star\beta d\sigma=\int \beta^\star\alpha d\sigma=1 
+\end{align}
+o en notación de Dirac
+\begin{align}
+    \bra{\alpha}\ket{\alpha}= \bra{\beta}\ket{\beta}=1\\
+    \bra{\alpha}\ket{\beta}= \bra{\beta}\ket{\alpha}=0
+\end{align}
+
+Si añadimos esta nueva contribución, obtenemos una definición 
+completa de nuestras funciones de onda, que  se llaman espin-orbitales, e incluyen tanto las funciones radiales y angulares como las de espin
+\begin{align}
+\Psi_{n,l,m_l,m_s}(r,\theta,\phi,\sigma)=\psi_{n,l,m_l}(r,\theta,\phi)\alpha(\sigma) \\
+\Psi_{n,l,m_l,m_s}(r,\theta,\phi,\sigma)=\psi_{n,l,m_l}(r,\theta,\phi)\beta(\sigma) 
+\end{align}
+o en notación de Dirac, $\ket{n,l,m_l,m_s}$.
+%\begin{thebibliography}{}
+%\bibitem{atkins_depaula} Atkins, P and De Paula, J. 2006. ``Physical Chemistry, 8th Edition''. Oxford University Press.
+%
+%\bibitem{atkins} Atkins, P and Friedman, R. 2005. ``Molecular Quantum Mechanics, 4th Edition''. Oxford University Press.
+%
+%\bibitem{fleisch} Fleisch, Daniel A. 2020. ``A student's guide to the Schr{\"o}dinger equation''. Cambridge University Press
+%
+%\bibitem{levine} Levine, I. N. 2013. ``Quantum
+%Chemistry, 7th Edition''. Pearson.
+%\end{thebibliography}
+\bibliographystyle{plainnat}
+
+
+
+\end{document}

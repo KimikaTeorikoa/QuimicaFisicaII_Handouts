@@ -1,0 +1,228 @@
+\documentclass{tufte-handout}
+
+%\geometry{showframe}% for debugging purposes -- displays the margins
+
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{amsmath}
+\newtheorem{theorem}{Postulado}
+\usepackage{mathabx}
+\usepackage{physics}
+\usepackage{amsmath}
+% Set up the images/graphics package
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{graphics/}}
+
+\title[Química Física II: Tema 10 - Moléculas poliatómicas]{
+Tema 10: Estructura Electrónica de Moléculas Poliatómicas}
+%\author{David De Sancho}
+\date{}  % if the \date{} command is left out, the current date will be used
+
+% The following package makes prettier tables.  We're all about the bling!
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better spacing
+% for units.
+\usepackage{units}
+
+% The fancyvrb package lets us customize the formatting of verbatim
+% environments.  We use a slightly smaller font.
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+
+% Small sections of multiple columns
+\usepackage{multicol}
+
+% Provides paragraphs of dummy text
+\usepackage{lipsum}
+
+% These commands are used to pretty-print LaTeX commands
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+
+\begin{document}
+
+\maketitle% this prints the handout title, author, and date
+
+\begin{abstract}
+\noindent 
+En este tema extendemos los conceptos que aplicamos en
+el caso de las moléculas sencillas a moléculas que tienen
+más de dos átomos. En particular, nos centraremos en la 
+teoría de enlace de valencia para las moléculas de
+agua y metano, que nos permitirán entender 
+conceptos clave como la promoción de electrones y la
+hibridación.
+\end{abstract}
+
+%\printclassoptions
+
+
+
+\section{}
+
+Para moléculas poliatómicas, construimos orbitales
+moleculares tal y como los definimos en el caso de
+las diatómicas, pero usando un mayor número de
+orbitales atómicos. Así, un orbital molecular $\psi$
+tiene la forma general
+\begin{equation}
+    \psi = \sum_ic_i\psi_i^{OA}
+\end{equation}
+donde $\psi_i^{OA}$ es un orbital atómico y la
+suma se extiende sobre todos los orbitales de valencia
+de todos los átomos que forman la molécula.
+Debido al mayor número de orbitales, aumenta el
+número de geometrías posibles. A pesar de esta mayor
+complejidad, la teoría nos permite predecir la
+forma de una molécula poliatómica y especificar las
+longitudes y ángulos de enlace, mediante la 
+determinación de cuál de entre las diferentes 
+configuraciones es la de menor energía. 
+
+\section{Deficiencias de la teoría}
+En el caso de la molécula de agua, los orbitales
+disponibles son 2s$^2$2p$_x^2$2p$_y^1$2p$_z^1$
+por parte del átomo de oxígeno y 1s$^1$ por parte
+del hidrógeno. Para formar H$_2$O, cada electrón
+no apareado de los orbitales 2p del oxígeno se
+puede apararear con un orbital H1s. En cada
+combinación se forma un enlace $\sigma$, de
+simetría cilíndrica alrededor del eje internuclear,
+O-H. Así, podríamos predecir que la que la
+molécula de agua es angular, y que el ángulo 
+formado por los tres átomos sería de 90º. Sin embargo,
+sabemos que el ángulo enlazante real no es de 90º sino
+de 104.5º.
+
+Otra deficiencia de la teoría de enlace de valencia
+es su incapacidad para explicar cómo el carbono
+forma cuatro enlaces, ya que su configuración es 
+1s$^2$2s$^2$2p$^1_x$2p$_y^1$. Este átomo debería 
+ser capaz de formar sólo dos enlaces, en lugar de
+cuatro.
+
+\section{Promoción e hibridación}
+La promoción es la excitación de un electrón 
+a un orbital de mayor energía. Por ejemplo, en
+el caso del carbono, un electrón podría promocionar
+desde el orbital 2s al 2p$_z$, para así pasar a tener
+cuatro electrones no apareados en la configuración
+2s$^1$2p$_x^1$2p$_y^1$2p$_z^1$. Esto explicaría la
+formación de moléculas como el metano, al combinarse
+estos orbitales de valencia con cuatro orbitales 1s 
+de cuatro átomos de hidrógeno. La promoción requiere
+energía, pero este requerimiento lo compensa la
+capacidad del átomo promovido para formar 
+cuatro enlaces en lugar de dos.
+
+Sin embargo, esta descripción resultaría en cuatro 
+enlaces diferentes entre sí, lo cual se contradice
+con la simetría de los cuatro enlaces C-H. El 
+concepto de hibridación resuelve este nuevo problema.
+La hibridación es una combinación lineal de orbitales
+atómicos dentro del mismo átomo para formar otros que 
+nos permitan explicar de forma simple todos los tipos 
+de enlace que ocurren en las moléculas poliatómicas.
+
+\subsection{Metano}
+En el caso del metano, tendríamos cuatro orbitales 
+híbridos
+\begin{align*}
+    h_1=s+p_x+p_y+p_z\\
+    h_2=s-p_x+p_y-p_z\\
+    h_3=s-p_x-p_y+p_z\\
+    h_4=s+p_x-p_y-p_z
+\end{align*}
+Se trata de una hibridación sp$^3$ en la que los ejes 
+de los orbitales tienen simetría tetraédrica, con
+un ángulo de 109.47º. Estos orbitales son capaces de
+formar cuatro enlaces $\sigma_\mathrm{C-H}$ equivalentes
+formados por el orbital híbrido $h_i$ y un orbital 
+H1s. La función de onda del orbital molecular correspondiente
+será $\sigma_\mathrm{C-H}= h_1(1)1s_{A}(2)+h_1(2)1s_{A}(1)$.
+
+\subsection{Eteno}
+En el caso de la molécula de eteno, la hibridación explica
+la formación de un doble enlace H$_2$C=CH$_2$. Se trata de 
+una molécula plana con ángulos entre los átomos próximos
+a los 120º. En este caso un electrón del orbital 2s promueve
+a uno  de los orbitales p y se forman tres orbitales híbridos
+sp$^2$, ubicados en un plano y orientados hacia los vértices
+de un triángulo
+\begin{align*}
+    h_1&=s+2^{1/2}p_y\\
+    h_2&=s+(3/2)^{1/2}p_x-(1/2)^{1/2}p_y\\
+    h_3&=s-(3/2)^{1/2}p_x-(1/2)^{1/2}p_y
+\end{align*}
+El tercer orbital, 2p$_z$ no está incluido
+en la hibridación y su eje es perpendicular al plano del
+enlace.  La formación de enlaces $\sigma$ se produce al aparearse
+los orbitales sp$^2$ de dos átomos de carbono y de estos
+con los orbitales 1s de cuatro átomos de hidrógeno. Además,
+se forman enlaces $\pi$ a partir de los orbitales atómicos
+p$_z$ de los dos átomos de carbono.
+
+\subsection{Etino}
+Finalmente, en el caso de la molécula de etino, se forman
+orbitales híbridos sp, a partir del s y el p$_z$
+\begin{align*}
+    h_1&=s+p_z\\
+    h_2&=s-p_z
+\end{align*}
+Los orbitales híbridos resultantes están dirigidos en sentidos
+opuestos del eje entre los dos núcleos de la molécula, que
+permiten la formación de enlaces tipo $\sigma$ tanto entre
+los dos carbonos como con sendos átomos de hidrógeno
+a partir de sus orbitales 1s. Los electrones que ocupan orbitales
+p libres perpendiculares al eje de la molécula se aparean
+para formar enlaces $\pi$.
+
+\subsection{Benceno}
+Concluimos nuestra exposición de las moléculas poliatómicas
+con el benceno, cuyos seis átomos de carbono con hibridación 
+sp$^2$ se unen entre sí mediante enlaces $\sigma$. Asimismo,
+cada uno de los átomos de carbono se enlaza además a un átomo 
+de hidrógeno mediante un enlace $\sigma$ combinándose con los
+correspondientes orbitales 1s. La densidad electrónica es 
+idéntica en los seis enlaces C-C, lo cual resulta en una geometría
+plana en forma de hexágono. Todos los enlaces C-C tienen la 
+misma longitud (1.39 {\AA} y todos los ángulos de enlace 
+son de 120º. Como los átomos de carbono presentan hibridación
+sp$^2$, cada átomo de carbono tiene un orbital p perpendicular
+al plano del anillo que solapa con los orbitales p de los 
+carbonos contiguos para formar un círculo de densidad electrónica 
+p por encima y por debajo del plano molecular.
+La representación del benceno como un hexágono regular con un 
+círculo en el centro evoca el solapamiento cíclico de los seis
+orbitales 2p.
+
+Se puede representar por dos estructuras de Lewis, que difieren 
+entre sí en la disposición de los electrones que forman enlaces 
+$\pi$. La molécula real es un híbrido de todas ellas y, cada
+estructura se llama forma resonante. La molécula de benceno es 
+el prototipo de molécula aromática con una estabilidad extra 
+debida a la deslocalización.
+
+
+%\begin{thebibliography}{}
+%\bibitem{atkins_depaula} Atkins, P and De Paula, J. 2006. ``Physical Chemistry, 8th Edition''. Oxford University Press.
+%
+%\bibitem{atkins} Atkins, P and Friedman, R. 2005. ``Molecular Quantum Mechanics, 4th Edition''. Oxford University Press.
+%
+%\bibitem{fleisch} Fleisch, Daniel A. 2020. ``A student's guide to the Schr{\"o}dinger equation''. Cambridge University Press
+%
+%\bibitem{levine} Levine, I. N. 2013. ``Quantum
+%Chemistry, 7th Edition''. Pearson.
+%\end{thebibliography}
+\bibliographystyle{plainnat}
+
+
+
+\end{document}

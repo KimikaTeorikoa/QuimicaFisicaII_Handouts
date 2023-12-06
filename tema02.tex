@@ -1,0 +1,430 @@
+\documentclass{tufte-handout}
+
+%\geometry{showframe}% for debugging purposes -- displays the margins
+
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{amsmath}
+\newtheorem{theorem}{Postulado}
+
+% Set up the images/graphics package
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{graphics/}}
+
+\title[Química Física II: Tema 2, Postulados]{
+Tema 2: Postulados de la Mecánica Cuántica}
+%\author{David De Sancho}
+\date{}  % if the \date{} command is left out, the current date will be used
+
+% The following package makes prettier tables.  We're all about the bling!
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better spacing
+% for units.
+\usepackage{units}
+
+% The fancyvrb package lets us customize the formatting of verbatim
+% environments.  We use a slightly smaller font.
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+
+% Small sections of multiple columns
+\usepackage{multicol}
+
+% Provides paragraphs of dummy text
+\usepackage{lipsum}
+
+% These commands are used to pretty-print LaTeX commands
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+
+\begin{document}
+
+\maketitle% this prints the handout title, author, and date
+
+\begin{abstract}
+\noindent La Mecánica Cuántica está basada en una serie de
+postulados.\sidenote{Los postulados son, según el diccionario
+de la Real Academia de la Lengua, ``proposiciones cuya
+verdad se admite sin pruebas y que sirven de base para
+ulteriores razonamientos''.} Para verificar si un formalismo
+basado en postulados es una manera sensata de proceder, 
+podemos comparar los resultados a los 
+que conducen con datos experimentales.
+A continuación introduciremos
+los postulados de la Mecánica Cuántica, que usaremos 
+como fundamento para describir más adelante sistemas
+sencillos.
+\end{abstract}
+
+%\printclassoptions
+
+
+
+\section*{Estados y funciones de onda}
+En el caso de la Mecánica Clásica, el estado de una partícula
+viene determinado por las  coordenadas de posición ($x, y, z$) 
+y momento ($p_x, p_y, p_z$). Así, su evolución temporal viene
+dada por las ecuaciones de Newton, que definen de manera 
+determinista su trayectoria. En el caso de la Mecánica Cuántica,
+una descripción determinista está vetada por el principio de
+incertidumbre. Esto nos lleva al primero de nuestros 
+postulados:
+
+\begin{theorem}
+Todas las propiedades observables de un sistema físico 
+están contenidas en su función de onda, $\Psi(q,t)$,
+dependiente de las coordenadas ($q$) de las
+partículas que componen el sistema y del tiempo ($t$). 
+\end{theorem}
+
+En Mecánica Cuántica, por tanto, el concepto de 
+trayectoria es remplazado por la \textbf{función de
+onda}, que contiene toda la información dinámica 
+sobre el sistema.
+
+\section{Interpretación de la función de onda}
+Para desarrollar una intuición sobre el significado
+de la función de onda es útil recurrir a la 
+denominada \textbf{interpretación de 
+Born}, que también enunciamos en la forma de 
+postulado.
+\begin{theorem} 
+La probabilidad de que una partícula se encuentre en 
+un volumen $\tau$ en el punto $r$ es proporcional
+a $|\psi(r)|^2d\tau=\psi^\star \psi d\tau$
+\end{theorem}
+El cuadrado de la función de onda es por tanto una
+\textbf{densidad de probabilidad}. Y si tomamos la
+integral de esta densidad en una pequeña region 
+$d\tau$ del espacio, obtendremos la probabilidad de
+encontrar el sistema en esa región $d\tau$. En la 
+medida en que la suma de todas las probabilidades
+debe ser igual a la unidad, la función de onda debe 
+cumplir una condición de normalización,
+\begin{equation}
+    N^2\int_{-\infty}^\infty\psi^\star\psi dx=1
+    \label{eq:norm}
+\end{equation}
+
+En ocasiones, para el caso tridimensional, puede 
+ser más conveniente escribir esta condición de 
+normalización en coordenadas esféricas, es decir,
+en función del radio $r$, la colatitud $\theta$
+y el ángulo azimutal $\phi$. La interconversión
+entre coordenadas cartesianas y esféricas es 
+trivial, 
+\begin{equation}
+  \begin{array}{@{}ll@{}}
+    x = & r\sin\theta\cos\phi \\
+    y = & r\sin\theta\sin\phi \\
+    z = & \cos \theta
+  \end{array}
+\end{equation}
+de tal manera que la integral normalizada que 
+expresábamos en una sóla dimensión en la 
+Ecuación~\ref{eq:norm} se puede reescribir usando
+$d\tau=r^2\sin\theta drd\theta d\phi$ y modificando
+los límites de integración de la siguiente manera
+\begin{equation}
+    \int_\infty^\infty\psi^\star\psi d\tau=
+    \int_0^\infty\int_0^\pi\int_0^{2\pi}\psi^\star\psi r^2\sin\theta drd\theta d\phi
+\end{equation}
+
+La interpretación de Born y la ecuación de Schrödinger
+que, como veremos más adelante, es una ecuación
+diferencial de segundo orden, introducen una serie de
+requisitos para las funciones de onda aceptables:
+\begin{itemize}
+    \item Debe ser unívoca, es decir, no debe 
+    estar definida con más de un valor en cada punto.
+    \item Debe tener un cuadrado integrable.
+    \item Debe ser continua.
+    \item Debe ser derivable.
+\end{itemize}
+
+
+\section{Observables y operadores}
+\begin{theorem}
+Los observables se representan mediante operadores 
+Hermíticos.
+\end{theorem}
+Para entender este postulado debemos definir primero
+los operadores. Los operadores, $\hat{\Omega}$, no son
+sino funciones que convierten una función de onda 
+en otra:
+\begin{equation}
+    \psi(q,t)\xrightarrow{\hat{\Omega}}\psi'(q,t)
+\end{equation}
+Un ejemplo de operador, pueden ser el operador
+diferencial con respecto de $x$, $\hat{D}_x=\frac{d}{dx}$.
+Al aplicarlo sobre la función \textit{seno}, obtenemos
+la función \textit{coseno}.
+\begin{equation}
+    \hat{D}_x\sin x=\frac{d}{dx}\sin x =\cos x
+\end{equation}
+Un \textbf{operador lineal} es un tipo especial de operador
+que satisface las siguientes relaciones
+\begin{equation}
+      \begin{array}{rl}
+        \hat{\Omega}(\psi+\phi) &=\hat{\Omega}\psi + \hat{\Omega}\phi\\
+        \hat{\Omega}c\psi &=c\hat{\Omega}\psi
+    \end{array}
+\end{equation}
+
+Un tipo de operador particular en el que estamos 
+interesados en Mecánica Cuántica son los que se pueden
+expresar en la forma de una \textbf{ecuación de valores
+propios}:
+\begin{equation}
+    \hat{\Omega}\Psi(q,t)=\omega\Psi(q,t)
+\end{equation}
+donde $\omega$ es el valor propio (\textit{eigenvalue})
+correspondiente al operador $\hat{\Omega}$. Cuando
+encontramos esta propiedad, entonces decimos que $\Psi$ 
+es función propia ($\textit{eigenfunction}$) de este
+operador. Este tipo de expresión es la que nos vamos a
+encontrar en el caso del operador Hamiltoniano, 
+$\hat{H}$, para la energía total pero también para 
+otros observables que mostramos en la 
+Tabla~\ref{tab:operators}.
+
+\begin{table}[h]
+  \begin{center}
+    %\footnotesize%
+    \small
+    \begin{tabular}{lcr}
+      \toprule
+      Nombre & Expresión \\
+      \midrule
+      Posición & $\hat{x}=x$ \\
+      Momento lineal & $\hat{p}_x=-i\hbar \frac{\partial}{\partial x}$ \\
+      Energía cinética & $\hat{K}=\frac{\hat{p}_x^2}{2m}=
+      -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}$\\
+      Energía potencial & $\hat{V}=V(x,y,z)$ \\
+      Hamiltoniano & $\hat{H}=\hat{K}+\hat{V}$ \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \caption{Operadores habituales en Mecánica Cuántica.}
+  \label{tab:operators}
+\end{table}
+
+Finalmente, un \textbf{operador hermítico} es el que
+satisface la siguiente relación
+\begin{equation}
+    \int\psi_i^\star\hat{\Omega}\psi_jdx=
+    \bigg\{\int\psi_j^\star\hat{\Omega}\psi_idx\bigg\}^\star
+\end{equation}
+Estos operadores tienen dos propiedades especiales:
+\begin{itemize}
+    \item Sus valores propios son reales.
+    \item Sus funciones propias son ortogonales, es decir:
+    $\int_{-\infty}^\infty\psi_1^\star\psi_2d\tau=0$
+\end{itemize}
+El conjunto de funciones propias de un operador 
+    hermítico forman un \textbf{conjunto completo}.
+
+\section{El resultado de una medida}
+\begin{theorem}
+Cuando un sistema está descrito por una función de onda
+$\psi$, el valor del observable $\Omega$ en una serie 
+de medidas es igual al valor promedio (“expectation 
+value”) del operador.
+\end{theorem}
+Cuando nos encontramos con que una función de onda no es
+función propia de un operador $\hat{\Omega}$ no podemos
+utilizar el método de los operadores para obtener el valor
+promedio de $\Omega$. Sin embargo podemos expresar la
+función de onda como una combinación lineal o
+\textbf{superposición} de un conjunto de funciones
+propias
+\begin{equation}
+\psi =  c_1\psi_1 + c_2\psi_2 + ... = \sum_kc_k\psi_k    
+\end{equation}
+En esta expresión los valores de $c_k$ son coeficientes
+reales o imaginarios y las funciones de onda $\psi_k$
+corresponden con diferentes estados del sistema. Esto
+significa que cualquier función de onda puede 
+expresarse como una combinación lineal de estos estados.
+
+Cuando se realiza una medida, se obtendrá el valor 
+propio $\omega_k$ correspondiente a una de las funciones
+propias $\psi_k$ del operador. La probabilidad de
+encontrar cada una de las soluciones es proporcional
+al cuadrado del módulo  del coeficiente $|c_k|^2$ dentro
+de la combinación lineal. El promedio tras un gran número
+de observaciones lo da el valor esperado, $\langle
+\Omega\rangle$.
+
+
+
+\section{La ecuación de Schrödinger}
+\begin{theorem}
+La función de onda evoluciona en el tiempo de acuerdo 
+con la ecuación de Schrödinger dependiente del tiempo:
+\begin{equation}
+    \hat{H}\Psi = i\hbar\frac{\partial \Psi}{\partial t}
+\end{equation}
+\end{theorem}
+Como conocemos el operador hamiltoniano, $\hat{H}$ (ver
+Tabla \ref{tab:operators}), podemos escribir si trabajamos
+en una sola dimensión
+\begin{equation}
+    \hat{H}\Psi = 
+      -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}\Psi + V(x)\Psi = i\hbar\frac{\partial \Psi}{\partial t}
+\end{equation}
+En el caso de los estados estacionarios 
+se puede separar la parte de la función de onda
+que depende de las coordenadas de la parte que 
+depende del tiempo,
+\begin{equation}
+    \Psi(q,t)=\psi(q)\tau(t)
+\end{equation}
+Al aplicar el operador hamiltoniano 
+sobre este tipo de función de onda
+aquel afecta únicamente a la parte
+que depende de las coordenadas. Por
+tanto,
+\begin{equation}
+    \hat{H}\Psi(q,t)=
+    \tau(t)\hat{H}\psi(q)=
+    i\hbar\frac{\partial\psi(q)\tau(t)}{\partial t}=
+    i\hbar\psi(q)\frac{\partial \tau(t)}{\partial t}
+\end{equation}
+Reorganizando los términos en esta ecuación encontramos
+lo siguiente
+\begin{equation}
+    \frac{1}{\psi(q)}\hat{H}\psi(q) = \frac{i\hbar}{\tau(t)}\frac{\partial \tau(t)}{\partial t}= E
+    \label{eq:schro-2}
+\end{equation}
+A partir de los dos términos a la derecha de la Ecuación
+\ref{eq:schro-2} podemos encontrar la solución para la
+Ecuación de Schrödinger,
+\begin{equation}
+    \tau(t)=A\exp(-iEt/\hbar)
+\end{equation}
+Por tanto la función de onda para un estado estacionario
+es
+\begin{equation}
+    \Psi(q,t)=\psi(q)\exp(-iEt/\hbar)
+\end{equation}
+Si obtenemos $\Psi(q,t)^2$ veremos que las funciones para un
+estado estacionario tienen una energía definida 
+y una densidad de probabilidad constante en el tiempo.
+En un estado estacionario podemos medir todos y cada uno de los 
+operadores que conmuten con el hamiltoniano. Estos son el 
+equivalente de las constantes de movimiento de la mecánica clásica.
+
+\section{El principio de incertidumbre}
+Ahora que entendemos más a fondo el funcionamiento de los
+operadores podemos adentrarnos de nuevo en el
+\textbf{Principio de Incertidumbre} enunciado por 
+\textbf{Werner Heisenberg}. Como comentamos en el Tema 1
+el principio establece en su formulación más básica que 
+no se puede determinar con precisión  arbitraria el momento
+y la posición de la partícula. 
+
+Supongamos que tenemos una partícula perfectamente 
+localizada en un punto del espacio. Utilizando el
+principio de superposición, podemos obtener esta 
+descripción combinando un gran número de ondas 
+armónicas, es decir, generando un paquete de
+ondas (\textit{wave packet}). Esto resultará en una
+función de onda perfectamente localizada y por tanto
+con un error muy pequeño en la posición ($\Delta x=0$).
+Pero a su vez las distintas contribuciones a la función 
+de onda tendrán muy diversos valores del momento lineal, 
+lo que resulta en una gran incertidumbre en el valor 
+del momento lineal ($\Delta p=\infty$). Si tenemos gran
+certeza en uno de estos valores, entonces
+tendremos gran incertidumbre en el otro valor.
+
+El principio de incertidumbre, formulado típicamente para
+$p$ y $q$, es en realidad más general. Si para cada 
+operador $\hat{\Omega}$ podemos definir un error $\Delta\Omega$:
+\begin{equation}
+    (\Delta\Omega^2)=\sigma^2_\Omega=\langle (\hat{\Omega} - \langle \Omega\rangle)^2 \rangle=
+    \langle\hat{\Omega}^2\rangle - \langle\Omega\rangle^2
+\end{equation}
+el principio de incertidumbre relaciona los errores de dos
+\textbf{variables complementarias} de tal modo que
+\begin{equation}
+\Delta\Omega_1\Delta\Omega_2\geq
+1/2|\langle[\Omega_1,\Omega_2]\rangle|
+\end{equation}
+donde  usamos el conmutador  $[\hat{\Omega}_1,\hat{\Omega}_2] =
+\hat{\Omega}_1\hat{\Omega}_2 -\hat{\Omega}_2\hat{\Omega}_1$.
+Son complementarias aquellas variables que no conmutan y para
+las que se cumple 
+$\hat{\Omega}_1(\hat{\Omega}_2\psi)\neq\hat{\Omega}_2(\hat{\Omega}_1\psi)$.
+En el caso particular de la posición y el momento obtenemos que
+\begin{equation}
+    [\hat{x},\hat{p}_x] = i\hbar
+\end{equation}
+y por tanto son operadores
+complementarios. Por el contrario, cuando
+dos operadores hermíticos conmutan decimos 
+que son \textbf{compatibles }, y comparten un conjunto
+completo de funciones propias, $\psi_n$.
+
+\section{Principio de exclusión o de Pauli}
+Por último introduciremos una contribución decisiva
+al desarrollo de la Mecánica Cuántica. El principio de
+exclusión establece que las partículas cuánticas poseen una 
+propiedad fundamental que toma un valor entero o semientero 
+característico de cada partícula. Esta propiedad, 
+llamada \textit{spin}, $s$, fue inicialmente introducida
+por \textbf{Wolfgang Pauli} como lo que él denominaba una
+dualidad no
+describible clásicamente (``classically non-describable
+two-valuedness'').
+
+El spin permite clasificar las partículas en dos tipos.
+Las partículas de espín semientero, como los electrones,
+protones o neutrones, 
+se denominan fermiones, y las de espín entero, como los
+fotones, se llaman bosones. La función de onda de un 
+colectivo de partículas idénticas debe ser simétrica 
+(si se trata de bosones) o antisimétrica (fermiones) 
+frente al intercambio de dos cualesquiera de las partículas.
+\begin{equation}
+    \Psi(q_1, ..., q_i, ..., q_j, ..., q_N)=\pm 
+    \Psi(q_1, ..., q_j, ..., q_i, ..., q_N)
+\end{equation}
+
+El comportamiento de los sistemas de fermiones es muy 
+distinto del de los sistemas de bosones. Esto se aprecia
+al examinar sistemas de partículas independientes, en los
+que cada partícula tiene su propia función de onda,
+$\psi_i(qi)$, y la función colectiva es producto de las
+individuales. La antisimetría exige que no haya dos 
+fermiones simultáneamente en el mismo estado de una 
+partícula, mientras que, potencialmente, todos los bosones
+podrán coexistir en un estado idéntico.
+Son fermiones las partículas que constituyen la materia
+ordinaria: electrones, protones, neutrones, etc. Son 
+bosones las partículas que actúan como intermediarias 
+en las interacciones.
+
+%\begin{thebibliography}{}
+%\bibitem{atkins_depaula} Atkins, P and De Paula, J. 2006. ``Physical Chemistry, 8th Edition''. Oxford University Press.
+%
+%\bibitem{atkins} Atkins, P and Friedman, R. 2005. ``Molecular Quantum Mechanics, 4th Edition''. Oxford University Press.
+%
+%\bibitem{fleisch} Fleisch, Daniel A. 2020. ``A student's guide to the Schr{\"o}dinger equation''. Cambridge University Press
+%
+%\bibitem{levine} Levine, I. N. 2013. ``Quantum
+%Chemistry, 7th Edition''. Pearson.
+%\end{thebibliography}
+\bibliographystyle{plainnat}
+
+
+
+\end{document}
