@@ -1,0 +1,70 @@
+\documentclass{tufte-handout}
+
+%\geometry{showframe}% for debugging purposes -- displays the margins
+
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{amsmath}
+
+% Set up the images/graphics package
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{graphics/}}
+
+\title[Química Física II: Ejercicios Tema 4]{
+Química Física II: Ejercicios Tema 4}
+%\author{David De Sancho}
+\date{}  % if the \date{} command is left out, the current date will be used
+
+% The following package makes prettier tables.  We're all about the bling!
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better spacing
+% for units.
+\usepackage{units}
+
+% The fancyvrb package lets us customize the formatting of verbatim
+% environments.  We use a slightly smaller font.
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+
+% Small sections of multiple columns
+\usepackage{multicol}
+
+% Provides paragraphs of dummy text
+\usepackage{lipsum}
+
+% These commands are used to pretty-print LaTeX commands
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+
+\begin{document}
+\maketitle
+\large 
+
+\begin{enumerate}
+ \item Comprueba que el armónico esférico $Y_{10}$ es una solución 
+  de la ecuación $\Lambda^2Y_{l,m_l}=-l(l+1)Y_{l,m_l}$.
+% \item Una esfera de 250 g y 4 cm de radio gira a 5 revoluciones por 
+% segundo. Estima el valor de $l$ y el ángulo mínimo correspondiente
+% al vector momento angular.
+\item Demuestra que el armónico esférico $Y_{10}$ es una función de onda normalizada.
+  
+\item Comprueba que el armónico esférico $Y_{1,-1}$ no es función propia del operador $\hat{l}_x$.
+\end{enumerate}
+
+\newpage
+\subsection{\textbf{Soluciones:}}
+\begin{enumerate}
+    \item El valor propio del operador es -2, que en
+  efecto es igual a $-l(l+1)$ para $l=1$.
+  \item --
+  \item --
+\end{enumerate}
+
+\end{document}

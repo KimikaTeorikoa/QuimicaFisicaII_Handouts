@@ -4,10 +4,13 @@
 
 \usepackage[spanish, es-tabla]{babel}
 \usepackage{csquotes}
-\usepackage{mathabx}
+%\usepackage{mathabx}
 \usepackage{physics}
+\usepackage{braket}
+
 \usepackage{amsmath}
 \newtheorem{theorem}{Postulado}
+\usepackage{appendix}
 
 % Set up the images/graphics package
 \usepackage{graphicx}
@@ -72,12 +75,12 @@ encontrar las soluciones para la ecuación de Schrödinger.
 Para solventar este problema, utilizamos diversas 
 aproximaciones:
 \begin{itemize}
-\item La aproximación de Born-Oppenheimer, que establece
+\item La \textit{aproximación de Born-Oppenheimer}, que establece
 que el movimiento de núcleos y electrones se puede
 separar en virtud de su gran diferencia de masa.
-\item La teoría de enlace de Valencia, que parte del 
+\item La \textit{teoría de enlace de valencia}, que parte del 
 concepto de la compartición de pares de electrones.
-\item La teoría de orbitales moleculares, que asume que
+\item La \textit{teoría de orbitales moleculares}, que asume que
 estos se forman a partir de combinaciones lineales de 
 orbitales atómicos. 
 \end{itemize}
@@ -92,8 +95,8 @@ H$_2^+$ hay que resolver un problema de tres cuerpos
 
 La primera aproximación que usamos es la de Born-Oppenheimer,
 propuesta por Max Born y J. Robert Oppenheimer en 1927, en
-la que se asume que se asume que los núcleos, al ser muchas
-veces más pesados que los electrones, se mueven lentamente
+la que se asume que los núcleos, al ser muchas
+veces más pesados que los electrones\footnote{Un protón es 1836 veces más pesado que un electrón.}, se mueven lentamente
 y pueden tratarse como cuerpos estacionarios, mientras los 
 electrones se mueven bajo su influencia. Esta aproximación es 
 razonablemente buena para los estados fundamentales de las 
@@ -255,7 +258,7 @@ en la molécula de hidrógeno, H$_2$.
 \subsection{Molécula de hidrógeno}
 Para describir el hidrógeno molecular, partimos de dos orbitales atómicos 1s que llamamos A y B.
 En total, forman cuatro espín-orbitales: 1s$_A\alpha$, 
-1s$_A \beta$, 1s$_B\alpha$ y 1s$_B \beta$. 
+1s$_A\beta$, 1s$_B\alpha$ y 1s$_B\beta$. 
 Con 2 electrones y 4 espín-orbitales tenemos un total de 6 estados
 bielectrónicos. Por un lado tenemos los \textit{estados 
 iónicos} en los que los dos electrones  están en los
@@ -286,8 +289,7 @@ superposición (no normalizada) de las dos funciones
 sí permite describir el estado del sistema satisfaciendo la 
 condición de indiscernibilidad. 
 
-El Principio de Pauli 
-requiere que la función de onda completa de dos electrones, 
+El Principio de Pauli requiere que la función de onda completa de dos electrones, 
 incluyendo el espín, cambie de signo cuando se intercambian 
 los electrones. La contribución de espín puede expresarse
 como una serie de combinaciones 
@@ -295,14 +297,14 @@ como una serie de combinaciones
 \alpha(1)\alpha(2)\\
 \beta (1)\beta (2)\\
 \alpha(1)\beta(2) + \alpha(2)\beta(1)\\
-\alpha(1)\beta(2) − \alpha(2)\beta(1)
+\alpha(1)\beta(2) - \alpha(2)\beta(1)
 \end{gather*}
 Sólo una de estas combinaciones es antisimétrica, por lo cual
 irá asociada a la función de onda orbital simétrica
 \begin{equation}
     \Psi=N
     \big[\mathrm{1s}_A(1)\mathrm{1s}_B(2) +\mathrm{1s}_A(2)\mathrm{1s}_B(1)\big]
-    \frac{1}{\sqrt{2}}\big[\alpha(1)\beta(2) − \alpha(2)\beta(1)\big]
+    \frac{1}{\sqrt{2}}\big[\alpha(1)\beta(2) - \alpha(2)\beta(1)\big]
     \label{eq:unpaired}
 \end{equation}
 mientras que las combinaciones simétricas podrán ir asociadas
@@ -384,14 +386,17 @@ El hamiltoniano del único electrón en el H$^+_2$
 \frac{e^2}{4\pi \varepsilon_0r_{1A}} - 
 \frac{e^2}{4\pi \varepsilon_0r_{1B}} +
 \frac{e^2}{4\pi \varepsilon_0R_{AB}}
+\label{eq:hamiltonian_h2}
 \end{equation}
 donde el primer término corresponde a la energía cinética
 del electrón, el segundo y tercero, a su interacción 
 con los núcleos A y B, y el cuarto a la repulsión internuclear.
 Las funciones propias de esta ecuación son los denominados
 \textit{orbitales moleculares}, a partir de cuyo cuadrado
-$|\Psi|^2$ podemos entender la distribución del electrón
-en la molécula. 
+$|\Psi|^2$ podemos entender la distribución del electrón en la molécula. 
+La ecuación de Schrödinger se puede resolver de manera analítica para el H$^+_2$ dentro de la aproximación de Born-Oppenheimer. 
+Pero sus funciones de onda son algo complicadas y no son generalizables para moléculas más complejas.
+Por eso es preferible utilizar un método aproximado que sí que podamos aplicar de manera general.
 
 \subsection{Combinaciones lineales de orbitales atómicos}
 En el caso del H$^+$ el problema se puede
@@ -414,7 +419,7 @@ orbital atómico $j$ en el orbital molecular $\Psi_i$.
 En el caso del ion molecular H$_2^+$ comenzamos con sendos 
 orbitales atómicos 1s centrados cada uno en un núcleo
 \begin{gather*}
-    \chi_A =\textrm{1s}_A\\
+    \chi_A=\textrm{1s}_A\\
     \chi_B=\textrm{1s}_B
 \end{gather*}
 Escribimos la función de onda total como una
@@ -424,142 +429,94 @@ moleculares ortogonales entre sí
 \begin{equation}
 \Psi_\pm = %N(a\pm b)
 \begin{cases}
-\sigma_g=\{2(1+S)\}^{-1/2}(1s_A+1s_B)\\
-\sigma_u=\{2(1-S)\}^{-1/2}(1s_A-1s_B)
+\sigma_g=\{2(1+S)\}^{-1/2}(\mathrm{1s}_A+\mathrm{1s}_B)\\
+\sigma_u=\{2(1-S)\}^{-1/2}(\mathrm{1s}_A-\mathrm{1s}_B)
 \end{cases}
+\label{eq:solution_h2}
 \end{equation}
 donde $S$ es la \textbf{integral de solapamiento}
-entre los orbitales 1s$_A$ y 1s$_B$,
+entre los orbitales 1s$_\mathrm{A}$ y 1s$_\mathrm{B}$,
 \begin{equation}
-    S=\int\chi_A^\star\chi_Bdq=\int\chi_B^\star\chi_Adq
+    S=\braket{A|B}=\int 1s_A1s_Bd\tau 
+    \label{eq:overlap}
 \end{equation}
 y $\{2(1\pm S)\}^{-1/2}$ es la constante de
 normalización para las funciones simétrica y 
 antisimétrica\sidenote{$\sigma_g$ o $1\sigma$ es la función simétrica  y $\sigma_u$ o $2\sigma$ es la función antisimétrica.
 Los subíndices $g$ y $u$ vienen del alemán ``gerade''
-y ``ungerade'', relacionados con la naturaleza par o inpar
+y ``ungerade'', relacionados con la naturaleza par o impar
 con respecto a un centro de inversión.}.
 Para obtener estas constantes de normalización hemos usado 
 el hecho de que los orbitales atómicos están normalizados.
-
 
 \subsection{Orbitales enlazantes y antienlazantes}
 A partir de estas funciones de onda, obtenemos expresiones 
 para la densidad
 \begin{align}
-    \Psi^2_+ &= N^2(1s^2_A+1s^2_B+21s_A1s_B)\\
-    \Psi^2_- &= N^2(1s^2_A+1s^2_B-21s_A1s_B) 
+    \Psi^2_+ &= N^2(\mathrm{1s}^2_A+\mathrm{1s}^2_B+2\cdot \mathrm{1s}_A\mathrm{1s}_B)\\
+    \Psi^2_- &= N^2(\mathrm{1s}^2_A+\mathrm{1s}^2_B-2\cdot \mathrm{1s}_A\mathrm{1s}_B) 
     \label{eq:ungerade}
 \end{align}
 La primera de estas expresiones resulta en una acumulación
-de la densidad electrónica en la región internuclear. Se
+de la densidad electrónica en la región internuclear. 
+Se
 trata por tanto de un orbital molecular \textit{enlazante}.
-Por el contrario, en el caso de la Ecuación \ref{eq:ungerade} 
+Por el contrario, en el caso de la Ecuación \ref{eq:ungerade}, 
 la densidad se acumula fuera de la región internuclear. Se
 trata de un \textit{orbital antienlazante}. 
 
-La acumulación de densidad electrónica en distintas regiones 
-hace que en los orbitales enlazantes y antienlazantes, los 
+La acumulación de densidad electrónica en distintas regiones hace que en los orbitales enlazantes y antienlazantes, los 
 núcleos se vean atraídos hacia el interior o el exterior del
-enlace, respectivamente. Allá donde los orbitales atómicos
-solapan e interfieren constructivamente, la energía es inferior
-a la de los dos átomos por separado dado que el electrón
-puede interactuar simultáneamente con dos núcleos.
-Para separaciones pequeñas el
-espacio  entre los núcleos es demasiado pequeño y no se 
-acumula densidad electrónica significativa. Además la 
-repulsión entre núcleos (que es proporcional a $1/R$) aumenta.
-Como consecuencia, la energía de la molécula aumenta a 
-distancias cortas y la curva de energía potencial pasa por 
-un valor mínimo. 
+enlace, respectivamente. 
+Allá donde los orbitales atómicos solapan e interfieren constructivamente, la energía es inferior a la de los dos átomos por separado dado que el electrón puede interactuar simultáneamente con dos núcleos.
+Para separaciones pequeñas el espacio  entre los núcleos es demasiado pequeño y no se acumula densidad electrónica significativa. 
+Además la repulsión entre núcleos (que es proporcional a $1/R$) aumenta.
+Como consecuencia, la energía de la molécula aumenta a  distancias cortas y la curva de energía potencial pasa por un valor mínimo\footnote{Aunque Atkins apunta a un efecto adicional: Parece que, al mismo tiempo que el electrón se desplaza hacia la región internuclear, los orbitales atómicos se encogen. Esta contracción de los orbitales mejora la atracción electrón–núcleo más de lo que se reduce por la migración del electrón a la región internuclear, de modo que hay una disminución neta de la energía potencial.}. 
 
-La energía del orbital 1$\sigma$ es 
+Si aplicamos el hamiltoniano al orbital 1$\sigma$, obtenemos la correspondiente energía  
 \begin{equation}
     E_{1\sigma}=E_{H1s} + \frac{e^2}{4\pi\varepsilon_0R}
-    -\frac{j+k}{1+S}
+    -\frac{j+k}{1+S}\label{eq:ener_1sigma}
 \end{equation}
-donde $j$ mide
-la interacción entre un núcleo y la densidad 
-electrónica centrada en el otro núcleo, y $k$
-mide la interacción entre el núcleo y el exceso
-de probabilidad en la región internuclear
-que emerge del solapamiento. 
+donde $j=\int \chi_B\chi_B/r_{1A} dq$ mide la interacción entre un núcleo y la densidad  electrónica centrada en el otro núcleo, y 
+$k=\int \chi_A\chi_B/r_{1A}dq$
+mide la interacción entre el núcleo y el exceso de probabilidad en la región internuclear que emerge del solapamiento. 
 
-La diferencia entre la energía a la distancia
-internuclear de equilibrio, ($R = R_e$), y la 
-de las especies atómicas infinitamente separadas,
-($R=\infty$), se denomina energía de disociación
-de equilibrio y se denota $D_e$. El valor de $D_e$
-nos da una idea de la estabilidad de la molécula, 
-ya que, cuanto mayor es $D_e$, más difícil será 
-romper la molécula en dos átomos separados. Aunque 
-la energía calculada a partir de esta expresión de
-acuerdo con la Teoría de Orbitales Moleculares no 
-es particularmente precisa, es cualitativamente 
-correcta.
+La diferencia entre la energía a la distancia internuclear de equilibrio, ($R = R_e$), y la de las especies atómicas infinitamente separadas, ($R=\infty$), se denomina energía de disociación de equilibrio y se denota $D_e$. 
+El valor de $D_e$ nos da una idea de la estabilidad de la molécula,  ya que, cuanto mayor es $D_e$, más difícil será romper la molécula en dos átomos separados. 
+Aunque la energía calculada a partir de esta expresión de acuerdo con la Teoría de Orbitales Moleculares no  es particularmente precisa, es cualitativamente correcta.
 
-El orbital antienlazante tiene un plano nodal 
-internuclear donde se anulan los orbitales atómicos
-1s$_A$ y 1s$_B$ de forma exacta. Este orbital si 
-es ocupado, contribuye a la disminución de la 
-cohesión entre dos átomos y a la elevación de 
-la energía de la molécula en relación con los 
-átomos separados. Específicamente, la expresión para
-la energía de este orbital 2$\sigma$ es
+El orbital antienlazante tiene un plano nodal internuclear donde se anulan los orbitales atómicos 1s$_\mathrm{A}$ y 1s$_\mathrm{B}$ de forma exacta. 
+Este orbital, si es ocupado, contribuye a la disminución de la cohesión entre dos átomos y a la elevación de la energía de la molécula en relación con los átomos separados. 
+Específicamente, la expresión para la energía de este orbital 2$\sigma$ es
 \begin{equation}
     E_{2\sigma}=E_{H1s} + \frac{e^2}{4\pi\varepsilon_0R}
-    -\frac{j-k}{1-S}
+    -\frac{j-k}{1-S}\label{eq:ener_2sigma}
 \end{equation}
-En la superficie de energía potencial se ve el efecto
-desestabilizador de un electrón antienlazante. Este efecto
-es debido en parte a la exclusión de un electrón 
-antienlazante de la región internuclear, que se
-distribuye por fuera de la región enlazante. 
+En la superficie de energía potencial se ve el efecto desestabilizador de un electrón antienlazante. 
+Este efecto es debido en parte a la exclusión de un electrón  antienlazante de la región internuclear, que se distribuye por fuera de la región enlazante. 
 
-Un efecto importante que también observamos en
-la superficie de energía para los orbitales $1\sigma$
-y $2\sigma$ es que el orbital antienlazante es más
-antienlazante que el enlazante es enlazante, lo
-cual se traduce en la expresión
+Un efecto importante que también observamos en la superficie de energía para los orbitales $1\sigma$ y $2\sigma$ es que el orbital antienlazante es más antienlazante que el enlazante es enlazante, lo cual se traduce en la expresión
 \begin{equation}
     |E_{-}-E_{H1s}|>|E_+-E_{H1s}|
 \end{equation}
-Esto se debe en parte a la repulsión entre los 
-núcleos, que eleva la energía de ambos orbitales 
-moleculares. Los orbitales antienlazantes que hemos
-denominado $\sigma_u$ o $2\sigma$ también se pueden indicar con 
-un asterisco, y nombrarse 2$\sigma^\star$. 
+Esto se debe en parte a la repulsión entre los núcleos, que eleva la energía de ambos orbitales moleculares. 
+Los orbitales antienlazantes que hemos denominado $\sigma_u$ o $2\sigma$ también se pueden indicar con un asterisco, y nombrarse 2$\sigma^\star$.
 
-\subsection{Moléculas diatómicas homonucleares}
- Los orbitales moleculares se construyen combinando los orbitales
- atómicos disponibles. Los electrones proporcionados por los
- átomos se acomodan en los orbitales en la configuración que
- minimice su energía siempre y cuando esta esté sujeta a las restricciones del Principio de exclusión de Pauli, que no más
- de un electrón puede ocupar un único orbital y que cuando dos 
- lo ocupen deben tener sus espines apareados.
- Al igual que para los átomos, si hay varios OM degenerados
- disponibles, se agrega un electrón por cada orbital antes de
- ocupar doblemente un orbital, para así minimizar la repulsión 
- interelectrónica. También se tiene en cuenta la regla de máxima
- multiplicidad de Hund, en virtud de la cual si los electrones 
- ocupan distintos orbitales degenerados, se disponen 
- preferentemente con espines paralelos.
+\subsection{Moléculas diatómicas homonucleares y configuraciones electrónicas}
+Una vez construidas las soluciones de la ecuación de Schrödinger, se llenan los correspondientes orbitales con electrones con reglas semejantes a las que vimos en el caso de los átomos polielectrónicos.
+En primer lugar, los electrones aportados por los átomos se acomodan en los orbitales de manera que se alcance la energía total más baja, sujeto a la restricción impuesta por el principio de exclusión de Pauli.
+Si hay disponibles varios orbitales moleculares degenerados, los electrones se añaden de uno en uno a cada orbital individual antes de que cualquiera de ellos se ocupe doblemente.
+Por último, de acuerdo con la regla de máxima multiplicidad de Hund, si dos electrones ocupan distintos orbitales degenerados, la energía es menor cuando lo hacen con espines paralelos.
 
 Consideremos en primer lugar la molécula H$_2$, que es la más
-simple entre las moléculas diatómicas. En ella, cada átomo de
-hidrógeno contribuye un orbital 1s, igual que hemos visto para
-el ión H$_2^+$, y forman dos orbitales moleculares, el 
-1$\sigma_g$ y el 1$\sigma_u$. En general, a partir de $N$ 
-orbitales atómicos se forman $N$ orbitales moleculares.
+simple entre las moléculas diatómicas. 
+En ella, cada átomo de hidrógeno contribuye un orbital 1s, igual que hemos visto para el ión H$_2^+$, y forman dos orbitales moleculares, el 1$\sigma_g$ y el 1$\sigma_u$. 
+En general, a partir de $N$ orbitales atómicos se forman $N$ orbitales moleculares.
 
-El \textit{diagrama de orbitales moleculares} 
-permite visualizar el tipo de configuración electrónica que se
-va a adoptar. Como en el caso del H$_2$ hay dos electrones
-que acomodar, ambos se alojan en el orbital molecular 1$\sigma_g$
-apareando sus espines, como requiere el principio de exclusión
-de Pauli. La configuración resultante es 1$\sigma^2$, en la
-que el enlace químico se forma a partir de dos electrones en el
-orbital molecular $\sigma$ enlazante. La función de onda de 
+El \textit{diagrama de orbitales moleculares} permite visualizar el tipo de configuración electrónica que se va a adoptar. 
+Como en el caso del H$_2$ hay dos electrones que acomodar, ambos se alojan en el orbital molecular 1$\sigma_g$ apareando sus espines, como requiere el principio de exclusión de Pauli. 
+La configuración resultante es 1$\sigma^2$, en la que el enlace químico se forma a partir de dos electrones en el orbital molecular $\sigma$ enlazante. La función de onda de 
 este estado fundamental escrita como un determinante es
 \begin{equation}
    \Phi_+ =
@@ -573,118 +530,244 @@ este estado fundamental escrita como un determinante es
 
 Los resultados que se obtienen a partir de esta aproximación 
 son buenos en la zona correspondiente al mínimo en la superficie
-de energía, pero no
-en lo que respecta a la energía de disociación, al contrario
-de lo que sucedía con la teoría de enlace de valencia.
-Un método que mejora los problemas derivados de ambas 
-aproximaciones es el de \textit{interacción de configuraciones (CI)}.
+de energía, pero no en lo que respecta a la energía de disociación, al contrario de lo que sucedía con la teoría de enlace de valencia.
+%Un método que mejora los problemas derivados de ambas 
+%aproximaciones es el de \textit{interacción de configuraciones (CI)}.
 
 Otro caso interesante es el de la molécula de helio (He$_2$). 
 En este caso, tenemos dos electrones apareados tanto en
-el orbital $1\sigma_g$ como en el $1\sigma_u$. La configuración
-resultante es $1\sigma_g^2$ y $1\sigma_u^2$. Dado que la 
-desestabilización del antienlazante es superior a la
-estabilización del antienlazante, la molécula de He$_2$ 
+el orbital $1\sigma_g$ como en el $1\sigma_u$. 
+La configuración resultante es $1\sigma_g^2$ y $1\sigma_u^2$. 
+Dado que la desestabilización del antienlazante es superior a la
+estabilización del enlazante, la molécula de He$_2$ 
 tiene mayor energía que los átomos por separado y es por
 tanto inestable.
 
 \subsection{Moléculas homonucleares del segundo periodo}
-Cuando llegamos a las moléculas que implican a átomos del
-segundo periodo, sólo participan en el enlace los orbitales
-atómicos de la capa de valencia, es decir los 2s y 2p.
-Contribuyen a un orbital molecular los orbitales atómicos
-que tengan la simetría adecuada. Por ejemplo, para formar
-un orbital molecular $\sigma$ intervienen los orbitales
-atómicos que tienen simetría cilíndrica alrededor del eje
-internuclear, es decir los orbitales 2s y los 2p$_z$ de 
-los dos átomos, para formar cuatro orbitales moleculares.
+Cuando llegamos a las moléculas que implican a átomos de segundo periodo, sólo participan en el enlace los orbitales atómicos de la capa de valencia, es decir los 2s y 2p.
+Contribuyen a un orbital molecular los orbitales atómicos que tengan la simetría adecuada. Por ejemplo, para formar un orbital molecular $\sigma$ intervienen los orbitales atómicos que tienen simetría cilíndrica alrededor del eje internuclear, es decir los orbitales 2s y los 2p$_z$ de  los dos átomos, para formar cuatro orbitales moleculares.
 
-Para formar orbitales $\pi$ enlazantes o antienlazantes, 
-de nuevo, se superponen orbitales que tienen la simetría
-adecuada. En concreto, los dos orbitales 2p$_x$ se 
-superponen dando dos orbitales $\pi_x$ y los dos orbitales 
-2p$_y$ se superponen dando dos orbitales $\pi_y$ . Los dos
-orbitales enlazantes son $\pi_u$ mientras que los
-antienlazantes son $\pi_g^\star$.
+Para formar orbitales $\pi$ enlazantes o antienlazantes, de nuevo, se superponen orbitales que tienen la simetría adecuada. 
+En concreto, los dos orbitales 2p$_x$ se superponen dando dos orbitales $\pi_x$ y los dos orbitales 2p$_y$ se superponen dando dos orbitales $\pi_y$ . 
+Los dos orbitales enlazantes son $\pi_u$ mientras que los antienlazantes son $\pi_g^\star$.
 Cuando un orbital s se superpone con un orbital p$_x$ de otro átomo, no existe solapamiento neto entre ambos orbitales.
 
-Para construir el diagrama de niveles de energía de moléculas diatómicas homonucleares del segundo periodo, formamos ocho 
-orbitales moleculares a partir de los ocho orbitales de la 
-capa de valencia (cuatro de cada átomo).
+Para construir el diagrama de niveles de energía de moléculas diatómicas homonucleares del segundo periodo, formamos ocho orbitales moleculares a partir de los ocho orbitales de la capa de valencia (cuatro de cada átomo).
+La jerarquía de energías entre orbitales $\sigma$ y $\pi$ no se mantiene en todos los casos, sino que depende de cómo sea la separación de energía entre niveles 2s y 2p en los átomos cuyos orbitales atómicos contribuyen a la combinación lineal de orbitales atómicos.
 
 \subsection{Moléculas diatómicas heteronucleares}
-Cuando dos átomos diferentes forman enlaces, nos vamos
-a encontrar con el fenómeno de la polaridad. 
-Un enlace polar entre dos átomos A y B consiste en dos 
-electrones en un orbital de la forma
+Cuando dos átomos diferentes forman enlaces, nos vamos a encontrar con el fenómeno de la polaridad. 
+Un enlace polar entre dos átomos A y B consiste en dos  electrones en un orbital de la forma
 \begin{equation}
     \Psi=c_A\psi_A + c_B\psi_B\label{eq:polar}
 \end{equation}
-donde $c_A\neq c_B$. Esto supone que el orbital atómico
-de menor energía tiene la mayor contribución al orbital 
-enlazante, así los electrones no están igualmente repartidos
-entre el núcleo A y B. Esto resulta en que los átomos 
-tengan cargas parciales negativas y positivas.
+donde $c_A\neq c_B$. 
+Esto supone que el orbital atómico de menor energía tiene la mayor contribución al orbital enlazante. 
+Así, los electrones no están igualmente repartidos entre el núcleo A y B. 
+Esto resulta en que los átomos tengan cargas parciales negativas y positivas.
 
-Otra consecuencia de la diferencia entre los orbitales 
-implicados es que no existe el centro de inversión, y 
-por tanto, desaparecen las simetrías \textit{gerade} y 
-\textit{ungerade}. Al entrar en juego átomos 
-cuya naturaleza puede ser muy distinta, tendremos que 
-utilizar consideraciones energéticas que nos permitan 
-inferir qué orbitales participarán en el enlace y de qué 
-forma se van a combinar. Sólo orbitales atómicos de 
-energías razonablemente similares contribuyen sustancialmente
-a un orbital molecular dado.
+Otra consecuencia de la diferencia entre los orbitales  implicados es que no existe el centro de inversión, y  por tanto, desaparecen las simetrías \textit{gerade} y \textit{ungerade}. 
+Al entrar en juego átomos cuya naturaleza puede ser muy distinta, tendremos que utilizar consideraciones energéticas que nos permitan inferir qué orbitales participarán en el enlace y de qué forma se van a combinar. 
+Sólo orbitales atómicos de energías razonablemente similares contribuyen sustancialmente a un orbital molecular dado.
 
-Consideremos el ejemplo de la molécula de HF. Para construir 
-los orbitales moleculares, se parte del orbital 1s del hidrógeno
-y los orbitales 1s, 2s y 2p del flúor. Los orbitales 1s y 2s
-del átomo de F tienen una energía demasiado baja para participar
-en el enlace y forman así orbitales moleculares $\sigma$
-no enlazantes. Asimismo, se forma una combinación de los 
-orbitales atómicos 1s del H y 2p$_z$ del F, que resultan en
-un orbital molecular enlazante 3$\sigma$ y otro antienlazante, 
-4$\sigma$, que queda vacante en el estado fundamental. 
+Consideremos el ejemplo de la molécula de HF. 
+Para construir los orbitales moleculares, se parte del orbital 1s del hidrógeno y los orbitales 1s, 2s y 2p del flúor. 
+Los orbitales 1s y 2s del átomo de F tienen una energía demasiado baja para participar en el enlace y forman así orbitales moleculares $\sigma$ no enlazantes. 
+Asimismo, se forma una combinación de los orbitales atómicos 1s del H y 2p$_z$ del F, que resultan en un orbital molecular enlazante 3$\sigma$ y otro antienlazante, 4$\sigma$, que queda vacante en el estado fundamental. 
 Recuperando la descripción de polaridad de la Ecuación
 \ref{eq:polar}, en este caso el orbital se forma siguiendo
 \begin{equation}
     \sigma=c_11s_H + c_22p_{z,F}
 \end{equation}
-y $c_2>c_1$. Finalmente, los orbitales de simetría $\pi$, 
-son exclusivamente los orbitales 2p$_x$ y 2p$_y$. Estos 
-orbitales no pueden mezclarse con el orbital 1s$_H$ y
-quedan como orbitales 1$\pi_x$ y 1$\pi_y$ no enlazantes degenerados. 
+y $c_2>c_1$. 
+Finalmente, los orbitales de simetría $\pi$, son exclusivamente los orbitales 2p$_x$ y 2p$_y$. 
+Estos orbitales no pueden mezclarse con el orbital 1s$_H$ y quedan como orbitales 1$\pi_x$ y 1$\pi_y$ no enlazantes degenerados. 
 
-En muchos otros casos de moléculas diatómicas nos
-encontramos con que ambos átomos disponen de orbitales
-atómicos s y p. Éste es el caso de moléculas como el 
-CN, NO, CO o FCl. Para estas moléculas, las energías 
-de los orbitales de valencia en uno y otro átomo no son muy diferentes. Así, cabe esperar que los orbitales s de uno de
-los átomos se combinen con los orbitales s del otro átomo, 
-y que los orbitales p hagan lo propio, al igual que sucedía
-en el caso de moléculas homonucleares. La diferencia con 
-el caso homonuclear es que los coeficientes de la mezcla 
-no satisfacen exactamente la relación $c_A = \pm c_B$.
-%Un ejemplo interesante es el de la molécula de CO, que 
-%tiene hasta 10 electrones de valencia. Su configuración
-%electrónica es 
-%$(\sigma_s)^2(\sigma_s^{\star})^2(\pi)^4(\sigma_p)^2$. 
-%Como sus seis electrones enlazantes la molécula tiene un
-%enlace triple similar al del N$_2$.
+En muchos otros casos de moléculas diatómicas nos encontramos con que ambos átomos disponen de orbitales atómicos s y p. 
+Éste es el caso de moléculas como el CN, NO, CO o FCl. Para estas moléculas, las energías de los orbitales de valencia en uno y otro átomo no son muy diferentes. Así, cabe esperar que los orbitales s de uno de los átomos se combinen con los orbitales s del otro átomo,  y que los orbitales p hagan lo propio, al igual que sucedía en el caso de moléculas homonucleares. 
+La diferencia con el caso homonuclear es que los coeficientes de la mezcla no satisfacen exactamente la relación $c_A = \pm c_B$.
+Un ejemplo interesante es el de la molécula de CO, que tiene hasta 10 electrones de valencia. 
+Su configuración electrónica es $(\sigma_s)^2(\sigma_s^{\star})^2(\pi)^4(\sigma_p)^2$.
+Como sus seis electrones enlazantes la molécula tiene un enlace triple similar al del N$_2$.
 
-%\begin{thebibliography}{}
-%\bibitem{atkins_depaula} Atkins, P and De Paula, J. 2006. ``Physical Chemistry, 8th Edition''. Oxford University Press.
-%
-%\bibitem{atkins} Atkins, P and Friedman, R. 2005. ``Molecular Quantum Mechanics, 4th Edition''. Oxford University Press.
-%
-%\bibitem{fleisch} Fleisch, Daniel A. 2020. ``A student's guide to the Schr{\"o}dinger equation''. Cambridge University Press
-%
-%\bibitem{levine} Levine, I. N. 2013. ``Quantum
-%Chemistry, 7th Edition''. Pearson.
-%\end{thebibliography}
+%%\begin{thebibliography}{}
+%%\bibitem{atkins_depaula} Atkins, P and De Paula, J. 2006. ``Physical Chemistry, 8th Edition''. Oxford University Press.
+%%
+%%\bibitem{atkins} Atkins, P and Friedman, R. 2005. ``Molecular Quantum Mechanics, 4th Edition''. Oxford University Press.
+%%
+%%\bibitem{fleisch} Fleisch, Daniel A. 2020. ``A student's guide to the Schr{\"o}dinger equation''. Cambridge University Press
+%%
+%%\bibitem{levine} Levine, I. N. 2013. ``Quantum
+%%Chemistry, 7th Edition''. Pearson.
+%%\end{thebibliography}
 \bibliographystyle{plainnat}
+\pagebreak
+\appendix
+\subsection{APÉNDICE: Derivación de ecuaciones de la energía para el H$_2^+$}
+En las Ecuaciones \ref{eq:ener_1sigma} y  \ref{eq:ener_2sigma} hemos expresado la energía de los orbitales $\sigma_g$ y $\sigma_u$, pero la derivación de estas ecuaciones y los distintos términos que aparecen en ellas puede parecer compleja.
+Sin embargo, pueden derivarse con facilidad a partir de la expresión del hamiltoniano para el H$_2^+$ (Ecuación \ref{eq:hamiltonian_h2}) y la combinación lineal de orbitales atómicos de tipo 1s que hemos propuesto como solución (Ecuación \ref{eq:solution_h2}).
+Además, estas expresiones pueden resultar informativas para entender el origen de la estabilización del enlace químico.
 
+Trabajaremos con la función de onda par, i.e.
+\begin{equation}
+\Psi_+ = \{2(1+S)\}^{-1/2}(\mathrm{1s}_A+\mathrm{1s}_B)
+\end{equation}
+Si queremos estimar la energía a partir de esta solución, tendremos que aplicar el operador hamiltoniano
+\begin{equation}
+\begin{split}
+    E_{1\sigma}=&\left\langle \Psi_+ 
+    \middle| \hat{H} \middle|
+    \Psi_+ \right\rangle = 
+    \frac{1}{2(1+S)}\left\langle \mathrm{1s}_A+\mathrm{1s}_B
+    \middle| \hat{H} \middle|
+\mathrm{1s}_A+\mathrm{1s}_B \right\rangle =\\
+=&\frac{1}{2(1+S)}\bigg[
+\left\langle \mathrm{1s}_A\middle| \hat{H} \middle|\mathrm{1s}_A \right\rangle + 
+\left\langle \mathrm{1s}_A\middle| \hat{H} \middle|\mathrm{1s}_B \right\rangle +
+\left\langle \mathrm{1s}_B\middle| \hat{H} \middle|\mathrm{1s}_A \right\rangle +
+\left\langle \mathrm{1s}_B\middle| \hat{H} \middle|\mathrm{1s}_B \right\rangle
+\bigg]
+\label{eq:E1sigma_sum}
+\end{split}\end{equation}
+Ahora, podemos trabajar independientemente con cada uno de estos términos.
+Sustituyendo el hamiltoniano con unidades atómicas, obtenemos
+\begin{equation}
+\begin{split}
+\left\langle \mathrm{1s}_A\middle| \hat{H} \middle|\mathrm{1s}_A \right\rangle = &
+    \left\langle \mathrm{1s}_A 
+    \middle| 
+    {-\frac{\nabla^2_1}{2}-
+\frac{1}{r_{1A}} - 
+\frac{1}{r_{1B}} +
+\frac{1}{R_{AB} 
+}}
+\middle|
+\mathrm{1s}_A \right\rangle = \\
+= & \left\langle \mathrm{1s}_A 
+    \middle| 
+    {-\frac{\nabla^2_1}{2}-
+\frac{1}{r_{1A}}  
+}
+\middle|
+\mathrm{1s}_A \right\rangle
+-
+\left\langle \mathrm{1s}_A 
+    \middle| 
+    {
+\frac{1}{r_{1B}}  
+}
+\middle|
+\mathrm{1s}_A \right\rangle
++
+\left\langle \mathrm{1s}_A 
+    \middle| 
+    {\frac{1}{R_{AB}}  
+}
+\middle|
+\mathrm{1s}_A \right\rangle
+\end{split}\end{equation}
+El primer término en la segunda línea de esta ecuación es la energía del orbital 1s de un átomo hidrogenoide ($E_\mathrm{H1s}$). 
+El segundo término, al que denominamos $j$, tiene una interpretación física sencilla: la interacción de la densidad electrónica del orbital 1s$_\mathrm{A}$ con el núcleo $B$.
+El tercer término es una constante que incluye el efecto de la repulsión internuclear, dado que, al estar trabajando dentro de la aproximación de Born-Oppenheimer, $R_{AB}$ es una constante que sale de la integral, y además, los orbitales 1s están normalizados (i.e. $\left\langle\mathrm{1s_A} 
+    \middle|1/R_{AB}\middle|\mathrm{1s_A} \right\rangle=1/R_{AB}\left\langle\mathrm{1s_A} 
+    \middle|\mathrm{1s_A} \right\rangle=1/R_{AB}$).
+Por tanto, obtenemos
+\begin{equation}
+\begin{split}
+\left\langle \mathrm{1s}_A\middle| \hat{H} \middle|\mathrm{1s}_A \right\rangle = 
+\left\langle \mathrm{1s}_B\middle| \hat{H} \middle|\mathrm{1s}_B \right\rangle
+=
+E_\mathrm{H1s} - j + \frac{1}{R_{AB}}
+\end{split}\end{equation}
+donde estamos usando la identidad entre los orbitales atómicos 1s$_A$ y 1s$_B$.
 
+Aun nos quedan por resolver los términos cruzados de la Ecuación 
+\ref{eq:E1sigma_sum}:
+\begin{equation}
+\begin{split}
+\left\langle \mathrm{1s}_A\middle| H \middle|\mathrm{1s}_B \right\rangle = &
+    \left\langle \mathrm{1s}_A 
+    \middle| 
+    {-\frac{\nabla^2_1}{2}-
+\frac{1}{r_{1A}} - 
+\frac{1}{r_{1B}} +
+\frac{1}{R_{AB} 
+}}
+\middle|
+\mathrm{1s}_B \right\rangle = \\
+= & \left\langle \mathrm{1s}_A 
+    \middle| 
+    {-\frac{\nabla^2_1}{2}-
+\frac{1}{r_{1B}}  
+}
+\middle|
+\mathrm{1s}_B \right\rangle
+-
+\left\langle \mathrm{1s}_A 
+    \middle| 
+    {
+\frac{1}{r_{1A}}  
+}
+\middle|
+\mathrm{1s}_B \right\rangle
++
+\left\langle \mathrm{1s}_A 
+    \middle| 
+    {\frac{1}{R_{AB}}  
+}
+\middle|
+\mathrm{1s}_B \right\rangle
+\end{split}\end{equation}
+El primero de los términos en el lado derecho de la
+ecuación puede resolverse aprovechando que el orbital 1s$_B$ es función propia del hamiltoniano para un solo electrón
+\begin{equation}
+\begin{split}
+\left\langle \mathrm{1s}_A 
+    \middle| 
+    {-\frac{\nabla^2_1}{2}-
+\frac{1}{r_{1B}}  
+}
+\middle|
+\mathrm{1s}_B \right\rangle
+= 
+\left\langle \mathrm{1s}_A 
+    \middle|E_\mathrm{H_{1s}}
+\middle|
+\mathrm{1s}_B \right\rangle = 
+E_\mathrm{H_{1s}}\left\langle \mathrm{1s}_A 
+\middle|
+\mathrm{1s}_B \right\rangle = 
+E_\mathrm{H_{1s}}S
+\end{split}\end{equation}
+donde estamos usando nuestra definición de la integral de solapamiento (Ecuación \ref{eq:overlap}).
+El segundo de los términos, al que nombramos $k$, también se puede interpretar físicamente: corresponde a la interacción del exceso de densidad electrónica entre los núcleos con el núcleo $A$.
+Finalmente, el último término es igual a $S/R_{AB}$.
+Así, obtenemos 
+\begin{equation}
+\begin{split}
+\left\langle \mathrm{1s}_A\middle| H \middle|\mathrm{1s}_B \right\rangle = 
+\left\langle \mathrm{1s}_B\middle| H \middle|\mathrm{1s}_A \right\rangle
+=
+E_\mathrm{H1s}S - k + \frac{S}{R_{AB}}
+\end{split}\end{equation}
 
+Combinando todos los términos de la Ecuación \ref{eq:E1sigma_sum}, obtenemos que 
+\begin{equation}
+\begin{split}
+    E_{+}=&\frac{1}{2(1+S)}\bigg[
+    2(1+S)E_{H1s} + 2(1+S)\frac{1}{R_{AB}}
+    -2j -2k \bigg] = \\
+    =&E_{H1s} + \frac{1}{R_{AB}}
+    -\frac{j+k}{1+S}
+\end{split}
+\end{equation}
+
+A partir de este desarrollo, es fácil intuir cómo en el caso del orbital antienlazante, con función de onda
+$\Psi_- = \{2(1-S)\}^{-1/2}(\mathrm{1s}_A-\mathrm{1s}_B)$
+obtendremos, de nuevo en unidades reducidas,
+\begin{equation}
+    E_{-}=E_{H1s} + \frac{1}{R_{AB}}
+    -\frac{j-k}{1-S}
+\end{equation}
+Dejamos esta derivación en manos del estudiante de la asignatura.
 \end{document}

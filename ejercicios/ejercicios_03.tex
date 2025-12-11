@@ -1,0 +1,104 @@
+\documentclass{tufte-handout}
+
+%\geometry{showframe}% for debugging purposes -- displays the margins
+
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{amsmath}
+
+% Set up the images/graphics package
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{graphics/}}
+
+\title[Química Física II: Ejercicios Tema 3]{
+Química Física II: Ejercicios Tema 3}
+%\author{David De Sancho}
+\date{}  % if the \date{} command is left out, the current date will be used
+
+% The following package makes prettier tables.  We're all about the bling!
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better spacing
+% for units.
+\usepackage{units}
+
+% The fancyvrb package lets us customize the formatting of verbatim
+% environments.  We use a slightly smaller font.
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+
+% Small sections of multiple columns
+\usepackage{multicol}
+
+% Provides paragraphs of dummy text
+\usepackage{lipsum}
+
+% These commands are used to pretty-print LaTeX commands
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+
+\begin{document}
+\maketitle
+\large
+
+\begin{enumerate}
+   \item Calcula el valor medio del momento y
+   la posición para el caso de una partícula de
+   masa $m$ en una caja unidimensional de anchura
+   $L$. Comprueba que se cumple el principio de
+   incertidumbre.
+   
+   \item Sea una partícula de masa $m$ que se
+   mueve en una caja de potencial de anchura $L$.
+   (a) Calcula la probabilidad de que la partícula
+   se encuentre entre $L/4$ y $3L/4$. (b) Evalua el
+   límite clásico.
+   
+  \item Un rodamiento de masa 1 g se encuentra
+  en una caja unidimensional de anchura 10 cm
+  moviéndose a una velocidad de 1 cm/s. (a) Calcula
+  el número cuántico. (b) Muestra cuál es el especiamiento
+  entre dos niveles para el valor del número cuántico 
+  obtenido en el apartado anterior. (c) ¿Qué ilustran los 
+  resultados?
+
+  \item Considera una partícula en una caja cúbica. ¿Cuál es la degeneración del nivel que tiene una energía tres veces superior al nivel de energía más bajo de una caja unidimensional? 
+  
+  \item Una masa de 45 g en un muelle oscila a la 
+  frecuencia de 2.4 vibraciones por segundo con 
+  una amplitud de 4 cm. (a) Calcula la constante 
+  de fuerza del muelle. (b) ¿Cuál sería el número
+  cuántico $v$ si el sistema se tratase 
+  mecanocuánticamente?
+  
+  \item Calcula la frecuencia de la radiación emitida
+  cuando un oscilador armónico de frecuencia $6\times 10^{13}$
+  s$^{-1}$ salta del nivel 8 al 7.
+
+  \item Confirma que la función de onda del primer estado
+  excitado de un oscilador armónico es una solución de la
+  ecuación de Schrödinger y que su energía es $3/2\hbar\omega$.
+
+\end{enumerate}
+
+\newpage
+\subsection{\textbf{Soluciones:}}
+\begin{enumerate}
+    \item $\langle p_x\rangle =0$;  $\langle x\rangle =L/2$. El principio de incertidumbre
+    se cumple (para verificarlo, hemos de probar que $\Delta x \Delta p_x\geq \hbar/2$; para lo que nos hacen falta $\langle x^2\rangle$ y $\langle p_x^2\rangle$).
+    \item $P=\frac{1}{2}-\frac{1}{2n\pi}(\sin \frac{3n\pi}{2} - \sin\frac{n\pi}{2})$. En el límite clásico: $\lim_{n\rightarrow \infty}P=1/2$.
+   \item (a) $n=3\times 10^{27}$. (b) $\Delta E\simeq 3\times 10^{-35}$ J. (c) Principio de
+   correspondencia.
+   \item 1
+   \item (a) $k=10.2$ N/m. (b) $v=5.16\times 10^{30}$.
+  \item $\nu=6\times 10^{13}$s$^{-1}$.   
+  \item --
+\end{enumerate}
+
+\end{document}

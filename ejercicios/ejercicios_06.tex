@@ -1,0 +1,93 @@
+\documentclass{tufte-handout}
+
+%\geometry{showframe}% for debugging purposes -- displays the margins
+
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{amsmath}
+
+% Set up the images/graphics package
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{graphics/}}
+
+\title[Química Física II: Ejercicios Tema 6]{
+Química Física II: Ejercicios Tema 6}
+%\author{David De Sancho}
+\date{}  % if the \date{} command is left out, the current date will be used
+
+% The following package makes prettier tables.  We're all about the bling!
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better spacing
+% for units.
+\usepackage{units}
+
+% The fancyvrb package lets us customize the formatting of verbatim
+% environments.  We use a slightly smaller font.
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+
+% Small sections of multiple columns
+\usepackage{multicol}
+
+% Provides paragraphs of dummy text
+\usepackage{lipsum}
+
+% These commands are used to pretty-print LaTeX commands
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+
+\begin{document}
+
+\maketitle
+\large 
+\begin{enumerate}
+    \item Una partícula en una caja de longitud $a$ se encuentra sometida a un
+    potencial $V_0x/a$ entre $0$ y $a$. Para aproximar la función de onda
+    del estado fundamental y su energía podemos usar el método variacional 
+    lineal usando las funciones propias de la partícula en una caja para $n=1$
+    y $n=2$. Escribe el determinante secular que permitirá encontrar la mejor 
+    aproximación de la energía.
+    \item Una partícula se encuentra sometida al siguiente potencial
+    \begin{equation*}
+\hat{V}(x)=
+\begin{cases}
+  \infty & \text{ si } L<x<0\\
+  0  & \text{ si } 0\leq x\leq \frac{L}{4}\text{  o  }\frac{3L}{4}\leq x\leq L
+\\
+  V_0, & \text{si } \frac{L}{4}<x<\frac{3L}{4}
+\end{cases}
+\end{equation*}
+    donde $V_0$ es una constante pequeña. Usa la teoría de perturbaciones
+    para calcular las correcciones de primer orden de la energía, utilizando
+    como hamiltoniano de orden cero el correspondiente a la partícula en 
+    una caja.
+    
+    \item Calcula la corrección de primer orden a la energía del 
+    estado fundamental de un oscilador armónico cuya energía potencial 
+    es 
+    \begin{equation*}
+        V(x)=\frac{1}{2}kx^2 + \frac{1}{6}\gamma x^3  + \frac{1}{24}bx^4
+    \end{equation*}
+\end{enumerate}
+
+\newpage
+\subsection{\textbf{Soluciones:}}
+\begin{enumerate}
+\item 
+\begin{equation}\begin{vmatrix}
+  \frac{h}{8ma^2} + \frac{V_0}{2} - E & -\frac{16V_0}{9\pi^2} \\
+ -\frac{16V_0}{9\pi^2} &  \frac{4h^2}{8ma^2} + \frac{V_0}{2} - E 
+\end{vmatrix} = 0
+\end{equation}
+\item $E_n^{(1)}=\frac{V_0}{2}  - \frac{V_0}{2n\pi}(\sin(3n\pi/2) - \sin(n\pi/2))$
+\item $E_{v=0}^{(1)}= \frac{b\hbar^2}{32km}$; $E=E_{v=0}^{(0)}+E_{v=0}^{(1)}= 1/2\hbar\omega +  \frac{b\hbar^2}{32km}$.
+\end{enumerate}
+
+\end{document}

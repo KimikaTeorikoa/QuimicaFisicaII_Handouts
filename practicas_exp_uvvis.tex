@@ -1,0 +1,201 @@
+\documentclass{tufte-handout}
+
+%\geometry{showframe}% for debugging purposes -- displays the margins
+
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{amsmath}
+\usepackage{chemfig}
+
+
+% Set up the images/graphics package
+\usepackage{gensymb}
+\usepackage{physics}
+\usepackage{multicol}
+
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{graphics/}}
+
+\title[Prácticas Química Física II: UV-Vis]{
+Prácticas Laboratorio 2: Espectroscopía UV-Visible}
+%\author{David De Sancho}
+\date{}  % if the \date{} command is left out, the current date will be used
+
+% The following package makes prettier tables.  We're all about the bling!
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better spacing
+% for units.
+\usepackage{units}
+
+% The fancyvrb package lets us customize the formatting of verbatim
+% environments.  We use a slightly smaller font.
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+
+% Small sections of multiple columns
+\usepackage{multicol}
+
+% Provides paragraphs of dummy text
+\usepackage{lipsum}
+
+% These commands are used to pretty-print LaTeX commands
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+
+\begin{document}
+
+\maketitle% this prints the handout title, author, and date
+
+\begin{abstract}
+En la segunda práctica utilizaremos otro tipo de espectroscopía,
+la que usa radiación ultravioleta-visible (correspondiente a 
+longitudes de onda entre 170 y 780 nm). Este tipo de radiación,
+más energética que la infrarroja, afecta a los niveles electrónicos 
+de las moléculas. Aunque en este caso no podemos obtener expresiones
+analíticas compactas para las energías correspondientes a las transiciones, sí que podemos aprender cómo el entorno de un enlace
+químico afecta la energía de los orbitales. 
+\end{abstract}
+
+\section{Introducción}
+La energía de un cuanto de radiación con energía $h\nu$ puede
+resultar en la excitación de niveles energéticos electrónicos.
+La intensidad de absorción se expresa mediante los 
+\textbf{coeficientes de absorción molar}, $\varepsilon$. 
+Para una solución, este coeficiente está relacionado con la 
+\textbf{absorbancia} a través de la relación
+\begin{equation}
+    \varepsilon = \frac{A}{cl},
+\end{equation}
+donde $c$ es la concentración en moles por litro y $l$ es la
+longitud de la celda en cm. 
+Un parámetro característico de una 
+molécula es la longitud de onda en la que encontramos
+el máximo de absorción, $\lambda_{max}$.
+
+\subsection{Interpretación de los espectros}
+En el caso de moléculas poliatómicas, podemos relacionar 
+las transiciones electrónicas observadas a excitaciones de
+electrones entre distintos tipos de orbitales moleculares.
+Las partes de las moléculas responsables de transiciones 
+que podemos observar en esta región del espectro 
+electromagnético se llaman \textbf{cromóforos}. En la Tabla 
+\ref{tab:chrom} mostramos algunos cromóforos de moléculas
+orgánicas a las que a menudo se aplica este tipo de
+espectroscopía, los tipos de orbitales implicados y 
+las longitudes de onda aproximadas a las que se observan. 
+Típicamente, observamos transiciones entre el orbital molecular
+ocupado de más alta energía (HOMO) y el orbital desocupado de más
+baja energía (LUMO). En función de los diferentes tipos de orbitales
+moleculares implicados en las transiciones, las transiciones
+serán más o menos energéticas. 
+
+\begin{table}
+\centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+     Cromóforo & Transición &  $\lambda_{max}$ (nm) & Intensidad \\
+     \hline
+     \chemfig{C=C} & $\pi\rightarrow\pi^\star$ & 190 & media\\
+    \hline  
+     \chemfig{C=O} & $n\rightarrow\pi^\star$& 300 & débil\\
+      & $n\rightarrow\sigma^\star$& 190 & intensa\\
+    \hline  
+     \chemfig{C=C-C=C} & $\pi\rightarrow\pi^\star$ & 210 & intensa \\
+    \hline  
+     \chemfig{C=C-C=O} & $n\rightarrow\pi^\star$ & 330 & débil \\
+     \chemfig{C=C-C=O} & $\pi\rightarrow\pi^\star$ & 210 & intensa \\
+      & $\pi\rightarrow\pi^\star$ & 210 & intensa \\
+    \hline  
+     & $\pi\rightarrow\pi^\star$ & 180 & muy intensa \\
+& $\pi\rightarrow\pi^\star$ & 200 & intensa \\
+      \chemfig{*6(=-=-=-)} & $\pi\rightarrow\pi^\star$ & 255 & débil\\
+\hline
+\end{tabular}
+\caption{Algunos cromóforos de moléculas orgánicas, tipos de
+electrones implicados, las longitudes de onda aproximadas e intensidad de las bandas correspondientes.}\label{tab:chrom}
+\end{table}
+
+En el caso de los enlaces \chemfig{C=C} observamos la excitación
+de electrones $\pi$ que llegan a orbitales $\pi^\star$ 
+antienlazantes. A estas transiciones se las llama
+$\pi\rightarrow\pi^\star$ y su energía corresponde al espectro UV. 
+Cuando el doble enlace se encuentra en una cadena conjugada, 
+las energías de los orbitales moleculares se acercan entre sí
+y pueden llegar al rango del visible. En el caso del enlace
+\chemfig{C=O} nos encontramos un electrón no enlazante $n$
+que puede excitarse para llegar a un orbital vacío $\pi^\star$
+antienlazante (transición $n\rightarrow\pi^\star$). Estas
+transiciones en realidad están prohibidas por simetría y por
+tanto suelen ser bastante débiles.
+
+\section{Objetivos}
+En esta práctica mediremos la longitud de onda de absorción
+máxima para la acetona en diferentes disolventes y de una
+serie de derivados de la acetona con diferentes sustituyentes 
+en ciclohexano. Los disolventes formarán \textbf{enlaces de hidrógeno}
+con la molécula en distinto grado.
+Los sustituyentes modificarán por \textbf{efecto 
+inductivo} o por \textbf{efecto de resonancia} la longitud de onda
+de absorción del enlace.  
+
+\section{Protocolo}
+\subsection{Material}
+    \begin{multicols}{2}
+\begin{itemize}
+\item Celda de cuarzo para UV
+\item Peras aspirapipetas
+\item Matraces aforados de 50 ml
+\item Pipetas de 1 ml
+\end{itemize}
+    \end{multicols}
+
+\subsection{Reactivos}
+    \begin{multicols}{2}
+\begin{itemize}
+\item Ciclohexano
+\item Cloroformo
+\item Acetonitrilo
+\item Etanol
+\item Agua
+\item Acetona
+\item Cloruro de acetilo
+\item Ácido acético
+\item Metiletilcetona
+\item Acetofenona
+\end{itemize}
+    \end{multicols}
+
+\subsection{Procedimiento experimental}
+\begin{enumerate}
+    \item Se preparan disoluciones (50 ml) 0,04 M de acetona en cada uno de los siguientes disolventes: ciclohexano, cloroformo, acetonitrilo, etanol y agua.
+    \item Se registran los espectros UV de las disoluciones de la acetona, con los disolventes como referencia, y se mide el valor de $\lambda_{max}$ para la banda correspondiente a la transición $n\rightarrow\pi^\star$ en cada disolución, en la región comprendida entre 200 y 350 nm.
+    \item Se preparan disoluciones aproximadamente $0.04$ M en ciclohexano de cada uno de los siguientes compuestos carbonílicos: metiletilcetona, acetona, ácido acético, cloruro de acetilo y acetofenona.
+    \item Se registran los espectros UV de las disoluciones de los compuestos citados en el apartado anterior, con el disolvente (ciclohexano) como referencia, y se mide el valor de $\lambda_{max}$ para la banda correspondiente a la transición $n\rightarrow\pi^\star$ en cada disolución, en la región comprendida entre 200 y 350 nm.
+\end{enumerate}
+
+\subsection{Cálculos teóricos}
+Los métodos mecanocuánticos nos permiten identificar los
+valores de $\lambda_{max}$ de moléculas sencillas en distintos
+disolventes. Para ello, utilizaremos los programas Gaussian y
+Gaussview. Además, visualizaremos los orbitales implicados en
+las transiciones electrónicas y mediremos las energías 
+asociadas a las excitaciones electrónicas.
+
+\section{Resultados y discusión}
+\begin{itemize}
+    \item Expresar en forma de tabla los valores de $\lambda_{max}$ obtenidos en los diferentes disolventes.
+\item Interpretar las variaciones observadas en función de la naturaleza de los disolventes.
+\item Expresar en forma de tabla los valores de $\lambda_{max}$ obtenidos para los diferentes compuestos
+carbonílicos.
+\item Correlacionar los valores de las longitudes de onda con el carácter dador o aceptor de los
+sustituyentes unidos al grupo acetilo, y compararlo con el dato bibliográfico del
+acetaldehído.
+\end{itemize}
+\end{document}
