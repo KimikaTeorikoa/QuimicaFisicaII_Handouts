@@ -8,7 +8,7 @@
 % Set up the images/graphics package
 \usepackage{graphicx}
 \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
-\graphicspath{{graphics/}}
+\graphicspath{{figs/}{graphics/}}
 
 \title[Química Física II: Tema 1, Antecedentes]{
 Tema 1: Antecedentes de la Mecánica Cuántica}
@@ -81,11 +81,17 @@ captura la \textbf{ley de desplazamiento de Wien},
 \label{eq:Wien}
 \end{equation}
 que fue el primer esfuerzo en sistematizar el comportamiento
-de la radiación del denominado ``cuerpo negro''.
+de la radiación del denominado ``cuerpo negro'' (Figura \ref{fig:wien}).%
+\begin{marginfigure}
+  \includegraphics{cuerponegro_wien_v1.pdf}
+  \caption{Ley de desplazamiento de Wien: la longitud de onda del máximo de
+  emisión, $\lambda_\mathrm{max}$, frente a $1/T$.}
+  \label{fig:wien}
+\end{marginfigure}%
 Definimos el \textbf{cuerpo negro} como un objeto 
 idealizado que es capaz de absorber y emitir 
 todas las longitudes de onda uniformemente\sidenote{
-Kirchoff es quien define el cuerpo negro en 1859.}. 
+Kirchhoff es quien define el cuerpo negro en 1859.}. 
 Una buena
 representación del cuerpo negro sería un dispositivo experimental 
 con una cavidad cuyo interior es reflectante, que se prepara en
@@ -106,22 +112,35 @@ Jeans} a la siguiente relación:
 \rho=\frac{8\pi k_BT}{\lambda^4},
 \label{eq:rayleigh-jeans}
 \end{equation}
-donde $\rho$ es la densidad de estados para una longitud de onda
-$\lambda$, y $k_B$ es la constante de Boltzmann 
+donde $\rho$ es la \textbf{densidad espectral de energía} a la longitud
+de onda $\lambda$, es decir, la energía radiante por unidad de volumen y por
+unidad de intervalo de longitud de onda (J m$^{-3}$ por unidad de $\lambda$),
+y $k_B$ es la constante de Boltzmann 
 ($k_B=R/N_A=1.381\times 10^{-23}$ J K$^{-1}$).
 Esta ecuación, conocida como la \textbf{ecuación de Rayleigh-Jeans},
-expresa la contribución a la energía de la radiación para cada una de las 
-longitudes de onda a la densidad de estados. 
+expresa la contribución de cada longitud de onda a la energía total de la
+radiación. 
 Como vemos la dependencia con  $\lambda$ es inversa con la
 cuarta potencia.  A valores elevados de $\lambda$, la predicción
 es acertada, pero a longitudes de onda bajas (correspondiente a
-radiación de muy alta energía), la densidad aumentaría 
-monotónicamente. Esto  conduciría a la denominada ``catástrofe 
-ultravioleta'', porque de acuerdo con el aumento monotónico de
-la densidad de estados, la cantidad de radiación de alta energía 
+radiación de muy alta energía), $\rho$ aumentaría 
+monótonamente. Esto  conduciría a la denominada ``catástrofe 
+ultravioleta'', porque de acuerdo con el aumento monótono de
+la densidad espectral de energía, la cantidad de radiación de alta energía 
 nunca dejaría de aumentar. 
 Este resultado revelaba inequívocamente un fallo en la descripción
 clásica del sistema.
+
+\begin{figure}
+  \includegraphics{cuerponegro_planck_rayleigh-jeans_v1.pdf}
+  \caption{Distribución de Planck (Ecuación \protect\ref{eq:planck}) a tres
+  temperaturas, con el máximo de cada curva señalado. La línea discontinua es
+  la predicción clásica de Rayleigh-Jeans (Ecuación \protect\ref{eq:rayleigh-jeans})
+  a 6000 K, que diverge como $\lambda^{-4}$ al disminuir $\lambda$: la
+  catástrofe ultravioleta. La línea de puntos une los máximos y es la ley de
+  desplazamiento de Wien (Ecuación \protect\ref{eq:Wien}).}
+  \label{fig:planck}
+\end{figure}
 
 En 1900, \textbf{Max Planck} resolvió este problema asumiendo
 que la energía de cada oscilador estaba limitada a una serie 
@@ -133,10 +152,10 @@ el descubrimiento de los cuantos de energía''.
 Max Planck tardó en
 aceptar las implicaciones de su descubrimiento, hasta decir ya en 
 1911 que ``La hipótesis de los cuantos nunca se
-desvanecerá del mundo" y ``No creo que esté yendo demasiado lejos si expreso la opinión de que con esta hipótesis se sientan las 
+desvanecerá del mundo'' y ``No creo que esté yendo demasiado lejos si expreso la opinión de que con esta hipótesis se sientan las 
 bases para la construcción de una teoría que está destinada a impregnar algún día los rápidos y delicados eventos del mundo molecular con una nueva luz''. }
-En la aproximación de Raleigh y Jeans se asumía que las energías 
-de los osciladores podía asumir cualquier valor, y eran por tanto
+En la aproximación de Rayleigh y Jeans se asumía que las energías 
+de los osciladores podían tomar cualquier valor, y eran por tanto
 continuas. Planck, en cambio, introdujo la revolucionaria idea
 de que las energías de los osciladores podían transmitirse en
 forma de paquetes discretos, cuyas energías debían
@@ -146,10 +165,10 @@ $\nu$, es decir,
 E=nh\nu,
 \end{equation}
 donde $n=1,2,3...$. La expresión resultante
-para la densidad de estados de acuerdo con esta descripción
+para la densidad espectral de energía de acuerdo con esta descripción
 es la denominada \textbf{distribución de Planck},
 \begin{equation}
-    \rho=\frac{8\pi h c}{\lambda^5(\mathrm{e}^{hc/\lambda k_BT}-1)}\
+    \rho=\frac{8\pi h c}{\lambda^5(\mathrm{e}^{hc/\lambda k_BT}-1)}
 \label{eq:planck}
 \end{equation}
 Para longitudes de onda bajas, $\rho$ se hace cero debido al 
@@ -161,7 +180,7 @@ pero ajustando a los datos experimentales se pudo recuperar
 su valor de 
 $h=6.626\times 10^{-34}$J$\cdot$s.\sidenote{A lo largo de este curso, haremos uso de esta 
 \textbf{constante de Planck} y de su forma reducida,
-$\hbar=h/2\pi=1.055\times 10^{-34}$  m$^2$kg/s.} 
+$\hbar=h/2\pi=1.055\times 10^{-34}$ J$\cdot$s.} 
 De acuerdo con
 esta nueva interpretación ``cuántica'', los osciladores se 
 excitan sólo cuando hay suficiente energía disponible para 
@@ -172,9 +191,13 @@ La segunda evidencia experimental que iba más allá de lo que la
 Física clásica era capaz de predecir es el denominado efecto
 fotoeléctrico. 
 En este caso, el experimento, realizado por el científico
-alemán \textbf{Heinritz Hertz} entre 1886 y 1887 para
+alemán \textbf{Heinrich Hertz} entre 1886 y 1887 para
 verificar la teoría de Maxwell, consistía en 
-exponer a un material determinado a una radiación ultravioleta.
+exponer a un material determinado a una radiación
+ultravioleta.\sidenote{Hertz observó el efecto, pero fue \textbf{Philipp
+Lenard} quien en 1902 lo caracterizó sistemáticamente y estableció que la
+energía de los electrones emitidos depende de la frecuencia y no de la
+intensidad. Recibió el Premio Nobel en 1905.}
 La predicción clásica era que al ir aumentando la intensidad
 de la radiación, los electrones de la superficie del material
 oscilarían más violentamente y acabarían por desprenderse
@@ -194,7 +217,7 @@ Fueron las siguientes:
 En particular, este segundo punto era contrario a las predicciones de
 Maxwell. Incluso con muy bajas intensidades de radiación
 se producía la ionización del material con tal de que se cumpliese
-la condici\'on $\nu>\nu_0$.
+la condición $\nu>\nu_0$.
 El efecto fotoeléctrico indica que la radiación
 tiene comportamiento de partícula, y que sus partículas 
 constituyentes, los fotones, son capaces de colisionar
@@ -236,7 +259,19 @@ producir la emisión del electrón. En el caso de que
 $h\nu<\Phi$ no se produce liberación de electrones, pero si
 por el contrario $h\nu>\Phi$ entonces sí que se produce
 ionización y con una cantidad de energía que podemos calcular.
-La Ecuación \ref{eq:work} pudo utilizarse para determinar 
+La Ecuación \ref{eq:work} predice que la energía cinética máxima de los
+electrones emitidos crece linealmente con $\nu$, con una pendiente $h$ que es
+la misma para todos los metales, y que corta el eje de abscisas en
+$\nu_0=\Phi/h$, característica de cada uno (Figura \ref{fig:fotoelectrico}).%
+\begin{figure}
+  \includegraphics{fotoelectrico_ecin-nu_v1.pdf}
+  \caption{Energía cinética máxima de los electrones emitidos frente a la
+  frecuencia de la radiación incidente, para el potasio ($\Phi=2.24$ eV) y el
+  cinc ($\Phi=4.31$ eV). Las dos rectas son paralelas: su pendiente común es
+  $h$. Cada una corta el eje en la frecuencia umbral $\nu_0=\Phi/h$ del metal.}
+  \label{fig:fotoelectrico}
+\end{figure}%
+Esta ecuación pudo así utilizarse para determinar 
 la constante de Planck, $h$.  A partir de dos experimentos diferentes
 era posible determinar con alta precisión una misma constante,
 lo cual parecía proporcionar solidez a la misteriosa teoría
@@ -264,7 +299,7 @@ Una primera indicación nos la da la relación del físico Francés
 \textbf{Louis de Broglie}, que propuso que una partícula que viajase
 con un momento lineal $p$ tendría una longitud de onda 
 asociada\sidenote{De Broglie fue galardonado con el Premio Nobel
-por descubrir "la naturaleza ondulatoria de los electrones"}
+por descubrir ``la naturaleza ondulatoria de los electrones''.}
 \begin{equation}
 \lambda=\frac{h}{p}\label{eq:debroglie}
 \end{equation}
@@ -274,7 +309,17 @@ Clásica.
 Los cuerpos de gran tamaño tienen momentos lineales enormes, debido
 a su gran masa. Por eso sus longitudes de onda son indetectables
 y las propiedades oscilatorias de los cuerpos macroscópicos no 
-pueden ser observados.	
+pueden ser observadas (Figura \ref{fig:debroglie}).
+
+\begin{figure}
+  \includegraphics{debroglie_lambda-masa_v1.pdf}
+  \caption{Longitud de onda de de Broglie, $\lambda_\mathrm{dB}=h/p$, para
+  cuatro objetos de masa muy distinta. La banda gris marca la escala atómica:
+  sólo se observa difracción cuando $\lambda_\mathrm{dB}$ es comparable al
+  tamaño del obstáculo, y para una pelota de tenis es unos treinta órdenes de
+  magnitud menor.}
+  \label{fig:debroglie}
+\end{figure}
 
 \section{Principio de Incertidumbre de Heisenberg}
 Otra de las grandes rupturas que establece la Mecánica Cuántica 
@@ -282,7 +327,7 @@ con la Mecánica Clásica es nuestra capacidad de medir una
 determinada propiedad con precisión arbitraria. Dentro de la 
 formulación de la Mecánica Cuántica es muy importante el Principio
 de Incertidumbre, enunciado por \textbf{Werner Heisenberg} en 
-1927.\sidenote{Este descubrimiento le valió un Premio Nobel en 1932 por "la creación de la Mecánica Cuántica".} 
+1927.\sidenote{Este descubrimiento le valió un Premio Nobel en 1932 por ``la creación de la Mecánica Cuántica''.} 
 Establece que es imposible determinar simultáneamente el momento 
 y la posición de una partícula. 
 
@@ -291,17 +336,19 @@ este principio en
 mayor profundidad más adelante en el curso, la precisión de una
 medida viene determinada por
 \begin{equation}
-    \Delta x\Delta q\geq 1/2\hbar\label{eq:heiss}
+    \Delta x\,\Delta p_x\geq \frac{\hbar}{2}\label{eq:heisenberg}
 \end{equation}
-donde $\Delta p=(\langle p^2\rangle-\langle p \rangle^2)^{1/2}$ y
-$\Delta q=(\langle q^2\rangle-\langle q\rangle^2)^{1/2}$. En realidad
+donde $\Delta x=(\langle x^2\rangle-\langle x\rangle^2)^{1/2}$ y
+$\Delta p_x=(\langle p_x^2\rangle-\langle p_x\rangle^2)^{1/2}$ son las
+desviaciones estándar de la posición y del momento \emph{en la misma
+dirección}. En realidad
 el principio de incertidumbre no sólo afecta al momento y a la posición, sino a 
 cualquier par de \textbf{variables complementarias}. Del mismo modo
-que en la Ecuación \ref{eq:heiss} para posición y momento, para 
+que en la Ecuación \ref{eq:heisenberg} para posición y momento, para 
 la duración de un proceso cuántico $t$ y su energía $E$ podemos
 escribir
 \begin{equation}
-    \Delta E\Delta t\geq 1/2\hbar.
+    \Delta E\,\Delta t\geq \frac{\hbar}{2}.
 \end{equation}
 
 \section{Espectros atómicos}
@@ -354,10 +401,23 @@ expresión
     \tilde{\nu}=R_H\bigg(\frac{1}{n^2_1} -\frac{1}{n^2_2}\bigg) 
     \label{eq:Rydberg}
 \end{equation}
-donde $\tilde{\nu}=1/\lambda$ es el número de onda, $R_H$=109677 cm$^{-1}$ 
+donde $\tilde{\nu}=1/\lambda$ es el número de onda y
+$R_H=109677.58$ cm$^{-1}$ 
 es la constante de Rydberg del átomo de hidrógeno. La Ecuación 
 \ref{eq:Rydberg} explica las líneas espectrales de Lyman, Balmer, 
-y Paschen, donde $n_1=1,2, 3$ y $n_2=2,3,4$, respectivamente.
+y Paschen, donde $n_1=1,2, 3$ y $n_2>n_1$, respectivamente
+(Figura \ref{fig:bohr}).
+
+\begin{figure*}
+  \includegraphics{hidrogeno_bohr-series_v1.pdf}
+  \caption{Izquierda: niveles de energía del átomo de hidrógeno según el
+  modelo de Bohr, con las transiciones de las series de Lyman ($n_1=1$),
+  Balmer ($n_1=2$) y Paschen ($n_1=3$). Derecha: las líneas espectrales
+  correspondientes, en escala logarítmica de $\lambda$. Sólo la serie de
+  Balmer cae dentro del visible; Lyman queda en el ultravioleta y Paschen en
+  el infrarrojo.}
+  \label{fig:bohr}
+\end{figure*}
 
 
 %\begin{thebibliography}{}
