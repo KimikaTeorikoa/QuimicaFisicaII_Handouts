@@ -6,10 +6,14 @@ Scripts de matplotlib que generan todas las figuras de los apuntes en
 ## Uso
 
 ```bash
-cd notebooks
-python fig_tema03.py          # un capítulo
-make -C .. figuras            # todos
+python run_notebooks.py                        # todos los cuadernos
+python run_notebooks.py nb03_sistemas_modelo.ipynb   # uno solo
+make -C .. figuras                             # equivalente al primero
 ```
+
+`run_notebooks.py` ejecuta los cuadernos **en memoria**: el `.ipynb` del disco
+no se toca, de modo que en el repositorio nunca quedan salidas guardadas.
+Reenvía a la terminal lo que imprimen las celdas y aborta si alguna falla.
 
 Requiere `numpy`, `scipy` y `matplotlib`. En este equipo el intérprete con la
 pila científica es `~/opt/anaconda3/bin/python3` (el `python3` de Homebrew no
@@ -17,20 +21,25 @@ tiene scipy).
 
 ## Estructura
 
-| Script | Figuras | Tema |
+| Cuaderno | Figuras | Tema |
 |---|---|---|
-| `fig_tema01.py` | 5 | Antecedentes |
-| `fig_tema02.py` | 3 | Postulados |
-| `fig_tema03.py` | 7 | Sistemas modelo |
-| `fig_tema04.py` | 4 | Momento angular |
-| `fig_tema05.py` | 5 | Átomo de hidrógeno |
-| `fig_tema06.py` | 4 | Métodos aproximados |
-| `fig_tema07.py` | 5 | Átomos polielectrónicos |
-| `fig_tema09.py` | 4 | Moléculas diatómicas |
-| `fig_tema10.py` | 4 | Moléculas poliatómicas |
-| `fig_practica_ir.py` | 3 | Práctica de IR |
+| `nb01_antecedentes.ipynb` | 5 | Antecedentes |
+| `nb02_postulados.ipynb` | 3 | Postulados |
+| `nb03_sistemas_modelo.ipynb` | 7 | Sistemas modelo |
+| `nb04_momento_angular.ipynb` | 4 | Momento angular |
+| `nb05_hidrogeno.ipynb` | 5 | Átomo de hidrógeno |
+| `nb06_metodos_aproximados.ipynb` | 4 | Métodos aproximados |
+| `nb07_polielectronicos.ipynb` | 5 | Átomos polielectrónicos |
+| `nb09_diatomicas.ipynb` | 4 | Moléculas diatómicas |
+| `nb10_poliatomicas.ipynb` | 4 | Moléculas poliatómicas |
+| `nbP1_practica_ir.ipynb` | 3 | Práctica de IR |
 
-`qf2figs.py` es el módulo común: estilo, paleta, anchuras y `save()`.
+Cada cuaderno tiene **una celda por figura**, precedida de una celda de texto
+con su título, más una celda inicial de importaciones y constantes.
+
+`qf2figs.py` es el módulo común: estilo, paleta, anchuras y `save()`. Se deja
+como `.py` porque se importa desde todos los cuadernos.
+`run_notebooks.py` es el ejecutor sin cabeza que usa `make figuras`.
 
 ## Convenio de nombres
 
@@ -101,11 +110,12 @@ además funciona mejor en papel.
 Varios scripts imprimen valores que sirven de test de regresión frente a los
 datos de los apuntes:
 
-- `fig_tema05.py` → `r_max(1s)=1.00 a₀`, `r_max(2s)=5.24 a₀`, `⟨r⟩(1s)=1.50 a₀`
-- `fig_tema06.py` → variacional del oscilador 13.6 % por encima de la exacta
-- `fig_tema10.py` → Hückel butadieno `±1.618, ±0.618`; benceno `2,1,1,−1,−1,−2`;
-  deslocalización `0.472β` y `2β`; ángulo tetraédrico `109.47°`
-- `fig_practica_ir.py` → el método de diferencias entre combinaciones recupera
-  `B₀` y `B₁` exactamente
+- `nb05_hidrogeno.ipynb` → `r_max(1s)=1.00 a₀`, `r_max(2s)=5.24 a₀`, `⟨r⟩(1s)=1.50 a₀`
+- `nb06_metodos_aproximados.ipynb` → variacional del oscilador 13.6 % por
+  encima de la exacta
+- `nb10_poliatomicas.ipynb` → Hückel butadieno `±1.618, ±0.618`; benceno
+  `2,1,1,−1,−1,−2`; deslocalización `0.472β` y `2β`; ángulo tetraédrico `109.47°`
+- `nbP1_practica_ir.ipynb` → el método de diferencias entre combinaciones
+  recupera `B₀` y `B₁` exactamente
 
 Si alguno de estos números cambia, es que se ha roto algo.

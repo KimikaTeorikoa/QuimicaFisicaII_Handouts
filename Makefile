@@ -1,7 +1,7 @@
 # Química Física II — compilación de apuntes y figuras
 #
 #   make            compila todos los documentos
-#   make figuras    regenera todas las figuras
+#   make figuras    regenera todas las figuras (ejecuta los cuadernos)
 #   make tema03     compila un documento suelto
 #   make limpiar    borra los auxiliares
 
@@ -14,7 +14,7 @@ PRACTICAS  := practicas_exp_normativa practicas_exp_uvvis practicas_exp_ir
 EJERCICIOS := $(basename $(wildcard ejercicios/ejercicios_*.tex))
 TODOS      := $(TEMAS) $(MATES) $(PRACTICAS) $(EJERCICIOS)
 
-FIGSCRIPTS := $(wildcard notebooks/fig_*.py)
+CUADERNOS  := $(wildcard notebooks/nb*.ipynb)
 
 .PHONY: all figuras limpiar limpiar-todo comprobar $(TODOS)
 
@@ -25,11 +25,10 @@ $(TODOS):
 	@$(LATEX) $@.tex >/dev/null 2>&1 && echo OK || { echo FALLA; \
 	  grep -m1 -A3 '^!' $@.log; exit 1; }
 
-# Regenera todas las figuras en figs/
+# Regenera todas las figuras en figs/ ejecutando los cuadernos.
+# Los .ipynb no se modifican: se ejecutan en memoria, sin guardar salidas.
 figuras:
-	@for s in $(FIGSCRIPTS); do \
-	  echo "== $$s"; (cd notebooks && $(PYTHON) $$(basename $$s)) || exit 1; \
-	done
+	@$(PYTHON) notebooks/run_notebooks.py
 
 # Compila todo sin abortar al primer fallo: informe completo del estado
 comprobar:

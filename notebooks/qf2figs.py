@@ -85,7 +85,10 @@ def save(fig, sistema, observable, variante=None, v=1, close=True):
     FIGDIR.mkdir(exist_ok=True)
     partes = [sistema, observable] + ([variante] if variante else []) + [f"v{v}"]
     nombre = "_".join(partes) + ".pdf"
-    fig.savefig(FIGDIR / nombre)
+    # CreationDate=None omite la fecha del PDF: sin esto, cada regeneración
+    # cambia los 44 ficheros aunque el contenido sea idéntico, y el diff de
+    # git deja de ser informativo.
+    fig.savefig(FIGDIR / nombre, metadata={"CreationDate": None})
     fig.savefig(FIGDIR / nombre.replace(".pdf", ".png"), dpi=200)
     if close:
         plt.close(fig)
