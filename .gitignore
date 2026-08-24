@@ -1,0 +1,34 @@
+# Auxiliares de LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.idx
+*.ilg
+*.ind
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# PDF generados (los .tex son la fuente)
+tema*.pdf
+math*.pdf
+practicas_exp_*.pdf
+ejercicios/*.pdf
+ejercicios_*.pdf
+
+# PNG de inspección de figuras (los PDF sí se versionan)
+figs/*.png
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Vim
+*.swp
+*.swo
