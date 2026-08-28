@@ -46,10 +46,18 @@ Tema 1: Antecedentes de la mecánica cuántica}
 % Retratos históricos en el margen. Todas las imágenes son de dominio público
 % y proceden de Wikimedia Commons; la procedencia completa (autor, fecha,
 % licencia y enlace a la ficha) está en figs/retratos/CREDITOS.md.
-% El argumento opcional de marginfigure es un desplazamiento vertical: aquí
-% deja aire por arriba. El \vspace* final lo deja por abajo, y además cuenta
-% para la altura de la caja, de modo que LaTeX reserva ese hueco y ninguna
-% nota al margen se pega al retrato.
+%
+% El argumento opcional de marginfigure es un desplazamiento vertical y aquí
+% deja aire por arriba; el \vspace* final lo deja por abajo y, al contar para
+% la altura de la caja, hace que LaTeX reserve el hueco y que ninguna nota al
+% margen se pegue al retrato.
+%
+% El signo de tanto por ciento tras el corchete no es opcional: sin él, el
+% salto de línea deja un espacio literal al principio de la caja y la imagen
+% se sale 2,33 pt del margen (justo un espacio interpalabra del cuerpo del
+% pie). Sin corchete no ocurre, porque el lector de argumentos opcionales de
+% LaTeX se come los espacios mientras busca el «[».
+%
 % Una figura que ocupa página entera se centra verticalmente por defecto, lo
 % que deja un hueco enorme por encima y parece un descuido. La alineamos arriba.
 \makeatletter
@@ -57,7 +65,7 @@ Tema 1: Antecedentes de la mecánica cuántica}
 \makeatother
 
 \newcommand{\retrato}[2]{%
-  \begin{marginfigure}[\baselineskip]
+  \begin{marginfigure}[\baselineskip]%
     \includegraphics[width=\linewidth]{#1}\par
     \vspace{0.4ex}{\footnotesize #2}\par
     \vspace*{\baselineskip}
