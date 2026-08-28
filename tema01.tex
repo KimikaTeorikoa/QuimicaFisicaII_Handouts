@@ -46,10 +46,21 @@ Tema 1: Antecedentes de la mecánica cuántica}
 % Retratos históricos en el margen. Todas las imágenes son de dominio público
 % y proceden de Wikimedia Commons; la procedencia completa (autor, fecha,
 % licencia y enlace a la ficha) está en figs/retratos/CREDITOS.md.
+% El argumento opcional de marginfigure es un desplazamiento vertical: aquí
+% deja aire por arriba. El \vspace* final lo deja por abajo, y además cuenta
+% para la altura de la caja, de modo que LaTeX reserva ese hueco y ninguna
+% nota al margen se pega al retrato.
+% Una figura que ocupa página entera se centra verticalmente por defecto, lo
+% que deja un hueco enorme por encima y parece un descuido. La alineamos arriba.
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+
 \newcommand{\retrato}[2]{%
-  \begin{marginfigure}
+  \begin{marginfigure}[\baselineskip]
     \includegraphics[width=\linewidth]{#1}\par
-    \vspace{0.4ex}{\footnotesize #2}
+    \vspace{0.4ex}{\footnotesize #2}\par
+    \vspace*{\baselineskip}
   \end{marginfigure}}
 
 \begin{document}
@@ -358,13 +369,7 @@ $\Delta p_x=(\langle p_x^2\rangle-\langle p_x\rangle^2)^{1/2}$ son las
 desviaciones estándar de la posición y del momento \emph{en la misma
 dirección}. En realidad
 el principio de incertidumbre no solo afecta al momento y a la posición, sino a 
-cualquier par de \textbf{variables complementarias}. Del mismo modo
-que en la Ecuación \ref{eq:heisenberg} para posición y momento, para 
-la duración de un proceso cuántico $t$ y su energía $E$ podemos
-escribir
-\begin{equation}
-    \Delta E\,\Delta t\geq \frac{\hbar}{2}.
-\end{equation}
+cualquier par de \textbf{variables complementarias}.
 
 \section{Espectros atómicos}
 La última evidencia experimental que comentaremos procede de los 
@@ -376,7 +381,6 @@ emisión de un
 de onda. También el espectro de absorción de una molécula, formado por
 las frecuencias que le permiten cambiar de estado, es discontinuo.
 
-\retrato{retrato_bohr_v1.jpg}{Niels Bohr (1885--1962).}%
 Esto obligó a reformular los modelos atómicos en uso, incompatibles con
 tal discontinuidad. El problema era más grave todavía: un electrón que
 describe una órbita está acelerado y, según el electromagnetismo
@@ -400,6 +404,7 @@ emana de ellos''.}
     las órbitas permitidas debían satisfacer la relación
     $L=m_evr=n\hbar$.
 \end{enumerate}
+\retrato{retrato_bohr_v1.jpg}{Niels Bohr (1885--1962).}%
 Combinando estas ecuaciones podemos calcular el radio de las órbitas,
 \begin{equation}
     r_n=\bigg(\frac{4\pi \epsilon_0\hbar^2}{m_ee^2}\bigg)n^2=a_0n^2    
