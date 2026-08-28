@@ -1,6 +1,6 @@
 # Retratos — Tema 1 (Antecedentes de la mecánica cuántica)
 
-Los seis retratos proceden de **Wikimedia Commons** y están en **dominio
+Los cinco retratos proceden de **Wikimedia Commons** y están en **dominio
 público**: ninguno se acoge a uso legítimo (*fair use*) ni exige atribución,
 de modo que estos apuntes pueden compartirse y reutilizarse sin restricciones.
 Aun así, se acredita autoría y procedencia por buena práctica.
@@ -11,7 +11,6 @@ licencia completa y el historial.
 
 | archivo | persona | autor | fecha | licencia | Commons |
 |---|---|---|---|---|---|
-| `retrato_rayleigh_v1.jpg` | Lord Rayleigh | Autor desconocido | 1921 | Public domain | [ficha](https://commons.wikimedia.org/wiki/File:John_William_Strutt.jpg) |
 | `retrato_planck_v1.jpg` | Max Planck | Hugo Erfurth | 1938 | Public domain | [ficha](https://commons.wikimedia.org/wiki/File:Max_Planck_by_Hugo_Erfurth_1938cr_-_restoration1.jpg) |
 | `retrato_einstein_v1.jpg` | Albert Einstein | Lucien Chavan (ETH-Bibliothek Zürich) | 1905 | Public domain | [ficha](https://commons.wikimedia.org/wiki/File:Albert_Einstein_ETH-Bib_Portr_05937.jpg) |
 | `retrato_debroglie_v1.jpg` | Louis de Broglie | Agence Rol | 1929 | Public domain | [ficha](https://commons.wikimedia.org/wiki/File:Prince_Louis-Victor_de_Broglie.jpg) |
@@ -19,15 +18,6 @@ licencia completa y el historial.
 | `retrato_bohr_v1.jpg` | Niels Bohr | AB Lagrelius & Westphal (Fundación Nobel) | hacia 1922 | Public domain | [ficha](https://commons.wikimedia.org/wiki/File:Niels_Bohr.jpg) |
 
 ## Detalle por archivo
-
-### Lord Rayleigh — `retrato_rayleigh_v1.jpg`
-
-- **Fichero en Commons:** `File:John William Strutt.jpg`
-- **Página:** https://commons.wikimedia.org/wiki/File:John_William_Strutt.jpg
-- **Autor:** Autor desconocido
-- **Fecha:** 1921
-- **Licencia:** Public domain
-- **Resolución:** 600x807 px (original en Commons: 800x1077 px)
 
 ### Max Planck — `retrato_planck_v1.jpg`
 
