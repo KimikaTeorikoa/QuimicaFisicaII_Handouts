@@ -79,8 +79,9 @@ a muy elevadas temperaturas vemos que empieza a cambiar de
 color, adquiriendo tonalidades primero rojizas y luego azuladas.
 Esto se debe a que el cuerpo calentado emite radiación
 electromagnética, y el cambio de coloración, a que en esa radiación
-no todas las frecuencias están igualmente presentes. Si estudiamos cómo cambia la 
-distribución de longitudes de onda, $\lambda$, a medida que
+no todas las frecuencias están igualmente presentes. Si estudiamos cómo
+se reparte la energía emitida entre las distintas longitudes de onda
+$\lambda$, y cómo cambia ese reparto a medida que
 aumenta la temperatura, veremos que el máximo de la distribución
 se desplaza hacia longitudes de onda más cortas. Esta observación queda
 recogida en la \textbf{ley de desplazamiento de Wien},
@@ -112,7 +113,9 @@ como una colección de osciladores con todas las frecuencias o
 longitudes de onda posibles. Una radiación de longitud
 de onda determinada correspondería a un oscilador excitado. A partir de
 una descripción en la que la energía se repartía entre los osciladores
-de acuerdo con el \textbf{principio de equipartición}, llegó, con la
+de acuerdo con el \textbf{principio de equipartición} ---que asigna la
+misma energía media $k_BT$ a cada oscilador, con independencia de su
+frecuencia---, llegó, con la
 ayuda de \textbf{James Jeans}, a la siguiente relación:
 \begin{equation}
 \rho=\frac{8\pi k_BT}{\lambda^4},
@@ -129,10 +132,11 @@ radiación.
 Como vemos, $\rho$ es inversamente proporcional a la cuarta
 potencia de $\lambda$. Para valores elevados de $\lambda$ la predicción
 es acertada, pero a longitudes de onda cortas (correspondientes a
-radiación de muy alta energía), $\rho$ aumentaría 
-monótonamente. Esto conduciría a la denominada ``catástrofe
-ultravioleta'': la energía radiada a frecuencias altas crecería sin
-límite. 
+radiación de muy alta energía) $\rho$ crecería sin límite al disminuir
+$\lambda$. Esto conduciría a la denominada ``catástrofe
+ultravioleta'': al sumar la contribución de todas las longitudes de onda,
+la energía total radiada resultaría infinita, y bastaría con asomarse a
+la cavidad para recibir una cantidad ilimitada de energía. 
 Este resultado revelaba inequívocamente un fallo en la descripción
 clásica del sistema.
 
@@ -187,7 +191,12 @@ $\hbar=h/2\pi=1.055\times 10^{-34}$ J$\cdot$s.}
 De acuerdo con
 esta nueva interpretación ``cuántica'', los osciladores se 
 excitan solo cuando hay suficiente energía disponible para 
-alcanzar la energía $h\nu$.
+alcanzar la energía $h\nu$. Aquí está la clave: a longitudes de onda
+cortas $h\nu\gg k_BT$, de modo que la energía térmica disponible no basta
+para excitar esos osciladores, que permanecen así en su estado
+fundamental y no contribuyen a la radiación. Es justo lo contrario de lo
+que suponía la equipartición, y es lo que elimina la catástrofe
+ultravioleta.
 
 \section{El efecto fotoeléctrico}
 La segunda evidencia experimental que la física clásica no supo
@@ -242,9 +251,11 @@ paquetes de energía $E=h\nu$, conocidos como
 \textbf{fotones}.\sidenote{Quien los llamó así en 1926 fue G. N. Lewis, 
 más conocido por su 
 definición de ácidos y bases.}
-Einstein razonó que, para liberar un electrón, es
-necesario un cuanto de energía con frecuencia superior a un umbral
-$\nu_0$ característico de cada material. 
+Einstein razonó que arrancar un electrón del material cuesta una energía
+mínima $\Phi$, el \textbf{trabajo de extracción}, característica de cada
+material, y que un solo cuanto debe aportarla por completo: hace falta por
+tanto que $h\nu\geq\Phi$, lo que equivale a una frecuencia umbral
+$\nu_0=\Phi/h$.
 Usando un simple argumento de conservación de energía,
 mostró que el exceso se transformaría en energía
 cinética. Por tanto
@@ -254,9 +265,8 @@ E_\mathrm{cin}^{\max}=\frac{1}{2}m_ev_{\max}^2=h\nu - \Phi \label{eq:work}
 \end{equation}
 En el lado izquierdo de la ecuación nos encontramos con la 
 expresión habitual de la energía cinética. En el lado
-derecho, $h\nu$ es la energía de la radiación incidente, y 
-$\Phi$ es el \textbf{trabajo de extracción}, la energía mínima
-necesaria para arrancar un electrón del material. Si $h\nu<\Phi$ no se
+derecho, $h\nu$ es la energía de la radiación incidente, y el exceso
+sobre $\Phi$ es lo que se lleva el electrón: si $h\nu<\Phi$ no se
 emiten electrones; si $h\nu>\Phi$, sí, y con una energía cinética que
 podemos calcular.
 La Ecuación \ref{eq:work} predice que la energía cinética máxima de los
@@ -272,17 +282,18 @@ $\nu_0=\Phi/h$, característica de cada uno (Figura \ref{fig:fotoelectrico}).%
   \label{fig:fotoelectrico}
 \end{figure}%
 Esta ecuación pudo así utilizarse para determinar 
-la constante de Planck, $h$.  A partir de dos experimentos diferentes
-era posible determinar con alta precisión una misma constante,
-lo cual parecía proporcionar solidez a la misteriosa teoría
+la constante de Planck, $h$. Que dos experimentos tan distintos ---el
+ajuste de la radiación del cuerpo negro y el efecto fotoeléctrico---
+condujesen con alta precisión al mismo valor de una misma constante
+parecía proporcionar solidez a la misteriosa teoría
 cuántica.
 
 \section{Hipótesis de de Broglie}
-La explicación del efecto fotoeléctrico estableció el carácter de
-partícula de las ondas, en forma de fotones. 
-Experimentos similares sirvieron para 
-establecer el aún más revolucionario comportamiento como onda 
-de la materia. El experimento más importante lo llevaron a cabo 
+La explicación del efecto fotoeléctrico estableció el carácter
+corpuscular de la radiación, en forma de fotones. 
+Otros experimentos, de naturaleza muy distinta, sirvieron para 
+establecer la afirmación simétrica y aún más revolucionaria: el
+comportamiento como onda de la materia. El experimento más importante lo llevaron a cabo 
 \textbf{Davisson} y \textbf{Germer}, 
 que observaron la difracción de electrones en un cristal. 
 La difracción es la interferencia ---constructiva o destructiva--- 
@@ -321,9 +332,8 @@ y sus propiedades ondulatorias no pueden observarse
   \label{fig:debroglie}
 \end{figure}
 
+\FloatBarrier
 \section{Principio de incertidumbre de Heisenberg}
-\retrato{retrato_heisenberg_v1.jpg}{Werner Heisenberg hacia 1927, cuando
-  enunció el principio de incertidumbre.}%
 Otra de las grandes rupturas que establece la mecánica cuántica 
 con la mecánica clásica es el límite que impone a la determinación
 simultánea de ciertas magnitudes. Lo recoge el principio de
@@ -332,6 +342,8 @@ incertidumbre, enunciado por
 Establece que es imposible determinar simultáneamente el momento 
 y la posición de una partícula con precisión arbitraria. 
 
+\retrato{retrato_heisenberg_v1.jpg}{Werner Heisenberg hacia 1927, cuando
+  enunció el principio de incertidumbre.}%
 Aunque veremos la base matemática de 
 este principio en 
 mayor profundidad más adelante en el curso, la dispersión de los
@@ -355,14 +367,20 @@ escribir
 \section{Espectros atómicos}
 La última evidencia experimental que comentaremos procede de los 
 espectros atómicos. Si obtenemos el espectro de emisión
-de un elemento como el hidrógeno, encontramos que es discontinuo. Por tanto, la emisión de un
-átomo se produce solo a unos determinados valores de la longitud
+de un elemento como el hidrógeno, no encontramos una banda continua sino
+un conjunto de líneas separadas: un \textbf{espectro de líneas}. La
+emisión de un
+átomo se produce, por tanto, solo a unos determinados valores de la longitud
 de onda. También el espectro de absorción de una molécula, formado por
 las frecuencias que le permiten cambiar de estado, es discontinuo.
 
 \retrato{retrato_bohr_v1.jpg}{Niels Bohr (1885--1962).}%
-Esto hizo que tuvieran que reformularse los modelos atómicos que 
-se empleaban, y que parecían incompatibles con esta discontinuidad.
+Esto obligó a reformular los modelos atómicos en uso, incompatibles con
+tal discontinuidad. El problema era más grave todavía: un electrón que
+describe una órbita está acelerado y, según el electromagnetismo
+clásico, debería radiar de forma continua, perder energía y precipitarse
+sobre el núcleo en una fracción de segundo. Ni la estabilidad del átomo
+ni el carácter discreto de su espectro tenían explicación.
 El primer modelo que tuvo en consideración esta propiedad fue
 el de \textbf{Niels Bohr}, que partía de dos suposiciones:\sidenote{Bohr recibió el Premio Nobel en 1922 por su
 ``investigación de la estructura de los átomos y la radiación que
@@ -391,8 +409,9 @@ y la correspondiente energía de los diferentes niveles
     & -\frac{m_e}{2\hbar^2}\bigg(\frac{e^2}{4\pi\epsilon_0}\bigg)^2\bigg(\frac{1}{n^2}\bigg)
     \end{split}
 \end{equation}
-Para el hidrógeno, esta descripción es satisfactoria, y fue capaz de
-explicar transiciones entre niveles de acuerdo con la siguiente 
+Para el hidrógeno, esta descripción es satisfactoria. Combinando la
+expresión de $E_n$ con la condición de Bohr para una transición,
+$\Delta E=hc\tilde{\nu}$, se obtiene la siguiente
 expresión
 \begin{equation}
     \tilde{\nu}=R_H\bigg(\frac{1}{n^2_1} -\frac{1}{n^2_2}\bigg) 
@@ -400,10 +419,19 @@ expresión
 \end{equation}
 donde $\tilde{\nu}=1/\lambda$ es el número de onda y
 $R_H=109677.58$ cm$^{-1}$ 
-es la constante de Rydberg del átomo de hidrógeno. La Ecuación 
+es la constante de Rydberg del átomo de hidrógeno, que el modelo predice
+a partir de las constantes fundamentales. La Ecuación 
 \ref{eq:Rydberg} explica las líneas espectrales de Lyman, Balmer, 
 y Paschen, donde $n_1=1,2, 3$ y $n_2>n_1$, respectivamente
 (Figura \ref{fig:bohr}).
+
+El éxito del modelo de Bohr acaba, sin embargo, en el hidrógeno: aplicado
+al helio o a cualquier átomo con más de un electrón, falla por completo.
+Y ni siquiera para el hidrógeno explica por qué unas transiciones son más
+intensas que otras. El acierto de la cuantización convivía así con la
+arbitrariedad de imponerla sobre una mecánica clásica que seguía intacta.
+Hará falta una teoría construida desde cero, y es la que desarrollaremos
+en el resto del curso.
 
 \begin{figure*}
   \includegraphics{hidrogeno_bohr-series_v1.pdf}
