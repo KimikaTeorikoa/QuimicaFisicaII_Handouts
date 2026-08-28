@@ -5,7 +5,7 @@ público**: ninguno se acoge a uso legítimo (*fair use*) ni exige atribución,
 de modo que estos apuntes pueden compartirse y reutilizarse sin restricciones.
 Aun así, se acredita autoría y procedencia por buena práctica.
 
-La única modificación es un reescalado a 700 px de ancho respecto del original
+La única modificación es un reescalado a 600 px de ancho respecto del original
 de Commons. La columna «Commons» enlaza a la ficha del archivo, donde consta la
 licencia completa y el historial.
 
@@ -27,7 +27,7 @@ licencia completa y el historial.
 - **Autor:** Autor desconocido
 - **Fecha:** 1921
 - **Licencia:** Public domain
-- **Resolución:** 520x700 px (original en Commons: 800x1077 px)
+- **Resolución:** 600x807 px (original en Commons: 800x1077 px)
 
 ### Max Planck — `retrato_planck_v1.jpg`
 
@@ -36,7 +36,7 @@ licencia completa y el historial.
 - **Autor:** Hugo Erfurth
 - **Fecha:** 1938
 - **Licencia:** Public domain
-- **Resolución:** 553x700 px (original en Commons: 2544x3216 px)
+- **Resolución:** 600x758 px (original en Commons: 2544x3216 px)
 
 ### Albert Einstein — `retrato_einstein_v1.jpg`
 
@@ -45,7 +45,7 @@ licencia completa y el historial.
 - **Autor:** Lucien Chavan (ETH-Bibliothek Zürich)
 - **Fecha:** 1905
 - **Licencia:** Public domain
-- **Resolución:** 486x700 px (original en Commons: 8206x11811 px)
+- **Resolución:** 600x863 px (original en Commons: 8206x11811 px)
 
 ### Louis de Broglie — `retrato_debroglie_v1.jpg`
 
@@ -54,7 +54,7 @@ licencia completa y el historial.
 - **Autor:** Agence Rol
 - **Fecha:** 1929
 - **Licencia:** Public domain
-- **Resolución:** 525x700 px (original en Commons: 4502x6002 px)
+- **Resolución:** 600x800 px (original en Commons: 4502x6002 px)
 
 ### Werner Heisenberg — `retrato_heisenberg_v1.jpg`
 
@@ -72,5 +72,5 @@ licencia completa y el historial.
 - **Autor:** AB Lagrelius & Westphal (Fundación Nobel)
 - **Fecha:** hacia 1922
 - **Licencia:** Public domain
-- **Resolución:** 497x700 px (original en Commons: 1456x2048 px)
+- **Resolución:** 600x843 px (original en Commons: 1456x2048 px)
 
