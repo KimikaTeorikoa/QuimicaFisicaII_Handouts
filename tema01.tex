@@ -8,7 +8,7 @@
 % Set up the images/graphics package
 \usepackage{graphicx}
 \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
-\graphicspath{{figs/}{graphics/}}
+\graphicspath{{figs/}{figs/retratos/}{graphics/}}
 
 \title[Química Física II: Tema 1, Antecedentes]{
 Tema 1: Antecedentes de la mecánica cuántica}
@@ -43,6 +43,15 @@ Tema 1: Antecedentes de la mecánica cuántica}
 \newcommand{\doccls}[1]{\texttt{#1}}% document class name
 \newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
 
+% Retratos históricos en el margen. Todas las imágenes son de dominio público
+% y proceden de Wikimedia Commons; la procedencia completa (autor, fecha,
+% licencia y enlace a la ficha) está en figs/retratos/CREDITOS.md.
+\newcommand{\retrato}[2]{%
+  \begin{marginfigure}
+    \includegraphics[width=0.75\linewidth]{#1}\par
+    \vspace{0.4ex}{\footnotesize #2}
+  \end{marginfigure}}
+
 \begin{document}
 
 \maketitle% this prints the handout title, author, and date
@@ -64,6 +73,7 @@ clásica no era capaz de explicar.
 %\printclassoptions
 
 \section{Radiación del cuerpo negro}
+\retrato{retrato_rayleigh_v1.jpg}{Lord Rayleigh (1842--1919).}%
 La primera de estas observaciones está relacionada con un
 fenómeno que podemos observar cotidianamente. Cuando calentamos un metal 
 a muy elevadas temperaturas vemos que empieza a cambiar de 
@@ -138,6 +148,7 @@ clásica del sistema.
   \label{fig:planck}
 \end{figure}
 
+\retrato{retrato_planck_v1.jpg}{Max Planck (1858--1947).}%
 En 1900, \textbf{Max Planck} resolvió este problema suponiendo
 que la energía de cada oscilador estaba restringida a una serie 
 de valores discretos, es decir, estaba 
@@ -204,6 +215,8 @@ Fueron las siguientes:
     \item La energía cinética de los electrones dependía de la frecuencia de la radiación incidente, y era independiente de
     la intensidad de esta radiación.
 \end{enumerate}
+\retrato{retrato_einstein_v1.jpg}{Albert Einstein en 1905, el año en que
+  explicó el efecto fotoeléctrico.}%
 En particular, este segundo punto era contrario a las predicciones de
 Maxwell. Incluso con muy bajas intensidades de radiación
 se producía la emisión de electrones con tal de que se cumpliese
@@ -281,6 +294,7 @@ revelado después experimentos con partículas $\alpha$ o en
 el hidrógeno molecular, confirmando que las partículas tienen
 características de ondas. 
 
+\retrato{retrato_debroglie_v1.jpg}{Louis de Broglie (1892--1987).}%
 ¿Pero cómo racionalizamos esta dualidad de ondas y cuerpos?
 Una primera indicación nos la da la relación del físico francés
 \textbf{Louis de Broglie}, que propuso que una partícula que viajase
@@ -309,6 +323,8 @@ y sus propiedades oscilatorias no pueden observarse
 \end{figure}
 
 \section{Principio de incertidumbre de Heisenberg}
+\retrato{retrato_heisenberg_v1.jpg}{Werner Heisenberg hacia 1927, cuando
+  enunció el principio de incertidumbre.}%
 Otra de las grandes rupturas que establece la mecánica cuántica 
 con la mecánica clásica es el límite que impone a nuestra capacidad
 de medir. Lo recoge el principio de incertidumbre, enunciado por
@@ -344,6 +360,7 @@ de un elemento como el hidrógeno, encontramos que es discontinuo. Por tanto, la
 de onda. También el espectro de absorción de una molécula, formado por
 las frecuencias que le permiten cambiar de estado, es discontinuo.
 
+\retrato{retrato_bohr_v1.jpg}{Niels Bohr (1885--1962).}%
 Esto hizo que tuvieran que reformularse los modelos atómicos que 
 se empleaban, y que parecían incompatibles con esta discontinuidad.
 El primer modelo que tuvo en consideración esta propiedad fue
