@@ -191,45 +191,91 @@ riesgo real de continuidad.
 
 ---
 
-### Tema 2 — Postulados (`tema02.tex`, 430 líneas)
+### Tema 2 — Postulados (`tema02.tex`) ✅ REVISADO 2026-09-03
 
-**Correcciones**
+**Estado: terminado.** 8 páginas, 0 overfull, sin referencias sin resolver.
+Las cuatro figuras colocadas y citadas desde el texto.
 
-| Sev | Línea | Problema | Corrección |
-|---|---|---|---|
-| 🔴 | 127 | Coordenadas esféricas: `z = \cos\theta` | `z = r\cos\theta` |
-| 🟠 | 136 | Límite de integración `\int_\infty^\infty` | `\int_{-\infty}^{\infty}` |
-| 🟠 | 235-239 | Postulado de la medida mal enunciado: *"el valor del observable en una serie de medidas es igual al valor promedio"*. Se salta lo esencial | reformular: **cada medida individual devuelve un autovalor** $\omega_k$; lo que es el valor esperado es la **media sobre muchas medidas**. Tal como está, el alumno concluye que una medida da $\langle\Omega\rangle$ |
-| 🟠 | 228-229 | "Sus funciones propias son ortogonales" sin condición | sólo para **autovalores distintos**; si hay degeneración, se pueden ortogonalizar |
-| 🟠 | 202 | `\begin{tabular}{lcr}` con sólo 2 columnas | `{ll}` |
-| 🟠 | 353 | $(\Delta\Omega^2)$ | $(\Delta\Omega)^2$ |
-| 🟠 | 341, 345 | "$\Delta x=0$", "$\Delta p=\infty$" para un paquete de ondas | son límites idealizados; escribir $\Delta x\to0$, $\Delta p\to\infty$ |
-| 🟠 | 111-113 | La normalización mezcla $N$ y $\psi$: $N^2\int\psi^\star\psi\,dx=1$, pero después se usa $\psi$ ya normalizada | fijar un convenio y mantenerlo |
-| 🟡 | 70 | `\section*{Estados y funciones de onda}` sin numerar mientras el resto sí | quitar el `*` |
-| 🟡 | 238-239 | Comillas tipográficas `“ ”` en el fuente | ``` `` '' ``` |
-| 🟡 | 165 | "Un ejemplo de operador, pueden ser el operador..." | concordancia |
-| 🟡 | 101 | $|\psi(r)|^2d\tau$ escrito como *proporcional*, cuando ya está normalizado | "es igual a" |
+**Correcciones — todas resueltas**
 
-**Mejoras**
+| Sev | Problema | Resolución |
+|---|---|---|
+| ✅ 🔴 | Coordenadas esféricas: `z = \cos\theta` | `z = r\cos\theta` |
+| ✅ 🟠 | Límite de integración `\int_\infty^\infty` | reescrita como $\int\psi^\star\psi\,d\tau=1$; los límites $-\infty,\infty$ son el idioma 1D y no proceden sobre $d\tau$ |
+| ✅ 🟠 | Postulado de la medida mal enunciado | reescrito: cada medida devuelve un autovalor $\omega_k$. El cuerpo del texto ya lo decía bien y contradecía al recuadro |
+| ✅ 🟠 | Ortogonalidad sin condición | añadida la condición de autovalores distintos + `\sidenote` sobre degeneración |
+| ✅ 🟠 | `tabular}{lcr}` con 2 columnas | `{ll}`; los `\toprule`/`\midrule` sobresalían por una tercera columna fantasma |
+| ✅ 🟠 | $(\Delta\Omega^2)$ | $(\Delta\Omega)^2$, y etiquetada `eq:varianza` |
+| ✅ 🟠 | "$\Delta x=0$", "$\Delta p=\infty$" | $\Delta x\rightarrow0$, $\Delta p\rightarrow\infty$, y el párrafo reescrito como proceso límite |
+| ✅ 🟠 | Normalización mezcla $N$ y $\psi$ | se mantiene $N$ en `eq:norm`, se añade $N=(\int\psi^\star\psi\,dx)^{-1/2}$ y se declara que a partir de ahí $\psi$ ya está normalizada |
+| ✅ 🟡 | `\section*` sin numerar | quitado el `*`; las 7 secciones numeradas |
+| ✅ 🟡 | Comillas tipográficas `“ ”` | eliminadas; el término inglés va en `\textit{}`, como el resto del tema |
+| ✅ 🟡 | "Un ejemplo de operador, pueden ser" | "es el operador diferencial". **Ojo:** se dio por resuelto por error en la primera pasada (está en la sección de operadores, que no se había tocado); corregido en una segunda revisión |
+| ❌ 🟡 | ~~$\|\psi(r)\|^2d\tau$ "proporcional" → "igual a"~~ | **hallazgo rechazado**: en ese punto $\psi$ todavía no está normalizada, así que *proporcional* es lo correcto. Se deja como estaba |
 
-- 🔵 **Numerar los postulados explícitamente** (I-VI) y ponerlos juntos en un
-  recuadro al inicio, antes de desarrollarlos. Ahora están dispersos y el alumno
-  no sabe cuántos son.
-- 🔵 El postulado de Pauli (§ final) es en realidad un postulado *aparte* y se
-  vuelve a contar entero en el Tema 7. Decidir dónde vive y dejar en el otro sitio
-  sólo una referencia cruzada.
-- 🔵 Falta un **ejemplo resuelto** en todo el tema. Añadir uno mínimo: normalizar
-  $\psi=Ne^{-ax^2}$ y calcular $\langle x\rangle$, $\langle x^2\rangle$.
-- 🔵 Falta la relación explícita $\langle\Omega\rangle=\int\psi^\star\hat\Omega\psi\,d\tau$
-  como ecuación numerada — se menciona pero nunca se escribe.
-- 🔵 Introducir aquí la **notación de Dirac** (ya está desarrollada en `math01`) y
-  hacer la referencia cruzada.
+**Hallazgos nuevos, no previstos en este plan — resueltos**
 
-**Figuras** → `nb02_postulados.ipynb`
-1. Funciones de onda **aceptables vs no aceptables** (multivaluada, discontinua, derivada discontinua, no integrable) en un panel 2×2. Es la figura que más rentabiliza el §"requisitos".
-2. $\psi$ y $|\psi|^2$ para un paquete gaussiano, con $\Delta x$ marcado.
-3. Paquete de ondas: superposición progresiva de 1, 3, 10, 100 armónicas → localización creciente en $x$ y deslocalización en $k$. Es la demostración visual del principio de incertidumbre y ahora sólo está en palabras (líneas 334-347).
-4. Par $\psi(x)$ / $\tilde\psi(k)$ mostrando $\Delta x\,\Delta k\ge 1/2$ para tres anchuras.
+| Sev | Problema | Resolución |
+|---|---|---|
+| ✅ 🟠 | `$\Psi(q,t)^2$` para argumentar que la densidad no depende del tiempo | $\|\Psi\|^2$, con la cancelación de fases escrita explícitamente. $\Psi^2$ conservaría $e^{-2iEt/\hbar}$ |
+| ✅ 🟠 | La ecuación de Schrödinger **independiente del tiempo** no aparecía en ningún sitio | $\hat{H}\psi=E\psi$ como `eq:schro-independiente`, más el argumento de separación de variables |
+| ✅ 🟠 | Pauli enunciado en prosa: rompía la numeración de postulados | metido en `theorem`; ahora hay 6 postulados numerados |
+| ✅ 🟡 | `$\psi_i(qi)$` | desaparece al condensar la sección de Pauli |
+| ✅ 🟡 | Hermiticidad en `dx` y ortogonalidad en `d\tau` dos líneas más abajo | ambas en `d\tau` |
+| ✅ 🟡 | Conmutador sin sombreros en la relación de incertidumbre | $[\hat{\Omega}_1,\hat{\Omega}_2]$, y `1/2` → `\frac{1}{2}` |
+| ✅ 🟡 | *remplazado*, *region*, *sóla*, `\textbf{compatibles }` | corregidos |
+| ✅ 🟠 | Figuras generadas pero sin `\graphicspath{{figs/}}` | añadido. **Los temas 03–10 necesitarán el mismo cambio** |
+| ✅ 🟠 | "Un tipo de operador particular… son los que se pueden expresar en la forma de una ecuación de valores propios" | no es un tipo de operador: cualquiera puede tener una ecuación de valores propios. Reescrito como la relación entre operador y función |
+| ✅ 🟡 | `$\textit{eigenfunction}$` | cursiva dentro de modo matemático; la línea de arriba ya lo hacía bien |
+| ✅ 🟡 | "operadores Hermíticos", "operador Hamiltoniano" | en minúscula, como las otras nueve apariciones del tema |
+| ✅ 🟡 | "El conjunto… **forman** un conjunto completo" | *forma*, y quitado un sangrado suelto a mitad de frase |
+| ✅ 🟡 | `thebibliography` comentada + `\bibliographystyle{plainnat}` huérfano | eliminados, igual que se hizo en tema01 (`6f6c316`) |
+
+**Pendiente de decisión (afecta a los 13 ficheros, no sólo a tema02)**
+
+- ⬜ Restos de la plantilla Tufte en el preámbulo (`\usepackage{lipsum}`,
+  `\doccmd`, `\docopt`, `\docarg`, `docspec`, `\docenv`, `\docpkg`,
+  `\doccls`, `\docclsopt`). Siguen en **todos** los temas, tema01 incluido.
+  Limpiarlos sólo en tema02 lo haría divergir del resto sin ganar nada: va
+  junto con el `preamble.tex`/`qf2.sty` común de la §0.2.
+
+**Mejoras 🔵**
+
+- ✅ Postulados numerados I–VI. No hizo falta un recuadro inicial: bastó con meter
+  Pauli en un `theorem`, ya que `\newtheorem{theorem}{Postulado}` numera solo.
+- ✅ Pauli condensado aquí (decisión de David) y remitido al Tema 7 para el
+  desarrollo. Eliminada la duplicación del párrafo de partículas independientes.
+- ✅ $\langle\Omega\rangle=\sum_k|c_k|^2\omega_k=\int\psi^\star\hat\Omega\psi\,d\tau$
+  como ecuación numerada (`eq:valor-esperado`).
+- ⬜ **Pendiente:** ejemplo resuelto (normalizar $\psi=Ne^{-ax^2}$ y calcular
+  $\langle x\rangle$, $\langle x^2\rangle$). David pidió dejar de momento sólo
+  la expresión general de $N$.
+- ⬜ **Pendiente:** notación de Dirac y referencia cruzada a `math01`.
+
+**Figuras** → `nb02_postulados.ipynb` — las cuatro hechas y colocadas
+
+1. ✅ `postulados_funciones-admisibles_v1.pdf` — panel 2×2, `figure`
+2. ✅ `postulados_psi-psi2_v1.pdf` — **nueva en esta sesión**, `figure`; $\psi$
+   frente a $|\psi|^2$ en dos paneles. La primera versión usaba una gaussiana
+   pelada y **se descartó por decisión de David**: al ser positiva en todo punto,
+   $|\psi|^2$ salía como una copia estrecha de $\psi$ y no mostraba lo que
+   importa. Ahora es un paquete modulado $\psi=Ne^{-x^2/4\sigma^2}\cos k_0x$, que
+   cambia de signo: se ve que la densidad es positiva en todo $x$ y que se anula
+   en los nodos. Comprobaciones: norma 1.000, $\min\psi<0$, $\min|\psi|^2=0$
+
+**Retratos** → `figs/retratos/`, con la macro `\retrato` copiada de tema01
+
+- ✅ Born (§ interpretación), Schrödinger (§ su ecuación) y Pauli (§ exclusión).
+  Los tres de dominio público, verificados uno a uno contra la API de Commons.
+- Se **descartaron por licencia** dos imágenes mejores: el Pauli de la ETH
+  (`Wolfgang Pauli ETH-Bib Portr 01042.jpg`, CC BY-SA 3.0) y el Schrödinger de
+  Francis Simon (*Attribution*). Queda anotado en `CREDITOS.md` para que nadie
+  vuelva a proponerlas.
+- Heisenberg no se repite: ya está en tema01.
+3. ✅ `incertidumbre_paquete-ondas_v1.pdf` — superposición de 1, 3, 11, 81 armónicas, `figure*`
+4. ✅ `incertidumbre_x-p_v1.pdf` — **renombrada** desde `incertidumbre_x-k_v1.pdf`:
+   $k$ no se define en ningún tema y chocaba con el número de onda $\tilde\nu=1/\lambda$
+   de tema01. Reetiquetada en $p$, con $\Delta x\,\Delta p\geq\hbar/2$
 
 ---
 
