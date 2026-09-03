@@ -12,7 +12,8 @@
   "px": "600x758",
   "original": "2544x3216",
   "pie": "Max Planck (1858--1947)",
-  "slug": "planck"
+  "slug": "planck",
+  "tema": "01"
  },
  {
   "archivo": "retrato_einstein_v1.jpg",
@@ -27,7 +28,8 @@
   "px": "600x863",
   "original": "8206x11811",
   "pie": "Albert Einstein (1879--1955)",
-  "slug": "einstein"
+  "slug": "einstein",
+  "tema": "01"
  },
  {
   "archivo": "retrato_debroglie_v1.jpg",
@@ -42,7 +44,8 @@
   "px": "600x800",
   "original": "4502x6002",
   "pie": "Louis de Broglie (1892--1987)",
-  "slug": "debroglie"
+  "slug": "debroglie",
+  "tema": "01"
  },
  {
   "archivo": "retrato_heisenberg_v1.jpg",
@@ -57,7 +60,8 @@
   "px": "542x800",
   "original": "542x800",
   "pie": "Werner Heisenberg (1901--1976)",
-  "slug": "heisenberg"
+  "slug": "heisenberg",
+  "tema": "01"
  },
  {
   "archivo": "retrato_bohr_v1.jpg",
@@ -72,6 +76,55 @@
   "px": "600x843",
   "original": "1456x2048",
   "pie": "Niels Bohr (1885--1962)",
-  "slug": "bohr"
+  "slug": "bohr",
+  "tema": "01"
+ },
+ {
+  "archivo": "retrato_born_v1.jpg",
+  "persona": "Max Born",
+  "commons": "File:Max Born (cropped).jpg",
+  "pagina": "https://commons.wikimedia.org/wiki/File:Max_Born_(cropped).jpg",
+  "autor": "Autor desconocido",
+  "fecha": "sin fecha",
+  "licencia": "Public domain",
+  "licencia_url": "",
+  "credito": "Wikimedia Commons",
+  "px": "600x808",
+  "original": "742x999",
+  "pie": "Max Born (1882--1970)",
+  "slug": "born",
+  "tema": "02"
+ },
+ {
+  "archivo": "retrato_schrodinger_v1.jpg",
+  "persona": "Erwin Schrödinger",
+  "commons": "File:Erwin Schrödinger - Narodowe Archiwum Cyfrowe (1-E-939).jpg",
+  "pagina": "https://commons.wikimedia.org/wiki/File:Erwin_Schr%C3%B6dinger_-_Narodowe_Archiwum_Cyfrowe_(1-E-939).jpg",
+  "autor": "Autor desconocido (Narodowe Archiwum Cyfrowe, sygn. 1-E-939)",
+  "fecha": "1933",
+  "licencia": "Public domain",
+  "licencia_url": "",
+  "credito": "Narodowe Archiwum Cyfrowe / Wikimedia Commons",
+  "px": "600x828",
+  "original": "2534x3500",
+  "pie": "Erwin Schrödinger (1887--1961)",
+  "slug": "schrodinger",
+  "tema": "02"
+ },
+ {
+  "archivo": "retrato_pauli_v1.jpg",
+  "persona": "Wolfgang Pauli",
+  "commons": "File:Pauli 4.tif",
+  "pagina": "https://commons.wikimedia.org/wiki/File:Pauli_4.tif",
+  "autor": "Autor desconocido",
+  "fecha": "sin fecha",
+  "licencia": "Public domain",
+  "licencia_url": "",
+  "credito": "ETH-Bibliothek Zürich / Wikimedia Commons",
+  "px": "600x921",
+  "original": "3551x5453",
+  "pie": "Wolfgang Pauli (1900--1958)",
+  "slug": "pauli",
+  "tema": "02"
  }
 ]
