@@ -9,7 +9,7 @@
 % Set up the images/graphics package
 \usepackage{graphicx}
 \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
-\graphicspath{{graphics/}}
+\graphicspath{{figs/}{graphics/}}
 
 \title[Química Física II: Tema 3 - Sistemas modelo]{
 Tema 3: Estudios Mecanocuánticos de Sistemas Modelo}
@@ -31,18 +31,9 @@ Tema 3: Estudios Mecanocuánticos de Sistemas Modelo}
 % Small sections of multiple columns
 \usepackage{multicol}
 
-% Provides paragraphs of dummy text
-\usepackage{lipsum}
-
-% These commands are used to pretty-print LaTeX commands
-\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
-\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
-\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
-\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
-\newcommand{\docenv}[1]{\textsf{#1}}% environment name
-\newcommand{\docpkg}[1]{\texttt{#1}}% package name
-\newcommand{\doccls}[1]{\texttt{#1}}% document class name
-\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
 
 \begin{document}
 
@@ -58,7 +49,7 @@ $V(x,y,z)$, tienen soluciones analíticas para la ecuación
 de Schrödinger independiente del tiempo y por ello serán de gran
 utilidad en el estudio de átomos y moléculas. Un comportamiento
 que veremos al estudiar los sistemas modelo es el que expresa
-el \textbf{principio de correspondencia de Böhr}:
+el \textbf{principio de correspondencia de Bohr}:
 las predicciones de la Mecánica Cuántica deben converger con 
 las de la Mecánica Clásica siempre que de una forma continua vamos 
 desde el campo microscópico al macroscópico o bien en el límite   
@@ -70,7 +61,6 @@ de números cuánticos elevados.
 
 
 
-\section*{}
 \section{Partícula libre}
 El sistema más sencillo que vamos a estudiar es la partícula libre,
 que no está sujeta a ninguna restricción dentro de su movimiento
@@ -79,14 +69,14 @@ experimenta un potencial constante que podemos asumir que es igual a
 $V(x)=0$. Desde un punto de vista clásico, podemos decir, por tanto,
 que la energía total es igual a la energía cinética,
 \begin{equation}
-    E=K=1/2mv^2=p_x^2/2m
+    E=K=\frac{1}{2}mv^2=\frac{p_x^2}{2m}
 \end{equation}
 Si despejamos el momento lineal, obtenemos la expresión para el
 momento lineal, $p_x=\pm(2mE)^{1/2}$. De acuerdo con este resultado
 tanto la energía como el momento pueden tomar cualquier valor.
 
 En el caso de la descripción mecanocuántica partimos de 
-la ecuación de Schödinger independiente del tiempo
+la ecuación de Schrödinger independiente del tiempo
 \begin{equation}
     \hat{H}\psi=E\psi,
 \end{equation}
@@ -120,7 +110,7 @@ o bien $k=\sqrt{2mE}/\hbar$. La constante $k$ puede adoptar
 cualquier valor y por tanto la energía no está cuantizada,
 igual que sucedía en la descripción clásica. 
 
-Asímismo podemos aplicar el operador momento lineal, 
+Asimismo podemos aplicar el operador momento lineal, 
 $\hat{p}_x$ sobre la función de onda, que no es propia
 de este operador. Sin embargo, si lo aplicamos 
 independientemente sobre cada uno de los términos
@@ -131,7 +121,7 @@ obtenemos
 \end{equation}
 Las soluciones correspondientes positiva y negativa 
 se corresponden con la partícula desplazándose
-hacia la izquierda o hacia la derecha en el eje $x$, 
+hacia la derecha o hacia la izquierda en el eje $x$, 
 respectivamente. Esto aclara el significado de los 
 términos $A$ y $B$, que determinan cómo se ha preparado 
 el sistema. En el caso de que la partícula se prepare 
@@ -141,11 +131,11 @@ En el caso en que
 $D=0$, la situación se complica dado que queda la función
 $\psi=C\cos(kx)$, que no es función propia del operador
 momento lineal. Sin embargo podemos expresar la función como
-$\psi=1/2C(\mathrm{e}^{ikx}+\mathrm{e}^{-ikx})$,
+$\psi=\frac{C}{2}(\mathrm{e}^{ikx}+\mathrm{e}^{-ikx})$,
 es decir, como una superposición de estados. Al medir el
 momento la mitad de las veces obtendríamos que la partícula
 viaja en sentido positivo y la otra mitad en sentido
-negativo, y que el \textit{expectation value} sería cero.
+negativo, y que el valor esperado sería cero.
 
 También es interesante conectar este resultado 
 con la relación de De Broglie (ver Tema 1). 
@@ -161,23 +151,13 @@ onda $p=2\pi/\lambda\times\hbar=h/\lambda$.
 \section{Partícula en una caja}
 \subsection{En una sola dimensión}
 El segundo sistema con el que nos enfrentamos es el de una partícula
-sometida a un potencial infinito ($V(x)=\infty$) en $x=0$ y $x=L$, y 
+sometida a un potencial infinito ($V(x)=\infty$) para $x\leq 0$ y $x\geq L$, y 
 constante (o cero) en la región del espacio comprendida entre estos
-dos valores. Si en primer lugar intentamos conocer la función de onda
-para $x\leq 0$ y $x\geq L$ podemos escribir la ecuación de Schrödinger
-usando
-\begin{subequations}
-    \begin{align}
-         \hat{H}\psi &=E\psi  \\
-         -\frac{\hbar}{2m}\frac{\partial^2\psi}{\partial x^2} + \infty\psi &=E\psi
-    \end{align}    
-\end{subequations}
-Si agrupamos términos llegamos a la siguiente expresión,
-\begin{equation}
-\frac{1}{\infty}\frac{\partial^2\psi}{\partial x^2} = \psi 
-\end{equation}
-Por tanto la función de onda que satisface esta ecuación es
-$\psi=0$ y la densidad de probabilidad tanto a la izquierda 
+dos valores. Empezamos por las regiones exteriores a la caja,
+$x\leq 0$ y $x\geq L$, donde la energía potencial es infinita.
+Una partícula con una energía total $E$ finita no puede
+encontrarse en esas regiones. Por tanto la función de onda fuera de la caja
+es $\psi=0$, y la densidad de probabilidad tanto a la izquierda
 de $x=0$ como a la derecha de $x=L$ es cero.
 
 Más interesante es el tipo de función de onda que podemos
@@ -215,23 +195,37 @@ que en este caso particular es
 \begin{equation}
         D^2\int_0^L\sin^2 (n\pi x/L) dx = D^2L/2= 1
 \end{equation}
-Por tanto la constante que normaliza la ecuación es
+Por tanto la constante que normaliza la función de onda es
 $D=(2/L)^{1/2}$. Sustituyendo, la función de onda
 resultante es
 \begin{equation}
     \psi_n=\bigg(\frac{2}{L}\bigg)^{1/2}\sin(n\pi x/L)
     \label{eq:box1d}
 \end{equation}
-y su densidad de probabilidad se puede escribir como
+y su densidad de probabilidad (Figura~\ref{fig:caja1d}) se puede
+escribir como
 \begin{equation}
     \psi^2_n(x)=\frac{2}{L}\sin^2\frac{n\pi x}{L}
 \end{equation}
+
+\begin{figure}[!htb]
+  \includegraphics{caja1d_psi-psi2_n1-4_v1.pdf}
+  \caption{Partícula en una caja de longitud $L$. Izquierda, las funciones
+  de onda $\psi_n$ para $n=1$--$4$; centro, sus densidades de probabilidad
+  $|\psi_n|^2$. Cada curva está desplazada verticalmente para mayor claridad.
+  Derecha, las energías $E_n$ en unidades de $h^2/8mL^2$. Todas las funciones
+  se anulan en las paredes, $\psi_n$ tiene $n-1$ nodos y la separación entre
+  niveles contiguos crece con $n$.}
+  \label{fig:caja1d}
+\end{figure}
+
 En el límite clásico en el que $n$ es muy elevado, nos 
 encontramos con que hay tantos periodos de oscilación 
 entre 0 y $L$ que es igualmente probable encontrar la 
 partícula en todas las posiciones permitidas. Este 
 resultado está de acuerdo con el principio de 
-correspondencia.
+correspondencia (Figura~\ref{fig:caja1d-limite}).
+
 
 A partir de la función de onda de la Ecuación \ref{eq:box1d}
 podemos obtener la energía de la partícula en una caja. Para
@@ -244,12 +238,22 @@ niveles energéticos. Así,
         E_n =\frac{n^2h^2}{8mL^2},& \mathrm{ donde~}n=1,2,3...
     \end{array}
 \end{equation}
-La energía residual para $n=1$ es $E=h^2/8mL^2$. 
+La \textbf{energía del punto cero}, para $n=1$, es $E=h^2/8mL^2$. 
 Nótese que la variación de la energía entre niveles
 contiguos, $\Delta E=(2n+1)h^2/8mL^2$ aumenta al aumentar el
 número cuántico $n$ y que cuando la masa del sistema es muy
 elevada, llegamos a un continuo de energía, que se
 corresponde con el límite clásico.
+
+\begin{figure}[!htb]
+  \includegraphics{caja1d_limite-clasico_v1.pdf}
+  \caption{Densidad de probabilidad $|\psi_n|^2$, en unidades de $1/L$,
+  para $n=1$, $5$ y $30$, frente a la densidad clásica uniforme (línea
+  discontinua). Al aumentar $n$ las oscilaciones son tan rápidas que, promediada
+  sobre cualquier intervalo finito, la densidad cuántica coincide con la
+  clásica: es el principio de correspondencia.}
+  \label{fig:caja1d-limite}
+\end{figure}
 
 También podemos calcular el momento lineal. Sin embargo la 
 función de onda (Ecuación ~\ref{eq:box1d}) no es función
@@ -266,13 +270,13 @@ $p=-k\hbar$, donde $k=n\pi/L$, corresponden a la versión mecanocuántica de
 la partícula que en una caja de potencial se chocaría
 alternativamente con una pared y con la otra.
 
-\subsection{En tres dimensiones}
+\subsection{En dos dimensiones}
 En el caso de que tengamos una partícula confinada
 en más de una sola dimensión, el operador 
 hamiltoniano tendrá que tener en cuenta los 
 grados de libertad adicionales
 \begin{equation}
-    -\frac{\hbar}{2m}\bigg(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\bigg)\Psi= E\Psi
+    -\frac{\hbar^2}{2m}\bigg(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\bigg)\Psi= E\Psi
 \end{equation}
 Podemos separar la función de onda en sus diferentes
 componentes, de modo que $\Psi=\mathrm{X}(x)\mathrm{Y}(y)$. Así, la 
@@ -297,8 +301,18 @@ que tiene una energía total igual a
     E_{n_1,n_2} =\bigg(\frac{n_1^2}{L_1^2} + \frac{n_2^2}{L_2^2}\bigg)\frac{h^2}{8m}
 \end{equation}
 
+\begin{figure}[!htb]
+  \includegraphics{caja2d_degeneracion_v1.pdf}
+  \caption{Funciones de onda $\Psi_{n_1,n_2}$ de una caja cuadrada,
+  $L_1=L_2=L$. El rojo y el azul indican signos opuestos de la función, y el
+  blanco sus nodos. Los estados $(1,2)$ y $(2,1)$, recuadrados, tienen
+  funciones de onda distintas pero la misma energía, $5h^2/8mL^2$: están
+  degenerados. Las energías se dan en unidades de $h^2/8mL^2$.}
+  \label{fig:caja2d}
+\end{figure}
+
 En el caso de que las dimensiones de la caja
-sean iguales, $L_1=L_2$, las expresión resultante
+sean iguales, $L_1=L_2$, la expresión resultante
 para la función de onda es
 \begin{equation}
     \Psi_{n_1, n_2}(x,y)=\bigg(\frac{2}{L}\bigg)\sin(n_1\pi x/L)\sin(n_2\pi y/L)
@@ -309,9 +323,11 @@ mientras que para la energía obtenemos
 \end{equation}
 Esto resulta en un gran número de estados degenerados, 
 es decir, de estados que tienen la misma energía,
-dado que $E_{n_1,n_2}=E_{n_2,n_1}$.
+dado que $E_{n_1,n_2}=E_{n_2,n_1}$
+(Figura~\ref{fig:caja2d}).
 
-\subsection{Efecto túnel}
+
+\section{Efecto túnel}
 En el caso de que las barreras de potencial tengan un 
 valor finito la situación es diferente a la que nos
 encontramos en la partícula en una caja. En estos casos,
@@ -326,7 +342,7 @@ con una energía menor que la necesaria.
 Supongamos que el sistema que queremos describir es una 
 partícula que se acerca a una barrera de potencial por la 
 izquierda de la misma. En la región a la izquierda de la 
-barrera (región I) podemos usar la función de partición de 
+barrera (región I) podemos usar la función de onda de 
 la partícula libre, de tal modo que
 \begin{equation}
     \psi_I=A\mathrm{e}^{\mathrm{i}kx} +
@@ -352,7 +368,19 @@ correspondiente a la partícula libre:
 \begin{equation}
     \psi_{III}=A'\mathrm{e}^{\mathrm{i}kx} + B'\mathrm{e}^{-\mathrm{i}kx}
 \end{equation}
-donde de nuevo $k\hbar=(2mE)^{1/2}$.
+donde de nuevo $k\hbar=(2mE)^{1/2}$. La Figura~\ref{fig:tunel} muestra
+la forma de la función de onda en las tres regiones.
+
+\begin{figure}[!htb]
+  \includegraphics{tunel_psi-regiones_v1.pdf}
+  \caption{Parte real de la función de onda de una partícula con energía
+  $E<V$ que incide desde la izquierda sobre una barrera de altura $V$ y
+  anchura $L$. En la región I se superponen la onda incidente y la reflejada;
+  dentro de la barrera (región II) la función decae; en la región III queda
+  una onda transmitida de menor amplitud. La función y su derivada son
+  continuas en $x=0$ y en $x=L$.}
+  \label{fig:tunel}
+\end{figure}
 
 Como vimos en la presentación de las funciones de onda, 
 una condición que deben cumplir para que sean aceptables 
@@ -371,7 +399,7 @@ condición de derivabilidad, tanto a la izquierda como a
 la derecha de la barrera. Por tanto,
 \begin{subequations}
     \begin{align}
-        A\mathrm{i}k-B\mathrm{i}k =& C\kappa + D\kappa \\
+        A\mathrm{i}k-B\mathrm{i}k =& C\kappa - D\kappa \\
         C\kappa\mathrm{e}^{\kappa L} - D\kappa\mathrm{e}^{-\kappa L} =& A'\mathrm{i}k\mathrm{e}^{\mathrm{i}kL}-B'\mathrm{i}k\mathrm{e}^{-\mathrm{i}kL}
     \end{align}
 \end{subequations}
@@ -386,7 +414,7 @@ y por tanto tiene una probabilidad $|A|^2$. Esta partícula
 puede ser reflejada por la barrera y desplazarse hacia la
 izquierda (término $\mathrm{e}^{-\mathrm{i}kx}$) con una 
 probabilidad $|B|^2$. Por tanto la probabilidad de que se
-refleje se podrá escribir como $R=|B^2|/|A^2|$. Asimismo,
+refleje se podrá escribir como $R=|B|^2/|A|^2$. Asimismo,
 la barrera puede ser atravesada por una componente no 
 oscilatoria, cruzar la región II y llegar hasta el otro lado 
 de la barrera con probabilidad $|A'|^2$. El término $|B'|^2=0$
@@ -404,7 +432,7 @@ barreras elevadas y anchas, se puede simplificar como
 \end{equation}
 donde $\varepsilon=E/V$. A partir de esta expresión podemos
 entender claramente que el efecto túnel será más importante 
-para barreras estrechas, donde $L$ es pequeño. Asímismo,
+para barreras estrechas, donde $L$ es pequeño. Asimismo,
 como depende exponencialmente y con signo negativo con 
 $\kappa\hbar=\{2m(V-E)\}^{1/2}$, este efecto también es
 más importante para partículas pequeñas que para partículas
@@ -422,7 +450,7 @@ respecto a la posición de equilibrio
 donde $k$ es la constante de fuerza. La energía potencial 
 a la que corresponde esta fuerza es
 \begin{equation}
-    V= 1/2kx^2
+    V= \frac{1}{2}kx^2
 \end{equation}
 En la descripción cuántica del oscilador armónico, podemos 
 incorporar esta misma expresión para la energía potencial
@@ -435,16 +463,26 @@ Las soluciones permitidas para esta ecuación deben cumplir
 la condición de que $\psi=0$ en el límite de $x=\pm\infty$.
 Los niveles energéticos permitidos corresponden a 
 \begin{equation}
-    E_v=(v+1/2)\hbar\omega
+    E_v=\left(v+\frac{1}{2}\right)\hbar\omega
 \end{equation}
 donde estamos introduciendo el número cuántico $v$ y 
 definiendo la frecuencia $\omega=(k/m)^{1/2}$. Al contrario
 de lo que sucede para la partícula en la caja, en este 
 caso $v$ sí puede ser cero, con lo que la energía del punto
-cero en el oscilador armónico es $E_0=1/2\hbar\omega$. Al
+cero en el oscilador armónico es $E_0=\frac{1}{2}\hbar\omega$. Al
 contrario de lo que sucedía en la partícula en una caja, 
 en este caso la separación entre niveles energéticos 
 contiguos es constante, $E_{v+1}-E_{v}=\hbar\omega$.
+
+\begin{figure}[!htb]
+  \includegraphics{osciladorarmonico_psi-psi2_v0-4_v1.pdf}
+  \caption{Funciones de onda $\psi_v$ (izquierda) y densidades de
+  probabilidad $|\psi_v|^2$ (derecha) del oscilador armónico para $v=0$--$4$,
+  dibujadas sobre el potencial a la altura de su energía $E_v$. Los niveles
+  están igualmente espaciados, separados por $\hbar\omega$. Las marcas
+  señalan los puntos de retorno clásicos, donde $E_v=V$.}
+  \label{fig:oscilador}
+\end{figure}
 
 La solución para la Ecuación \ref{eq:schrodinger_ho} 
 tiene la forma
@@ -452,7 +490,7 @@ tiene la forma
     \psi_v(y)=N_vH_v(y)\mathrm{e}^{-y^2/2}
 \end{equation}
 donde hemos hecho un cambio de variable, $y=x/\alpha$, 
-con $\alpha=\big(\hbar/mk\big)^{1/4}$; $N_v$ es
+con $\alpha=\big(\hbar^2/mk\big)^{1/4}$; $N_v$ es
 la constante de normalización, $H_v$ es un polinomio de
 Hermite y $\mathrm{e}^{-y^2/2}$ es una Gaussiana. 
 Los polinomios de Hermite  son un tipo particular de
@@ -472,7 +510,8 @@ la función $\psi_1$ es negativa para $y<0$ y positiva para
 $y>0$. Esta alternancia  entre funciones simétricas y
 antisimétricas respecto a $y$ continua al ir aumentando el
 número cuántico. El número de nodos en la densidad viene
-determinado por $v$.
+determinado por $v$ (Figura~\ref{fig:oscilador}).
+
 
 \begin{table}[t!]
     \centering
@@ -487,39 +526,38 @@ determinado por $v$.
     ... & 
     \end{tabular}
     \caption{Polinomios de Hermite $H_v(y)$ para diferentes 
-    valores del número cuántico $y$.}
+    valores del número cuántico $v$.}
     \label{tb:hermite}
 \end{table}
 
 Un aspecto a destacar en las funciones de onda es que la
 Gaussiana tiende a cero rápidamente a desplazamientos altos.
-El término  $y^2=x^2(mk/\hbar)^{1/2}$ de la Gaussiana hace
+El término  $y^2=x^2(mk/\hbar^2)^{1/2}$ de la Gaussiana hace
 que el exponencial decaiga más rápidamente cuanto mayores
 sean la masa y más intensa sea la constante de fuerza del
 potencial. Al ir aumentando el número cuántico $v$, la
-densidad se vaya esparciendo cada vez más hacia los
-laterales. %De la misma manera que en el caso del 
-%pozo de potencial con un valor finito de $V$, en el caso del
-%oscilador armónico se puede producir efecto túnel. 
-%De nuevo, esta posibilidad es  contraria al resultado de
-%la mecánica clásica, donde la partícula se vería limitada a
-%la región correspondiente a $|x|\leq(2E/k)^{1/2}$. 
+densidad se va esparciendo cada vez más hacia los
+laterales. De la misma manera que en el caso de la
+barrera de potencial de altura finita, en el caso del
+oscilador armónico se puede producir efecto túnel: la
+densidad no se anula más allá de los puntos de retorno
+clásicos (Figura~\ref{fig:oscilador}). De nuevo, esta
+posibilidad es contraria al resultado de la mecánica
+clásica, donde la partícula se vería limitada a la región
+correspondiente a $|x|\leq(2E/k)^{1/2}$.
 La convergencia con la descripción clásica se produce para
 valores elevados de $v$, donde la densidad es máxima en las
-regiones en que la energía cinética es cero.
+regiones en que la energía cinética es cero
+(Figura~\ref{fig:oscilador-limite}).
 
-%\begin{thebibliography}{}
-%\bibitem{atkins_depaula} Atkins, P and De Paula, J. 2006. ``Physical Chemistry, 8th Edition''. Oxford University Press.
-%
-%\bibitem{atkins} Atkins, P and Friedman, R. 2005. ``Molecular Quantum Mechanics, 4th Edition''. Oxford University Press.
-%
-%\bibitem{fleisch} Fleisch, Daniel A. 2020. ``A student's guide to the Schr{\"o}dinger equation''. Cambridge University Press
-%
-%\bibitem{levine} Levine, I. N. 2013. ``Quantum
-%Chemistry, 7th Edition''. Pearson.
-%\end{thebibliography}
-\bibliographystyle{plainnat}
-
-
+\begin{figure}
+  \includegraphics{osciladorarmonico_limite-clasico_v20_v1.pdf}
+  \caption{Densidad de probabilidad del oscilador armónico para $v=20$ frente
+  a la densidad clásica, proporcional a $1/\sqrt{E-V}$. La partícula clásica
+  se mueve más despacio cerca de los puntos de retorno (líneas punteadas) y
+  pasa allí más tiempo; la densidad cuántica, promediada sobre sus
+  oscilaciones, reproduce esa misma tendencia.}
+  \label{fig:oscilador-limite}
+\end{figure}
 
 \end{document}
