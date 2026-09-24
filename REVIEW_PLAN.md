@@ -233,11 +233,10 @@ Las cuatro figuras colocadas y citadas desde el texto.
 
 **Pendiente de decisión (afecta a los 13 ficheros, no sólo a tema02)**
 
-- ⬜ Restos de la plantilla Tufte en el preámbulo (`\usepackage{lipsum}`,
+- ✅ Restos de la plantilla Tufte en el preámbulo (`\usepackage{lipsum}`,
   `\doccmd`, `\docopt`, `\docarg`, `docspec`, `\docenv`, `\docpkg`,
-  `\doccls`, `\docclsopt`). Siguen en **todos** los temas, tema01 incluido.
-  Limpiarlos sólo en tema02 lo haría divergir del resto sin ganar nada: va
-  junto con el `preamble.tex`/`qf2.sty` común de la §0.2.
+  `\doccls`, `\docclsopt`). Eliminados de tema01, tema02 y tema03 a la vez el
+  2026-09-17, sin cambios en los PDF. Siguen en los temas 04–10.
 
 **Mejoras 🔵**
 
@@ -285,22 +284,23 @@ Las cuatro figuras colocadas y citadas desde el texto.
 
 | Sev | Línea | Problema | Corrección |
 |---|---|---|---|
-| 🔴 | 172, 275 | $-\dfrac{\hbar}{2m}$ en el hamiltoniano — **falta el cuadrado** | $-\dfrac{\hbar^2}{2m}$. Dos sitios |
-| 🔴 | 455 | $\alpha=(\hbar/mk)^{1/4}$ — dimensionalmente incorrecto | $\alpha=\left(\hbar^2/mk\right)^{1/4}$ (comprobación: $\hbar^2/mk$ tiene unidades de m⁴) |
-| 🔴 | 132-134 | *"positiva y negativa se corresponden con la partícula desplazándose hacia la **izquierda** o hacia la **derecha**"* — **invertido**, y se contradice con la frase siguiente (línea 137-139, que sí es correcta) | $p_x=+k\hbar$ → hacia la derecha |
-| 🔴 | 374 | Continuidad de la derivada en $x=0$: `A i k - B i k = C\kappa + D\kappa` | debe ser $C\kappa - D\kappa$ |
-| 🔴 | 269 | Subsección titulada **"En tres dimensiones"** pero todo el desarrollo es **en dos** ($x$, $y$) | o se retitula "En dos dimensiones", o se extiende a 3D. Recomiendo extender: la degeneración en 3D es mucho más ilustrativa |
-| 🟠 | 176-181 | La "demostración" de $\psi=0$ fuera de la caja mediante $\frac{1}{\infty}\frac{\partial^2\psi}{\partial x^2}=\psi$ no es matemáticamente admisible | sustituir por el argumento de límite: $V\to\infty$ con $E$ finita ⟹ $\psi\to0$; o tomar el pozo finito y hacer $V_0\to\infty$ |
-| 🟠 | 329 | *"podemos usar la **función de partición** de la partícula libre"* | **función de onda** |
-| 🟠 | 489-490 | Pie de tabla: "para diferentes valores del número cuántico $y$" | el número cuántico es $v$; $y$ es la variable |
-| 🟠 | 61 | "principio de correspondencia de **Böhr**" | **Bohr**, sin diéresis (aparece 1 vez aquí; comprobar en todo el repo) |
-| 🟠 | 247 | "La **energía residual** para $n=1$" | término estándar: **energía del punto cero** |
-| 🟠 | 388 | `$R=|B^2|/|A^2|$` | $R=|B|^2/|A|^2$ |
-| 🟠 | 314 | El efecto túnel está como `\subsection` **dentro** de "Partícula en una caja" | debe ser `\section` propia (barrera de potencial finita) |
-| 🟡 | 73 | `\section*{}` vacía | borrar |
-| 🟡 | 501-506 | Bloque de 6 líneas comentado sobre efecto túnel en el oscilador | decidir: recuperar o borrar |
-| 🟡 | 82 | $E=1/2mv^2$ se lee como $\frac{1}{2m}v^2$ | usar `\frac{1}{2}mv^2` (recurrente en todo el repo) |
-| 🟡 | 407 | "Asímismo" | *asimismo* (sin tilde). Aparece también en línea 123 |
+| ✅ 🔴 | 172, 275 | $-\dfrac{\hbar}{2m}$ en el hamiltoniano — **falta el cuadrado** | $-\dfrac{\hbar^2}{2m}$. Dos sitios |
+| ✅ 🔴 | 455, 496 | $\alpha=(\hbar/mk)^{1/4}$ — dimensionalmente incorrecto | $\alpha=\left(\hbar^2/mk\right)^{1/4}$ (comprobación: $\hbar^2/mk$ tiene unidades de m⁴). Mismo error en $y^2=x^2(mk/\hbar)^{1/2}$ (línea 496), no listado originalmente |
+| ✅ 🔴 | 132-134 | *"positiva y negativa se corresponden con la partícula desplazándose hacia la **izquierda** o hacia la **derecha**"* — **invertido**, y se contradice con la frase siguiente (línea 137-139, que sí es correcta) | $p_x=+k\hbar$ → hacia la derecha |
+| ✅ 🔴 | 374 | Continuidad de la derivada en $x=0$: `A i k - B i k = C\kappa + D\kappa` | debe ser $C\kappa - D\kappa$ |
+| ✅ 🔴 | 269 | Subsección titulada **"En tres dimensiones"** pero todo el desarrollo es **en dos** ($x$, $y$) | o se retitula "En dos dimensiones", o se extiende a 3D. Recomiendo extender: la degeneración en 3D es mucho más ilustrativa — retitulada ``En dos dimensiones'' (coincide con la figura `caja2d`); la extensión a 3D queda como 🔵 |
+| ✅ 🟠 | 176-181 | La "demostración" de $\psi=0$ fuera de la caja mediante $\frac{1}{\infty}\frac{\partial^2\psi}{\partial x^2}=\psi$ no es matemáticamente admisible | sustituir por el argumento de límite: $V\to\infty$ con $E$ finita ⟹ $\psi\to0$; o tomar el pozo finito y hacer $V_0\to\infty$ — sustituida por un argumento intuitivo sin ecuaciones: con $E$ finita la partícula no puede estar donde $V=\infty$ (decisión del autor, 2026-09-17) |
+| ✅ 🟠 | 329 | *"podemos usar la **función de partición** de la partícula libre"* | **función de onda** |
+| ✅ 🟠 | 489-490 | Pie de tabla: "para diferentes valores del número cuántico $y$" | el número cuántico es $v$; $y$ es la variable |
+| ✅ 🟠 | 61 | "principio de correspondencia de **Böhr**" | **Bohr**, sin diéresis (aparece 1 vez aquí; comprobar en todo el repo) |
+| ✅ 🟠 | 247 | "La **energía residual** para $n=1$" | término estándar: **energía del punto cero** |
+| ✅ 🟠 | 388 | `$R=|B^2|/|A^2|$` | $R=|B|^2/|A|^2$ |
+| ✅ 🟠 | 314 | El efecto túnel está como `\subsection` **dentro** de "Partícula en una caja" | debe ser `\section` propia (barrera de potencial finita) |
+| ✅ 🟡 | 73 | `\section*{}` vacía | borrar |
+| ✅ 🟡 | 501-506 | Bloque de 6 líneas comentado sobre efecto túnel en el oscilador | recuperado 2026-09-17; ``pozo finito'' cambiado a ``barrera de altura finita'' (el tema no tiene pozo finito) y referencia a la figura del oscilador |
+| ✅ 🟡 | 82 | $E=1/2mv^2$ se lee como $\frac{1}{2m}v^2$ | usar `\frac{1}{2}mv^2` (recurrente en todo el repo) — corregido también en $\psi=\frac{C}{2}(\dots)$, $V=\frac{1}{2}kx^2$, $E_v$ y $E_0$ |
+| ✅ 🟡 | 407 | "Asímismo" | *asimismo* (sin tilde). Aparece también en línea 123 |
+| ✅ 🟡 | final | `thebibliography` comentada + `\bibliographystyle{plainnat}` huérfano | eliminados 2026-09-17, igual que en tema01 y tema02 |
 
 **Mejoras**
 
@@ -316,12 +316,14 @@ Las cuatro figuras colocadas y citadas desde el texto.
 - 🔵 No se menciona el **teorema del virial** para el oscilador ($\langle T\rangle=\langle V\rangle$),
   que es un resultado que se pide en problemas.
 
-**Figuras** → `nb03_sistemas_modelo.ipynb` — *el notebook con mayor retorno de todo el curso*
+✅ Otras erratas corregidas 2026-09-17: "Schödinger", "se vaya esparciendo", "las expresión", *expectation value* → valor esperado.
+
+**Figuras** → `nb03_sistemas_modelo.ipynb` — ✅ 6 colocadas 2026-09-17, a ancho de texto y sin título; la 5 descartada por decisión del autor — *el notebook con mayor retorno de todo el curso*
 1. Caja 1D: $\psi_n$ y $|\psi_n|^2$ para $n=1..4$, desplazadas verticalmente sobre el diagrama de niveles $E_n$. La figura canónica que ahora no existe.
 2. Límite clásico: $|\psi_n|^2$ para $n=1$, $n=20$, $n=50$ frente a la densidad clásica uniforme.
 3. Caja 2D: mapas de calor de $\Psi_{n_1n_2}$ para (1,1), (1,2), (2,1), (2,2) mostrando la degeneración $E_{12}=E_{21}$.
 4. Efecto túnel: paquete de ondas incidiendo sobre una barrera, con $\psi$ real en las tres regiones y el decaimiento exponencial dentro.
-5. $T(E/V)$ para varias anchuras $L$ y masas (electrón vs protón) — cuantifica "más importante para partículas pequeñas".
+5. ✗ $T(E/V)$ para varias anchuras $L$ y masas (electrón vs protón) — cuantifica "más importante para partículas pequeñas".
 6. Oscilador armónico: $\psi_v$ y $|\psi_v|^2$ para $v=0..4$ sobre la parábola, con los puntos de retorno clásicos marcados (se ve la penetración en la región prohibida).
 7. $|\psi_v|^2$ para $v=20$ superpuesta a la densidad de probabilidad clásica $\propto1/\sqrt{E-V}$ — el principio de correspondencia, que ahora sólo está enunciado (líneas 507-509).
 

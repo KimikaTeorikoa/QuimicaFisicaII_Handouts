@@ -60,28 +60,10 @@ which is why the problem sheets' aux files land in the root.
 To learn the state of the whole set always use `make comprobar`: plain `make`
 stops at the first broken document and hides the rest.
 
-## Current state (verified with `make comprobar`)
+## Current state
 
-- **Four documents fail**, the same four listed in REVIEW_PLAN §0.1:
-  - `tema04` — `\bm{\omega}` without `\usepackage{bm}`
-  - `tema06` — `\psi_0^{(0)}^\star`, *double superscript*, in several places
-  - `math01` — `\bibliographystyle{plainnat}` with natbib author-year
-  - `math02` — an Overleaf URL pasted inside `\title`
-- Everything else builds (topics 01, 02, 03, 05, 07, 09, 10; the 3 lab scripts;
-  the 6 problem sheets).
-- **`tema01` is the only revised topic**: 8 pages, 0 overfull boxes, 5 figures
-  and 5 portraits. It is the style exemplar.
-- **The figures exist but are not placed yet.** `tema01.tex` is the only course
-  `.tex` containing `\includegraphics`; `tema02.tex`, for instance, has none
-  even though its 3 figures already sit in `figs/`. All 44 figures are built and
-  checked: what topics 02–10 still need is placing them, with environment,
-  caption and `\label`, and adding `\graphicspath` to the preamble.
-- The shared `preamble.tex` / `qf2.sty` proposed in REVIEW_PLAN §0.2 **has not
-  been done**: the preamble is still duplicated and divergent across the 13
-  files. Removing the template leftovers (`\usepackage{lipsum}`, `\doccmd`,
-  `\docopt`, `\docarg`, `docspec`, `\docenv`, `\docpkg`, `\doccls`,
-  `\docclsopt`) is **still pending in every topic, `tema01` included**: a
-  revised topic does not imply a clean preamble.
+Run `make comprobar` for the build status of all 20 documents; see
+`CHECKPOINT.md` and `REVIEW_PLAN.md` for revision progress.
 
 **Caveat about REVIEW_PLAN.md:** its line numbers date from the 2023 revision
 and no longer match (the plan says `tema01.tex, 377 líneas`; it is 462 today;
@@ -209,6 +191,25 @@ derived output.
    boxes** — `tema01` sits at 0 and that is the bar.
 6. Update `REVIEW_PLAN.md` (mark resolved items ✅) and `CHECKPOINT.md` when
    closing the session.
+
+### Layout traps that the log does not catch
+
+`make comprobar` reports OK for all three of these. They are only visible on
+the rendered page, so **look at the PDF** before calling a topic done
+(`pdftoppm -png -r 80 -f N -l N temaNN.pdf out`).
+
+- **A float caption and a `\sidenote` can print on top of each other.** Both
+  want the margin and their placement mechanisms do not negotiate. The only
+  hint is `LaTeX Warning: Marginpar on page N moved`, and those are so common
+  (tema01 has 17 benign ones) that it is easy to wave them through. Fix by
+  removing the competition — move the note's content into the running text —
+  rather than by nudging offsets.
+- **A section title can be stranded alone at the foot of a page** when a float
+  is still pending: the class issues its `\FloatBarrier` *after* typesetting
+  the title. Fix with an explicit `\FloatBarrier` before the `\section`.
+- **Do not pin floats to a slot.** `[!b]` and friends tie the page to the
+  current length of the text; the next wording change can hand a figure a page
+  of its own. Prefer `[!htb]` and let LaTeX re-solve it.
 
 ### Language: the convention has two halves
 
