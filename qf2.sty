@@ -1,0 +1,27 @@
+% qf2.sty --- preámbulo común de los apuntes de Química Física II.
+%
+% De momento sólo contiene un arreglo; el resto del preámbulo común se irá
+% trasladando aquí (REVIEW_PLAN §0.2).
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{qf2}[2026/10/07 Apuntes de Química Física II]
+
+% --- \label en flotantes de tufte con amsmath -------------------------------
+% tufte redefine \label al abrir cada flotante para guardarlo y escribirlo
+% después del \caption, cuando el número ya existe. Pero a continuación abre
+% una minipage, y amsmath añade \let\label\ltx@label a \@arrayparboxrestore:
+% la minipage devuelve \label a su definición original, la etiqueta se
+% escribe antes del \caption y queda sin número (``Figura '' en el texto,
+% sin error ni aviso). Mover el \label dentro del \caption no sirve: choca
+% con el gancho que nameref añade a \label.
+%
+% Arreglo: dentro de cada flotante, \ltx@label apunta a la versión de tufte,
+% de modo que lo que la minipage ``restaura'' es precisamente esa. Es local
+% al entorno. Comprobado con amsmath v2.17z (2025/07/09) y LaTeX 2025-11-01.
+% Sólo actúa con la clase tufte; en otras clases no hace nada.
+\AddToHook{begindocument/end}{%
+  \ifdefined\@tufte@label
+    \@for\qf@entorno:={figure,figure*,table,table*}\do{%
+      \AddToHook{env/\qf@entorno/begin}{\let\ltx@label\@tufte@label}}%
+  \fi}
+
+\endinput

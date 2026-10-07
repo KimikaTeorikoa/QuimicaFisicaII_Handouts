@@ -82,6 +82,14 @@ Preamble (`tema01.tex` 1–72): `\documentclass{tufte-handout}`,
 `\setlength{\@fptop}{0pt}` (top-aligns full-page floats, which otherwise centre
 vertically and look like a mistake).
 
+- **`\usepackage{qf2}` right after `amsmath`, in every document.** `qf2.sty`
+  is the seed of the common preamble and today holds one fix: since amsmath
+  v2.17z (TeX Live 2025+), a `\label` after `\caption` in a Tufte float is
+  written with an **empty number** — the PDF prints «Figura )» with no error
+  and no warning, so `make comprobar` stays green. Keep `\label` *after*
+  `\caption`; moving it inside the caption breaks the build (nameref's label
+  hook). To check a document: `grep -E 'newlabel\{(fig|tb|tab):[^}]*\}\{\{\}' temaNN.aux`
+  must print nothing.
 - **`\retrato{file}{caption text}`** (`tema01.tex` 67–72): historical portraits
   in the margin. It is a `marginfigure` **without `\caption`**, deliberately: it
   therefore consumes no figure number and does not shift existing `\ref`s. It
