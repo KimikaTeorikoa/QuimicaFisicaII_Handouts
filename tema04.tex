@@ -5,12 +5,13 @@
 \usepackage[spanish, es-tabla]{babel}
 \usepackage{amsmath}
 \usepackage{qf2}
+\usepackage{bm}
 \newtheorem{theorem}{Postulado}
 
 % Set up the images/graphics package
 \usepackage{graphicx}
 \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
-\graphicspath{{graphics/}}
+\graphicspath{{figs/}{graphics/}}
 
 \title[Química Física II: Tema 4 - Momento angular]{Tema 4: Momento Angular}
 %\author{David De Sancho}
@@ -30,6 +31,10 @@
 
 % Small sections of multiple columns
 \usepackage{multicol}
+
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
 
 % Provides paragraphs of dummy text
 \usepackage{lipsum}
@@ -132,7 +137,7 @@ promedio. Por el contrario, sí que podemos encontrar
 funciones propias como las componentes en $x$, $y$ y
 $z$ del momento angular
 \begin{equation}
-\hat{l}=\hat{l}_x+\hat{l}_y+\hat{l}_z
+\hat{\mathbf{l}}=\hat{l}_x\mathbf{i}+\hat{l}_y\mathbf{j}+\hat{l}_z\mathbf{k}
 \end{equation}
 que escribimos como
 \begin{subequations}
@@ -169,7 +174,7 @@ angular.
 Otro operador de interés es el cuadrado del momento angular
 \begin{equation}
     \hat{l}^2=\hat{l}_x^2+\hat{l}_y^2+\hat{l}_z^2=
-    \hbar^2\Lambda^2
+    -\hbar^2\Lambda^2
 \end{equation}
 que sí conmuta con los tres componentes del momento angular
 \begin{equation}
@@ -202,7 +207,7 @@ compactas para las componentes del momento angular
         \cot{\theta}\sin{\phi} \frac{\partial}{\partial\phi}
         \bigg) \\
         \hat{l}_z&=  -\mathrm{i}\hbar\frac{\partial}{\partial \phi}
-    \end{align}\label{eq:lz}
+    \end{align}\label{eq:l-esfericas}
 \end{subequations}
 así como para el cuadrado del momento angular
 \begin{equation}
@@ -298,7 +303,7 @@ El dominio del ángulo azimutal es $0\leq \phi\leq2\pi$
 y por tanto en estos límites la función de onda debe ser
 igual para ser continua, $\Phi(0)=\Phi(2\pi)$, y por tanto
 los valores aceptables del \textbf{número cuántico magnético},
-$m_l$, son $\pm 1,\pm 2...$. Para que la función esté
+$m_l$, son $0,\pm 1,\pm 2...$. Para que la función esté
 normalizada, tenemos que definir el valor de
 la constante $A$
 \begin{equation}
@@ -347,7 +352,49 @@ cuántico magnético $m_l$. El número de nodos en la
 densidad $|Y_{l,m_l}|^2$ para $m_l=0$ varía en función 
 del número $l$. Además, para un valor determinado de $l$,
 la probabilidad de encontrar a una partícula se propaga 
-a lo largo del plano $xy$ al ir aumentando $m_l$.
+a lo largo del plano $xy$ al ir aumentando $m_l$
+(Figura \ref{fig:armonicos-densidad}).
+
+\begin{figure}[!htb]
+  \includegraphics{armonicosesf_densidad-nodos_v1.pdf}
+  \caption{Densidad de probabilidad angular $|Y_{l,m_l}|^2$ en función de
+  la colatitud $\theta$ y del ángulo azimutal $\phi$, para $l=0,1,2$ y
+  $m_l\geq0$; $-m_l$ da la misma densidad. Ninguna depende de $\phi$. Con
+  $m_l=0$ el número de nodos aumenta con $l$, y para un $l$ dado la densidad
+  se concentra en torno a $\theta=90^\circ$, el plano $xy$, al aumentar
+  $m_l$. Con $l=0$ la densidad es uniforme. Cada panel tiene su propia escala
+  de color.}
+  \label{fig:armonicos-densidad}
+\end{figure}
+
+Los armónicos esféricos con $m_l\neq0$ son funciones complejas. Como
+$Y_{l,m_l}$ y $Y_{l,-m_l}$ son funciones propias de $\hat{l}^2$ con el
+mismo valor propio, cualquier combinación lineal de ambas también lo es.
+En Química se usan las \textbf{combinaciones reales}, que reciben el
+nombre de los orbitales atómicos que veremos en el Tema 5. Por ejemplo,
+con las funciones de la Tabla \ref{tb:legendre},
+\begin{subequations}
+    \begin{align}
+        p_x&=\frac{1}{\sqrt{2}}\left(Y_{1,-1}-Y_{1,1}\right)=
+        \bigg(\frac{3}{4\pi}\bigg)^{1/2}\sin\theta\cos\phi \\
+        p_y&=\frac{\mathrm{i}}{\sqrt{2}}\left(Y_{1,-1}+Y_{1,1}\right)=
+        \bigg(\frac{3}{4\pi}\bigg)^{1/2}\sin\theta\sin\phi
+    \end{align}
+\end{subequations}
+mientras que $p_z=Y_{1,0}$ ya es real. Estas combinaciones siguen siendo
+funciones propias de $\hat{l}^2$, con el mismo $l$, pero ya no lo son de
+$\hat{l}_z$: no tienen un valor definido de $m_l$. Su forma se muestra en
+la Figura \ref{fig:armonicos-reales}.
+
+\begin{figure*}[!htb]
+  \includegraphics{armonicosesf_orbitales-reales_v1.pdf}
+  \caption{Armónicos esféricos reales para $l=0,1,2$, con el nombre del
+  orbital atómico correspondiente. La distancia al origen de cada punto de
+  la superficie es $|Y|$ en esa dirección, y el color indica su signo (azul
+  positivo, naranja negativo). No se muestran $p_y$, $d_{yz}$ ni $d_{xy}$,
+  que son copias giradas de $p_x$, $d_{xz}$ y $d_{x^2-y^2}$.}
+  \label{fig:armonicos-reales}
+\end{figure*}
 
 \begin{table}[t!]
     \centering
@@ -380,7 +427,7 @@ dimensiones se restringen a los siguientes valores
 \end{equation}
 Claramente, los niveles energéticos están cuantizados 
 en función de $l$ y son independientes del número 
-cuántico $m_l$. Las $2m_l+1$ funciones de onda
+cuántico $m_l$. Las $2l+1$ funciones de onda
 correspondientes al número cuántico $l$ serán 
 degeneradas.
 
@@ -397,13 +444,26 @@ a estar cuantizado con $l=0,1,2,...$
 La componente $z$ del momento angular
 $\hat{l}_z$ depende de $\phi$ \begin{equation}
     l_z=m_l\hbar
-    \label{eq:lz}
+    \label{eq:lz-autovalor}
 \end{equation}
 Cuando $m_l>0$ la proyección en el eje $z$ del momento
 angular  es positiva mientras que si $m_l<0$  es negativa.
 Recordemos que al conocer $l_z$ no es posible determinar 
-las restantes componentes del momento angular $l_x$ y $l_y$.
+las restantes componentes del momento angular $l_x$ y $l_y$
+(Figura \ref{fig:modelo-vectorial}).
 
+\begin{figure}[!htb]
+  \includegraphics{momangular_modelo-vectorial_l2_v1.pdf}
+  \caption{Modelo vectorial del momento angular para $l=2$. Las $2l+1=5$
+  orientaciones permitidas tienen $l_z=m_l\hbar$, con $m_l=-2,\ldots,2$.
+  Como $l_x$ y $l_y$ no están determinadas, cada vector se representa sobre
+  un cono alrededor del eje $z$. Su módulo, $\{l(l+1)\}^{1/2}\hbar=\sqrt{6}\,\hbar$,
+  es siempre mayor que $l_z^{\max}=2\hbar$: el vector nunca se alinea con
+  el eje $z$.}
+  \label{fig:modelo-vectorial}
+\end{figure}
+
+\FloatBarrier
 \section{El rotor rígido}
 A continuación, extendemos nuestra discusión sobre el 
 movimiento rotacional al caso de dos partículas de masas 
@@ -427,7 +487,7 @@ En el caso de que las masas sean prácticamente iguales
 ($m_1\simeq m_2$) la masa reducida es aproximadamente 
 igual a la mitad de la masa ($\mu\simeq m/2$), mientras
 que si la masa de una partícula excede mucho a la otra
-($m_1>>m_2$) la masa reducida es equiparable
+($m_1\gg m_2$) la masa reducida es equiparable
 a la masa inferior ($\mu\simeq m_2$).
 
 Para este tipo de sistema, en ausencia de un potencial 
@@ -443,12 +503,13 @@ masas y otra para el movimiento relativo de las partículas,
     -\frac{\hbar^2}{2M}\nabla_\mathrm{cm}^2\Psi 
     -\frac{\hbar^2}{2\mu}\nabla^2\Psi=E_\mathrm{total}\Psi
 \end{equation}
+donde $M=m_1+m_2$ es la masa total.
 Cada una de las contribuciones de esta ecuación puede 
 escribirse independientemente en virtud de la separabilidad 
 de la función de onda, $\Psi=\psi_\mathrm{cm}\psi$,
 \begin{subequations}
     \begin{align}
-        -\frac{\hbar^2}{2m}\nabla^2_\mathrm{cm}\psi_\mathrm{cm}&=
+        -\frac{\hbar^2}{2M}\nabla^2_\mathrm{cm}\psi_\mathrm{cm}&=
         E_\mathrm{cm}\psi_\mathrm{cm} \\
         -\frac{\hbar^2}{2\mu}\nabla^2\psi&=
         E\psi
@@ -473,7 +534,7 @@ del movimiento rotacional para una sola partícula
 escribir
 \begin{equation}
 \frac{1}{R^2}\Lambda^2\psi=-\frac{2\mu E}{\hbar^2}\psi
-\label{eq:rotor}
+\label{eq:rotor-diatomica}
 \end{equation}
 De nuevo, las soluciones de esta ecuación son los 
 armónicos esféricos, exactamente como hemos visto con
@@ -487,6 +548,27 @@ definimos la constante rotacional, $B=h/(8\pi^2I)$.
 El resto de las propiedades que hemos visto para el
 movimiento rotacional se aplican exactamente de la 
 misma manera al rotor rígido.
+
+En espectroscopía es habitual expresar la constante rotacional
+como número de onda, $\tilde{B}=B/c=h/(8\pi^2cI)$, en cm$^{-1}$.
+Los niveles de energía, también en cm$^{-1}$, son entonces
+$\tilde{F}(J)=E_J/hc=\tilde{B}J(J+1)$. Para el HCl,
+$\tilde{B}=10.59$ cm$^{-1}$ (Figura \ref{fig:rotor-espectro}).
+
+\begin{figure*}[!htb]
+  \includegraphics{rotorrigido_niveles-espectro_v1.pdf}
+  \caption{Izquierda: niveles del rotor rígido para el HCl
+  ($\tilde{B}=10.59$ cm$^{-1}$), con su degeneración $g=2J+1$. Las flechas
+  son las transiciones de absorción permitidas, $\Delta J=+1$. Derecha:
+  espectro de absorción resultante. La línea $J\rightarrow J+1$ aparece en
+  $\tilde{\nu}=2\tilde{B}(J+1)$, así que las líneas están igualmente
+  espaciadas, separadas por $2\tilde{B}$. Las intensidades son
+  aproximadas: sólo incluyen la población del nivel de partida a 298 K,
+  $(2J+1)\,\mathrm{e}^{-hc\tilde{B}J(J+1)/kT}$.}
+  \label{fig:rotor-espectro}
+\end{figure*}
+
+\FloatBarrier
 
 \section{Movimiento en presencia de un potencial central}
 Finalmente, nos ocupamos de la situación más general,

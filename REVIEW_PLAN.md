@@ -335,18 +335,18 @@ Las cuatro figuras colocadas y citadas desde el texto.
 
 | Sev | Línea | Problema | Corrección |
 |---|---|---|---|
-| 🔴 | 91 | `\bm{\omega}` sin `\usepackage{bm}` → **no compila** | añadir `bm` (o usar `\boldsymbol`) |
-| 🔴 | 170-172 | $\hat{l}^2=\hbar^2\Lambda^2$ — **signo incorrecto** | $\hat{l}^2=-\hbar^2\Lambda^2$. Con el signo actual los autovalores salen negativos y contradice la ec. de la línea 245 y el resultado $E=l(l+1)\hbar^2/2I$ |
-| 🔴 | 133-135 | $\hat{l}=\hat{l}_x+\hat{l}_y+\hat{l}_z$ — **suma escalar de componentes vectoriales** | $\hat{\mathbf{l}}=\hat{l}_x\mathbf{i}+\hat{l}_y\mathbf{j}+\hat{l}_z\mathbf{k}$ |
-| 🔴 | 300 | Valores de $m_l$: "$\pm1,\pm2\ldots$" — **falta el 0** | $m_l=0,\pm1,\pm2,\ldots$ |
-| 🔴 | 382 | "Las **$2m_l+1$** funciones de onda correspondientes al número cuántico $l$" | $2l+1$ |
-| 🔴 | 450 | $-\dfrac{\hbar^2}{2m}\nabla^2_{cm}\psi_{cm}$ — masa equivocada | $-\dfrac{\hbar^2}{2M}$ (masa total) |
-| 🟠 | 204 y 399 | **Etiqueta `eq:lz` duplicada** → los `\ref` apuntan mal | renombrar una |
-| 🟠 | 275 y 475 | **Etiqueta `eq:rotor` duplicada** | ídem |
+| ✅ 🔴 | 91 | `\bm{\omega}` sin `\usepackage{bm}` → **no compila** | añadir `bm` (o usar `\boldsymbol`) — añadido `\usepackage{bm}` 2026-10-07 |
+| ✅ 🔴 | 170-172 | $\hat{l}^2=\hbar^2\Lambda^2$ — **signo incorrecto** | $\hat{l}^2=-\hbar^2\Lambda^2$. Con el signo actual los autovalores salen negativos y contradice la ec. de la línea 245 y el resultado $E=l(l+1)\hbar^2/2I$ |
+| ✅ 🔴 | 133-135 | $\hat{l}=\hat{l}_x+\hat{l}_y+\hat{l}_z$ — **suma escalar de componentes vectoriales** | $\hat{\mathbf{l}}=\hat{l}_x\mathbf{i}+\hat{l}_y\mathbf{j}+\hat{l}_z\mathbf{k}$, con los mismos $\mathbf{i,j,k}$ del determinante clásico |
+| ✅ 🔴 | 300 | Valores de $m_l$: "$\pm1,\pm2\ldots$" — **falta el 0** | $m_l=0,\pm1,\pm2,\ldots$ |
+| ✅ 🔴 | 382 | "Las **$2m_l+1$** funciones de onda correspondientes al número cuántico $l$" | $2l+1$ |
+| ✅ 🔴 | 450 | $-\dfrac{\hbar^2}{2m}\nabla^2_{cm}\psi_{cm}$ — masa equivocada | $-\dfrac{\hbar^2}{2M}$ (masa total). $M=m_1+m_2$ no se definía en ningún sitio; añadida la definición tras el hamiltoniano total (2026-10-07) |
+| ✅ 🟠 | 204 y 399 | **Etiqueta `eq:lz` duplicada** → los `\ref` apuntan mal | renombradas a `eq:l-esfericas` (operadores en esféricas) y `eq:lz-autovalor` ($l_z=m_l\hbar$); ningún `\ref` las usaba (2026-10-07) |
+| ✅ 🟠 | 275 y 475 | **Etiqueta `eq:rotor` duplicada** | la del rotor diatómico pasa a `eq:rotor-diatomica`; el único `\ref{eq:rotor}` (parte en $\theta$) imprimía el número de la diatómica y ahora apunta a la ecuación separada (2026-10-07) |
 | 🟠 | 126-130 | *"El operador momento angular $\hat{l}$ no tiene funciones propias"* — impreciso | lo correcto: $\hat{l}_x,\hat{l}_y,\hat{l}_z$ no tienen autofunciones **comunes**; $\hat{l}^2$ y una componente sí |
 | 🟠 | 162-166 | "no podemos especificar más de una componente" | matizar: si $l=0$, las tres son simultáneamente 0 |
 | 🟠 | 114 | $E=1/2I\omega^2=L^2/2I$ mezcla $l$ minúscula y $L$ mayúscula | unificar |
-| 🟠 | 485 | $B=h/(8\pi^2I)$ — correcto en Hz, pero se suele tabular en cm⁻¹ | dar también $\tilde{B}=h/(8\pi^2cI)$ |
+| ✅ 🟠 | 485 | $B=h/(8\pi^2I)$ — correcto en Hz, pero se suele tabular en cm⁻¹ | dar también $\tilde{B}=h/(8\pi^2cI)$ — añadido con $\tilde{F}(J)$ y el valor del HCl (2026-10-07) |
 | 🟡 | 72 | "contrapartida **translacional**" | *traslacional* (recurrente: también 118, 191 de tema09) |
 | 🟡 | 77-87 | Bloque de 11 líneas comentado sobre el torque | recuperar o borrar |
 | 🟡 | 365 | Fila `... & &` suelta al final de la tabla | limpiar |
@@ -366,11 +366,16 @@ Las cuatro figuras colocadas y citadas desde el texto.
   formaliza: $|\mathbf{l}|=\sqrt{l(l+1)}\hbar > l\hbar = l_z^{max}$, es decir, el
   vector **nunca** se alinea con $z$. Merece un párrafo explícito.
 
-**Figuras** → `nb04_momento_angular.ipynb`
-1. **Modelo vectorial**: conos de precesión para $l=2$, con las 5 orientaciones de $m_l$ y $|\mathbf{l}|=\sqrt6\hbar$ dibujado a escala frente a $l_z^{max}=2\hbar$.
-2. Armónicos esféricos reales $|Y_{l,m}|$ para $l=0,1,2$ como superficies 3D coloreadas por fase — sustituye a la Tabla 1, que sin dibujo no dice nada.
-3. Mapas de $|Y_{l,m}|^2$ en proyección $(\theta,\phi)$ mostrando el número de nodos frente a $l$ y $m$ (la afirmación de las líneas 345-349, hoy sólo en palabras).
-4. Niveles del rotor rígido $E_J=BJ(J+1)$ con degeneración $2J+1$, más el espectro de absorción resultante (líneas igualmente espaciadas $2B$) — sirve también para el punto 🔵 anterior.
+**Figuras** → `nb04_momento_angular.ipynb` — ✅ las 4 colocadas 2026-10-07, sin título
+1. ✅ **Modelo vectorial**: conos de precesión para $l=2$, con las 5 orientaciones de $m_l$ y $|\mathbf{l}|=\sqrt6\hbar$ dibujado a escala frente a $l_z^{max}=2\hbar$.
+2. ✅ Armónicos esféricos reales $|Y_{l,m}|$ para $l=0,1,2$ como superficies 3D coloreadas por fase — sustituye a la Tabla 1, que sin dibujo no dice nada.
+3. ✅ Mapas de $|Y_{l,m}|^2$ en proyección $(\theta,\phi)$ mostrando el número de nodos frente a $l$ y $m$ (la afirmación de las líneas 345-349, hoy sólo en palabras).
+4. ✅ Niveles del rotor rígido $E_J=BJ(J+1)$ con degeneración $2J+1$, más el espectro de absorción resultante (líneas igualmente espaciadas $2B$) — sirve también para el punto 🔵 anterior.
+   - ✅ Fig. 1 (`fig:modelo-vectorial`), tras $l_z=m_l\hbar$: etiquetas $m_l$ al final de las generatrices para no pisarlas; ``nunca se alinea con $z$'' pasa al pie.
+   - ✅ Fig. 3 (`fig:armonicos-densidad`), tras la afirmación sobre los nodos que ilustra. Dos errores del cuaderno corregidos: `invert_yaxis()` en cada panel de un eje compartido lo volteaba seis veces ($\theta=0$ quedaba abajo), y el panel $l=0$ salía en blanco (escala de color de un campo constante) → `vmin=0`.
+   - ✅ Fig. 2 (`fig:armonicos-reales`): el texto sólo usaba los $Y_{l,m_l}$ complejos. Añadido un párrafo (decisión del autor) con $p_x$ y $p_y$ como combinaciones de $Y_{1,\pm1}$, y la advertencia de que ya no son funciones propias de $\hat{l}_z$. **No sustituye a la Tabla 1**, como proponía el plan: la tabla define los $Y_{l,m_l}$ que el párrafo combina.
+   - ✅ `$m_1>>m_2$` imprimía un comillado latino (babel spanish) → `\gg`. No había más `>>` en el repositorio.
+   - ✅ Fig. 4 (`fig:rotor-espectro`), con los dos paneles (decisión del autor). Añadido $\tilde{B}=h/8\pi^2cI$ y $\tilde{F}(J)=\tilde{B}J(J+1)$ en el texto, y la figura pasa a $\tilde{B}$. El pie declara $\Delta J=+1$ y que las intensidades son sólo la población de Boltzmann. Arreglados en el cuaderno el solape de las etiquetas $J=0$/$J=1$ y la flecha $2\tilde{B}$, que no medía $2\tilde{B}$ (`annotate` acorta las flechas por defecto).
 
 ---
 
