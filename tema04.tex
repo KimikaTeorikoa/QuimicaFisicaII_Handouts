@@ -117,7 +117,7 @@ puede expresarse como $E=1/2mv^2=p^2/2m$. Análogamente en
 el caso del movimiento rotacional podemos expresar la 
 energía como 
 \begin{equation}
-    E=1/2I\omega^2=\frac{L^2}{2I}\label{eq:classicrote}
+    E=1/2I\omega^2=\frac{l^2}{2I}\label{eq:classicrote}
 \end{equation}
 donde de nuevo podemos establecer una identificación 
 entre masa y momento de inercia, y momentos lineal y
@@ -130,12 +130,8 @@ rotacional, definimos una función de onda que reproduzca
 la trayectoria trazada por una partícula sobre la superficie
 de una esfera. Sobre esta función de onda pueden actuar
 una serie de operadores. El \textbf{operador momento
-angular}, $\hat{l}$, no tiene funciones propias. Por tanto,
-no hay ningún estado para el cual el momento angular 
-esté determinado. Sólo se puede determinar su valor
-promedio. Por el contrario, sí que podemos encontrar
-funciones propias como las componentes en $x$, $y$ y
-$z$ del momento angular
+angular} es un vector cuyas componentes son los operadores
+$\hat{l}_x$, $\hat{l}_y$ y $\hat{l}_z$,
 \begin{equation}
 \hat{\mathbf{l}}=\hat{l}_x\mathbf{i}+\hat{l}_y\mathbf{j}+\hat{l}_z\mathbf{k}
 \end{equation}
@@ -169,7 +165,8 @@ Por tanto, las distintas componentes del momento angular no
 conmutan entre sí. Son observables complementarios y
 de acuerdo con el principio de incertidumbre esto significa
 que no podemos especificar más de una componente del momento
-angular.
+angular. La única excepción es el estado de momento angular
+nulo, en el que las tres componentes valen cero a la vez.
 
 Otro operador de interés es el cuadrado del momento angular
 \begin{equation}
@@ -181,7 +178,12 @@ que sí conmuta con los tres componentes del momento angular
     [ \hat{l}^2,  \hat{l}_q] = 0,\mathrm{~ para~}q=x, y, z
 \end{equation}
 Por tanto, $\hat{l}^2$ y $\hat{l}_q$ forman un conjunto de 
-operadores compatibles.
+operadores compatibles: tienen funciones propias comunes,
+de modo que podemos conocer a la vez el módulo del momento
+angular y una de sus componentes, que por convenio tomamos
+como $l_z$. Lo que no existe son funciones propias comunes
+a las tres componentes, y por eso el vector momento angular
+no puede estar completamente determinado.
 
 Si usamos coordenadas esféricas 
 \begin{subequations}
@@ -355,6 +357,27 @@ la probabilidad de encontrar a una partícula se propaga
 a lo largo del plano $xy$ al ir aumentando $m_l$
 (Figura \ref{fig:armonicos-densidad}).
 
+\begin{table}[!htb]
+    \centering
+    \begin{tabular}{c|c|c}
+     $l$ & $m_l$ & $ Y_{l,m_l}$ \\
+     \hline
+     & & \\
+    0 & 0       & $\bigg(\dfrac{1}{4\pi}\bigg)^{1/2}$\\ 
+     & & \\
+    1 & 0       & $\bigg(\dfrac{3}{4\pi}\bigg)^{1/2}\cos{\theta}$ \\ 
+      & $\pm 1$ & $\mp\bigg(\dfrac{3}{8\pi}\bigg)^{1/2}\sin{\theta}\mathrm{e}^{\pm \mathrm{i}\phi}$ \\ 
+     & & \\
+    2 & 0       & $\bigg(\dfrac{5}{16\pi}\bigg)^{1/2}(3\cos^2\theta-1)$ \\ 
+      & $\pm 1$  & $\mp\bigg(\dfrac{15}{8\pi}\bigg)^{1/2}\cos\theta\sin\theta\mathrm{e}^{\pm \mathrm{i}\phi}$  \\ 
+      & $\pm 2$  & $\bigg(\dfrac{15}{32\pi}\bigg)^{1/2}\sin^2\theta\mathrm{e}^{\pm 2\mathrm{i}\phi}$ \\ 
+    ... &  &
+    \end{tabular}
+    \caption{Armónicos esféricos, dependientes de los números
+    cuánticos $l$ y $m_l$.}
+    \label{tb:legendre}
+\end{table}
+
 \begin{figure}[!htb]
   \includegraphics{armonicosesf_densidad-nodos_v1.pdf}
   \caption{Densidad de probabilidad angular $|Y_{l,m_l}|^2$ en función de
@@ -396,26 +419,6 @@ la Figura \ref{fig:armonicos-reales}.
   \label{fig:armonicos-reales}
 \end{figure*}
 
-\begin{table}[t!]
-    \centering
-    \begin{tabular}{c|c|c}
-     $l$ & $m_l$ & $ Y_{l,m_l}$ \\
-     \hline
-     & & \\
-    0 & 0       & $\bigg(\dfrac{1}{4\pi}\bigg)^{1/2}$\\ 
-     & & \\
-    1 & 0       & $\bigg(\dfrac{3}{4\pi}\bigg)^{1/2}\cos{\theta}$ \\ 
-      & $\pm 1$ & $\mp\bigg(\dfrac{3}{8\pi}\bigg)^{1/2}\sin{\theta}\mathrm{e}^{\pm \mathrm{i}\phi}$ \\ 
-     & & \\
-    2 & 0       & $\bigg(\dfrac{5}{16\pi}\bigg)^{1/2}(3\cos^2\theta-1)$ \\ 
-      & $\pm 1$  & $\mp\bigg(\dfrac{15}{8\pi}\bigg)^{1/2}\cos\theta\sin\theta\mathrm{e}^{\pm \mathrm{i}\phi}$  \\ 
-      & $\pm 2$  & $\bigg(\dfrac{15}{32\pi}\bigg)^{1/2}\sin^2\theta\mathrm{e}^{\pm 2\mathrm{i}\phi}$ \\ 
-    ... &  &
-    \end{tabular}
-    \caption{Armónicos esféricos, dependientes de los números
-    cuánticos $l$ y $m_l$.}
-    \label{tb:legendre}
-\end{table}
 
 \section{Cuantización de los niveles energéticos y
 del momento angular}
@@ -433,7 +436,7 @@ degeneradas.
 
 Como hemos visto en la Ecuación \ref{eq:classicrote} el 
 módulo del momento angular se relaciona con la energía
-mediante la expresión $E=L^2/2I$. Análogamente, podemos
+mediante la expresión $E=l^2/2I$. Análogamente, podemos
 deducir que la magnitud del momento angular en la 
 descripción cuántica es $\{l(l+1)\}^{1/2}\hbar$ y que va
 a estar cuantizado con $l=0,1,2,...$

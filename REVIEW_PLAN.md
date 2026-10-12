@@ -343,9 +343,9 @@ Las cuatro figuras colocadas y citadas desde el texto.
 | ✅ 🔴 | 450 | $-\dfrac{\hbar^2}{2m}\nabla^2_{cm}\psi_{cm}$ — masa equivocada | $-\dfrac{\hbar^2}{2M}$ (masa total). $M=m_1+m_2$ no se definía en ningún sitio; añadida la definición tras el hamiltoniano total (2026-10-07) |
 | ✅ 🟠 | 204 y 399 | **Etiqueta `eq:lz` duplicada** → los `\ref` apuntan mal | renombradas a `eq:l-esfericas` (operadores en esféricas) y `eq:lz-autovalor` ($l_z=m_l\hbar$); ningún `\ref` las usaba (2026-10-07) |
 | ✅ 🟠 | 275 y 475 | **Etiqueta `eq:rotor` duplicada** | la del rotor diatómico pasa a `eq:rotor-diatomica`; el único `\ref{eq:rotor}` (parte en $\theta$) imprimía el número de la diatómica y ahora apunta a la ecuación separada (2026-10-07) |
-| 🟠 | 126-130 | *"El operador momento angular $\hat{l}$ no tiene funciones propias"* — impreciso | lo correcto: $\hat{l}_x,\hat{l}_y,\hat{l}_z$ no tienen autofunciones **comunes**; $\hat{l}^2$ y una componente sí |
-| 🟠 | 162-166 | "no podemos especificar más de una componente" | matizar: si $l=0$, las tres son simultáneamente 0 |
-| 🟠 | 114 | $E=1/2I\omega^2=L^2/2I$ mezcla $l$ minúscula y $L$ mayúscula | unificar |
+| ✅ 🟠 | 126-130 | *"El operador momento angular $\hat{l}$ no tiene funciones propias"* — impreciso | lo correcto: $\hat{l}_x,\hat{l}_y,\hat{l}_z$ no tienen autofunciones **comunes**; $\hat{l}^2$ y una componente sí — quitada la frase (y "sólo se puede determinar su valor promedio"); el enunciado correcto va tras $[\hat{l}^2,\hat{l}_q]=0$, donde ya se habla de operadores compatibles (2026-10-12) |
+| ✅ 🟠 | 162-166 | "no podemos especificar más de una componente" | matizar: si $l=0$, las tres son simultáneamente 0 — añadido como ``estado de momento angular nulo: $l$ aún no se ha introducido ahí (2026-10-12) |
+| ✅ 🟠 | 114 | $E=1/2I\omega^2=L^2/2I$ mezcla $l$ minúscula y $L$ mayúscula | unificar — $l$ minúscula, como $\mathbf{l}=I\bm{\omega}$; también en $E=l^2/2I$ de la sección de cuantización (2026-10-12) |
 | ✅ 🟠 | 485 | $B=h/(8\pi^2I)$ — correcto en Hz, pero se suele tabular en cm⁻¹ | dar también $\tilde{B}=h/(8\pi^2cI)$ — añadido con $\tilde{F}(J)$ y el valor del HCl (2026-10-07) |
 | 🟡 | 72 | "contrapartida **translacional**" | *traslacional* (recurrente: también 118, 191 de tema09) |
 | 🟡 | 77-87 | Bloque de 11 líneas comentado sobre el torque | recuperar o borrar |
@@ -375,6 +375,7 @@ Las cuatro figuras colocadas y citadas desde el texto.
    - ✅ Fig. 3 (`fig:armonicos-densidad`), tras la afirmación sobre los nodos que ilustra. Dos errores del cuaderno corregidos: `invert_yaxis()` en cada panel de un eje compartido lo volteaba seis veces ($\theta=0$ quedaba abajo), y el panel $l=0$ salía en blanco (escala de color de un campo constante) → `vmin=0`.
    - ✅ Fig. 2 (`fig:armonicos-reales`): el texto sólo usaba los $Y_{l,m_l}$ complejos. Añadido un párrafo (decisión del autor) con $p_x$ y $p_y$ como combinaciones de $Y_{1,\pm1}$, y la advertencia de que ya no son funciones propias de $\hat{l}_z$. **No sustituye a la Tabla 1**, como proponía el plan: la tabla define los $Y_{l,m_l}$ que el párrafo combina.
    - ✅ `$m_1>>m_2$` imprimía un comillado latino (babel spanish) → `\gg`. No había más `>>` en el repositorio.
+   - ✅ Tabla 1 movida tras el párrafo que la cita y con `[!htb]` en vez de `[t!]` (2026-10-12): al alargarse el texto, la tabla y las figuras 1 y 2 se juntaron en una página de flotantes y los pies de la Fig. 2 y la Tabla 1 se imprimían uno encima del otro.
    - ✅ Fig. 4 (`fig:rotor-espectro`), con los dos paneles (decisión del autor). Añadido $\tilde{B}=h/8\pi^2cI$ y $\tilde{F}(J)=\tilde{B}J(J+1)$ en el texto, y la figura pasa a $\tilde{B}$. El pie declara $\Delta J=+1$ y que las intensidades son sólo la población de Boltzmann. Arreglados en el cuaderno el solape de las etiquetas $J=0$/$J=1$ y la flecha $2\tilde{B}$, que no medía $2\tilde{B}$ (`annotate` acorta las flechas por defecto).
 
 ---
