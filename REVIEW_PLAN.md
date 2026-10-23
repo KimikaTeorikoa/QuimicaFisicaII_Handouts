@@ -386,23 +386,34 @@ Las cuatro figuras colocadas y citadas desde el texto.
 
 | Sev | Línea | Problema | Corrección |
 |---|---|---|---|
-| 🔴 | 84 | Tabla de unidades atómicas: $a_0 = 5.291\text{e}{-10}$ m | **5.291×10⁻¹¹ m** (error de un orden de magnitud) |
-| 🔴 | 188 | "resulta en la presencia de $(n-l)$ nodos" | los nodos **radiales** son $n-l-1$; los angulares, $l$; total $n-1$ |
-| 🔴 | 440 | $\int\alpha^\star\beta\,d\sigma=\int\beta^\star\alpha\,d\sigma=\mathbf{1}$ | **= 0** (es la condición de ortogonalidad; tal como está contradice la línea 445) |
-| 🔴 | 203 | `\bigg(\frac{Z}{a})^{3/2}` — **delimitador sin cerrar** en la fila 3s de la tabla | `\bigg(\frac{Z}{a}\bigg)^{3/2}` |
-| 🔴 | 133 | *"las funciones de onda hidrogenoides, denominadas **orbitales de Mulliken**"* | no existe tal denominación. Son **orbitales atómicos**; lo que se debe a Mulliken es el **término "orbital"** (1932). Reescribir como nota al margen |
-| 🟠 | 80-85 | Toda la tabla usa `1.602e$^{-19}$`, que se compone como *1.602e⁻¹⁹* | `$1.602\times10^{-19}$` en las 6 filas |
-| 🟠 | 83 | Fila "Constante eléctrica": **falta un `&`** en una tabla de 4 columnas | añadir la celda vacía |
-| 🟠 | 249-250 | "Las contribuciones al momento angular no pueden determinar con precisión" | *no se pueden determinar* |
-| 🟠 | 252, 390 | Se usa $m$ donde el resto del texto usa $m_l$ | unificar a $m_l$ |
-| 🟠 | 380 | Magnetón de Bohr como `\beta_B` y `9.3e-24` | símbolo estándar $\mu_B$; $9.274\times10^{-24}$ J·T⁻¹ |
-| 🟠 | 264 | "con lo cual **el un** átomo hidrogenoide" | typo |
-| 🟠 | 209-211 | La llave del `\caption` cierra antes del punto y deja `%` y texto suelto | limpiar |
-| 🟠 | 426 | "Goudsmith" | **Goudsmit** (George Uhlenbeck y Samuel Goudsmit) |
-| 🟠 | 291-297 | Se dan dos expresiones para $P(r)$ presentándolas como "general" y "no esférica", pero $P(r)=r^2R^2$ es **la** general y $4\pi r^2\psi^2$ es el caso $l=0$ | invertir la presentación |
-| 🟡 | 269 | `Tabla~\n\ref{...}` con salto de línea dentro del `~` | corregir |
-| 🟡 | 404 | Compton era estadounidense, "físico americano" | *estadounidense* |
-| 🟡 | 316-323 | Bloque comentado de 8 líneas sobre orbitales p | recuperar (es contenido útil) o borrar |
+| ✅ 🔴 | 84 | Tabla de unidades atómicas: $a_0 = 5.291\text{e}{-10}$ m | **5.291×10⁻¹¹ m** (error de un orden de magnitud) — corregido 2026-10-23 |
+| ✅ 🔴 | 188 | "resulta en la presencia de $(n-l)$ nodos" | los nodos **radiales** son $n-l-1$; los angulares, $l$; total $n-1$ — añadidos los $l$ angulares y el total $n-1$ (2026-10-23) |
+| ✅ 🔴 | 440 | $\int\alpha^\star\beta\,d\sigma=\int\beta^\star\alpha\,d\sigma=\mathbf{1}$ | **= 0** (es la condición de ortogonalidad; tal como está contradice la línea 445) — corregido 2026-10-23 |
+| ✅ 🔴 | 203 | `\bigg(\frac{Z}{a})^{3/2}` — **delimitador sin cerrar** en la fila 3s de la tabla | `\bigg(\frac{Z}{a}\bigg)^{3/2}` — corregido 2026-10-23 |
+| ✅ 🔴 | 133 | *"las funciones de onda hidrogenoides, denominadas **orbitales de Mulliken**"* | no existe tal denominación. Son **orbitales atómicos**; lo que se debe a Mulliken es el **término "orbital"** (1932). Reescribir como nota al margen — «orbitales atómicos» + nota al margen sobre Mulliken (2026-10-23) |
+| ✅ 🟠 | 80-85 | Toda la tabla usa `1.602e$^{-19}$`, que se compone como *1.602e⁻¹⁹* | `$1.602\times10^{-19}$` en las 6 filas — y `\tabcolsep` a 3pt: con la celda completa la tabla desbordaba 20pt (2026-10-23) |
+| ✅ 🟠 | 83 | Fila "Constante eléctrica": **falta un `&`** en una tabla de 4 columnas | añadir la celda vacía — corregido 2026-10-23 |
+| ✅ 🟠 | 249-250 | "Las contribuciones al momento angular no pueden determinar con precisión" | *no se pueden determinar* — corregido 2026-10-23 |
+| ✅ 🟠 | 252, 390 | Se usa $m$ donde el resto del texto usa $m_l$ | unificar a $m_l$ — también $\psi_{nlm}$, $|nlm\rangle$, $|Y_{lm}|^2$ → índices $n,l,m_l$ (2026-10-23) |
+| ✅ 🟠 | 380 | Magnetón de Bohr como `\beta_B` y `9.3e-24` | símbolo estándar $\mu_B$; $9.274\times10^{-24}$ J·T⁻¹ — corregido 2026-10-23 |
+| ✅ 🟠 | 264 | "con lo cual **el un** átomo hidrogenoide" | typo — «en un átomo» (2026-10-23) |
+| ✅ 🟠 | 209-211 | La llave del `\caption` cierra antes del punto y deja `%` y texto suelto | limpiar — borrado el comentario $e'$, $E'_h$ (2026-10-23) |
+| ✅ 🟠 | 426 | "Goudsmith" | **Goudsmit** (George Uhlenbeck y Samuel Goudsmit) — corregido 2026-10-23 |
+| ✅ 🟠 | 291-297 | Se dan dos expresiones para $P(r)$ presentándolas como "general" y "no esférica", pero $P(r)=r^2R^2$ es **la** general y $4\pi r^2\psi^2$ es el caso $l=0$ | invertir la presentación — $r^2R^2$ general, $4\pi r^2\psi^2$ como caso $l=0$ (2026-10-23) |
+| ✅ 🟡 | 269 | `Tabla~\n\ref{...}` con salto de línea dentro del `~` | corregir — y `~` en todas las «Tabla/Ecuación \ref» (2026-10-23) |
+| ✅ 🟡 | 404 | Compton era estadounidense, "físico americano" | *estadounidense* (2026-10-23) |
+| ✅ 🟡 | 316-323 | Bloque comentado de 8 líneas sobre orbitales p | recuperar (es contenido útil) o borrar — borrado, decisión del autor (2026-10-23) |
+| ✅ 🟡 | — | Preámbulo: `lipsum`, macros `\doc*`, `theorem` sin uso, `\printclassoptions`, bibliografía comentada y `\bibliographystyle` | borrados; `\graphicspath` con `figs/` y `figs/retratos/`, y `\@fptop` como en tema01 (2026-10-23) |
+| ✅ 🟡 | — | Erratas: «electróstático», «derivar una propiedades», «la función tienen», «probablamente», «viene dado» | corregidas (2026-10-23) |
+| ✅ 🟡 | — | spin / espin / espín; `\epsilon_0` y `\varepsilon_0`; $\vec{s}$ frente a $\mathbf{l}$; $Y^{m_l}_l$ y $Y_{00}$; $\hat{H}_o$; `\xrightarrow{}` | unificado a espín, `\varepsilon_0`, $\mathbf{s}$, $Y_{l,m_l}$, $\hat{H}_0$, `\to` (2026-10-23) |
+| ✅ 🟡 | — | Puntos suspensivos `...` en fórmulas y raya `--` en la nota de *s, p, d, f* | `\ldots` con comas; raya `---` (2026-10-23) |
+| ✅ 🟡 | — | $\psi_{1s}$ escrito con $Z=1$ mientras la tabla y $P(r)$ llevan $Z$ | decisión del autor: con $Z$; también $r_{max}(1s)=a_0/Z$ y $r_{max}(2s)=5.2a_0/Z$ (2026-10-23) |
+| ✅ 🟠 | — | «campo magnético **fuerte**»: el Zeeman normal es el régimen de campo débil (el fuerte es Paschen--Back) | quitado «fuerte» (2026-10-23) |
+| ✅ 🟠 | — | La energía cinética «del núcleo» se resuelve como partícula libre: lo que es libre es el **centro de masas** | separación CM / relativo con masa total $M$ (2026-10-23) |
+| ✅ 🟠 | — | Final del §Zeeman: el 1s «muestra dos bandas» mezcla un efecto espectral con Stern--Gerlach; el Zeeman anómalo no se nombra | opción del autor: el nivel 1s se desdobla en dos subniveles (momento magnético no orbital) y se nombra el **efecto Zeeman anómalo**, resuelto con el espín (2026-10-23); cierra también el 🔵 correspondiente |
+| ✅ 🟠 | — | $\mathbf{m}$ es a la vez el dipolo magnético y aparece junto a la masa $m$ en $q/2m$ | decisión del autor: $\boldsymbol{\mu}$, $\mu_z$ (enlaza con $\mu_B$; la masa reducida no aparece en esa sección); definida la masa $m$ de la carga y añadido $\mu_z=-\mu_Bm_l$ (2026-10-23) |
+| ✅ 🟡 | — | Pasada de redacción (2026-10-23): calcos del inglés («resulta en» ×6, «Típicamente», «estamos definiendo», «Claramente», «Como venimos diciendo»), redundancias (resumen, hamiltoniano, orbitales «monoelectrónicos para un electrón», párrafo de $P(r)$, arranque de §Zeeman), frases reestructuradas (factores de $R$, límites de $P(r)$, Stern--Gerlach, espín-orbital), $\psi_{nlm_l}^2$ residual, «dipolo»/«momento magnético» unificado | aplicada |
+| ✅ 🟠 | — | Cinco retoques de redacción que tocan la física: componentes de $\mathbf{l}$ no conmutan; cita de Compton (*ultimate* ≠ «última»); campo **no homogéneo** en Stern--Gerlach; $\mu$ sin definir y «rotación y vibración»; «En general» sobra en la degeneración $n^2$ | aplicados cuatro (2026-10-23); el de $\mu$ **rechazado** por el autor: la masa reducida ya se define en el tema 4 |
 
 **Mejoras**
 
@@ -421,15 +432,17 @@ Las cuatro figuras colocadas y citadas desde el texto.
 - 🔵 Añadir la energía en eV ($-13.6\,Z^2/n^2$) junto a la expresión SI: es la
   forma con la que el alumno va a trabajar.
 
-**Figuras** → `nb05_hidrogeno.ipynb` — *el segundo notebook prioritario*
-1. $R_{n,l}(r)$ para 1s, 2s, 2p, 3s, 3p, 3d: se ven los nodos radiales y se corrige visualmente el error de la línea 188.
-2. Funciones de distribución radial $r^2R^2$ para las mismas, con $r_{max}$ y $\langle r\rangle$ marcados. Muestra la **penetración** de 2s frente a 2p (que se necesita en el Tema 7).
-3. Cortes 2D de $|\psi|^2$ para 1s, 2s, 2p$_z$, 3d$_{z^2}$, 3d$_{xy}$ con la fase en color.
-4. Isosuperficies 3D de los orbitales reales s, p, d.
-5. Diagrama de niveles $-13.6/n^2$ con la degeneración $n^2$ explícita.
-6. Desdoblamiento Zeeman: $E$ vs $B_z$ para un nivel $l=1$ abriéndose en 3 ramas.
-7. Esquema Stern-Gerlach: predicción clásica (banda continua) vs observación (dos manchas).
+**Figuras** → `nb05_hidrogeno.ipynb` — ✅ las 5 construidas colocadas 2026-10-23, sin título
+1. ✅ $R_{n,l}(r)$ para 1s–3d (`fig:radiales`, `figure*`), tras la frase de los nodos. Eje con unidades $a_0^{-3/2}$.
+2. ✅ Distribución radial (`fig:rdf`, `figure*`), con $r_{max}$ (punto) y $\langle r\rangle$ (trazo discontinuo) para 1s, 2s y 2p. Etiquetas recolocadas: la del 2p caía sobre su curva, el texto de penetración sobre $\langle r\rangle_{1s}$ y la del 3p sobre el máximo del 3s. Comprobación: $\langle r\rangle_{2s}=6.00\,a_0$, $\langle r\rangle_{2p}=5.00\,a_0$, de acuerdo con $\tfrac{a_0}{2}[3n^2-l(l+1)]$.
+3. ✅ Cortes 2D (`fig:densidad-2d`, `figure*`): la intensidad es $|\psi|^{0.7}$ y el color, el signo de $\psi$. En el plano $xz$ el 3d$_{xy}$ es idénticamente nulo, así que el quinto panel es el **3d$_{xz}$**.
+4. Isosuperficies 3D de los orbitales reales s, p, d — **no construida** (opcional; la parte angular ya está en tema04).
+5. ✅ Diagrama de niveles (`fig:niveles`, `figure`): sólo $n\le4$, porque a este tamaño $n=4$ y $n=5$ (0.3 eV) se pisaban; la línea $E=0$ ya no tacha la etiqueta $n=\infty$.
+6. ✅ Zeeman $l=1$ (`fig:zeeman`, `marginfigure`), tras la Ecuación de $E=E_n+\mu_Bm_lB_z$.
+7. Esquema Stern-Gerlach — **no construido**.
 
+**Retratos** (2026-10-23): Zeeman (Nobel 1902) y Stern (ETH-Bibliothek, hacia 1940), ambos de dominio público; procedencia en `figs/retratos/CREDITOS.md`. Bohr descartado (ya está en tema01). Gerlach, sin retrato: no hay ninguno de dominio público utilizable.
+- Las tres trampas de maquetación aparecieron: el pie de Bohr pisaba el de la Tabla 1; el de Zeeman, el pie de la Fig. 4 (un `figure*` no negocia con las notas al margen); y anclado al final de una página, se salía por abajo. Zeeman va tras la Ecuación 18, en la página siguiente a la Fig. 4. Añadido `\FloatBarrier` antes de §Efecto Zeeman: sin él, el título quedaba solo bajo la Fig. 4.
 ---
 
 ### Tema 6 — Métodos aproximados (`tema06.tex`, 623 líneas)

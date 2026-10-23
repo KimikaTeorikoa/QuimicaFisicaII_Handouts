@@ -126,5 +126,37 @@
   "pie": "Wolfgang Pauli (1900--1958)",
   "slug": "pauli",
   "tema": "02"
+ },
+ {
+  "archivo": "retrato_zeeman_v1.jpg",
+  "persona": "Pieter Zeeman",
+  "commons": "File:Pieter Zeeman, portrait on the occasion of the Nobel Prize 1902.jpg",
+  "pagina": "https://commons.wikimedia.org/wiki/File:Pieter_Zeeman,_portrait_on_the_occasion_of_the_Nobel_Prize_1902.jpg",
+  "autor": "Autor desconocido",
+  "fecha": "1902",
+  "licencia": "Public domain",
+  "licencia_url": "",
+  "credito": "Wikimedia Commons",
+  "px": "600x855",
+  "original": "680x969",
+  "pie": "Pieter Zeeman (1865--1943) en 1902",
+  "slug": "zeeman",
+  "tema": "05"
+ },
+ {
+  "archivo": "retrato_stern_v1.jpg",
+  "persona": "Otto Stern",
+  "commons": "File:ETH-BIB-Stern, Otto (1888-1969)-Portrait-Portr 03534.tif",
+  "pagina": "https://commons.wikimedia.org/wiki/File:ETH-BIB-Stern,_Otto_(1888-1969)-Portrait-Portr_03534.tif",
+  "autor": "Autor desconocido (ETH-Bibliothek Zürich)",
+  "fecha": "hacia 1940",
+  "licencia": "Public domain",
+  "licencia_url": "",
+  "credito": "Wikimedia Commons",
+  "px": "600x832",
+  "original": "2836x3933",
+  "pie": "Otto Stern (1888--1969) hacia 1940",
+  "slug": "stern",
+  "tema": "05"
  }
 ]

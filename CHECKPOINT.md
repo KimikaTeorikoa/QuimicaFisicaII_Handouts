@@ -3,50 +3,54 @@
 ## Current Goal
 
 Revisar los apuntes de Química Física II tema por tema siguiendo
-`REVIEW_PLAN.md`. Temas 1 y 2 terminados; sigue el tema 3.
+`REVIEW_PLAN.md`. Temas 1, 2, 4 y 5 terminados; sigue el tema 6.
 
 ## Work Done
 
-### Session 2026-09-03 — Tema 2
+### Sesión 2026-10-23 — Tema 5
 
-- Cerrados los 12 hallazgos del plan más 8 no previstos. Uno **rechazado**:
-  "proporcional" era correcto, porque ahí $\psi$ todavía no está normalizada.
-- Reescrito el postulado de la medida (devolvía el promedio en vez de un
-  autovalor) y añadida $\hat{H}\psi=E\psi$, que no aparecía en todo el tema.
-- Fijado el convenio de normalización: $N$ se mantiene y ahora se despeja.
-- Pauli metido en `theorem` y condensado; los postulados ya numeran 1--6.
-- Cuatro figuras colocadas y citadas. `postulados_psi-psi2` es nueva;
-  `incertidumbre_x-k` pasa a `x-p` porque $k$ no se define en ningún tema.
-- Tres retratos de dominio público: Born, Schrödinger y Pauli.
-- Pasada de redacción sobre todo el capítulo (14 cambios).
-- Escrito `CLAUDE.md` con las convenciones del repositorio.
-- Todo commiteado y empujado a github y Overleaf (`4d00f58`).
+- Cerrados los 5 🔴, los 🟠 y los 🟡 del plan, más los hallazgos nuevos:
+  $a_0$ (×10), nodos $n-l-1$, ortogonalidad del espín (=0), «orbitales de
+  Mulliken» → orbitales atómicos con nota al margen.
+- Decisiones del autor: dipolo magnético $\boldsymbol{\mu}$ (y
+  $\mu_z=-\mu_Bm_l$); final de §Zeeman reescrito con el **efecto Zeeman
+  anómalo**; $\psi_{1s}$ con $Z$; bloque comentado de orbitales p borrado.
+- Pasada de redacción (calcos, redundancias) y cuatro retoques con física:
+  componentes de $\mathbf{l}$ que no conmutan, cita de Compton (*ultimate*),
+  campo **no homogéneo** en Stern–Gerlach, «En general» fuera. Rechazado
+  definir $\mu$: ya está en el tema 4.
+- Preámbulo limpio como tema01 (`\graphicspath` con `figs/`, `\@fptop`,
+  `\retrato`; fuera `lipsum`, `\doc*`, bibliografía).
+- `nb05`: sin títulos, etiquetas recolocadas, $\langle r\rangle$ en la RDF,
+  signo de $\psi$ en los cortes 2D (quinto panel 3d$_{xz}$: el 3d$_{xy}$ es
+  nulo en el plano $xz$), niveles sólo hasta $n=4$. Las 5 figuras colocadas.
+- Retratos de dominio público: Zeeman (1902) y Stern (ETH, h. 1940).
+  Bohr descartado (ya en tema01); Gerlach sin retrato utilizable.
 
 ## Current State
 
 | Qué | Estado |
 |---|---|
-| tema01, tema02 | terminados, 8 páginas, 0 overfull |
-| Compilación global | falla en tema04, tema06, math01, math02 |
-| Remotos | `github/main` y `origin/master` en `4d00f58` |
-| Figuras | 45 generadas; sólo las usan tema01 y tema02 |
-| Sin commitear | esta actualización de CHECKPOINT.md y CLAUDE.md |
+| tema05 | terminado, 9 páginas, 0 overfull |
+| Compilación global | falla en tema06, math01, math02 (previos) |
+| Remotos | `master` 5 commits por delante de `origin/master` (tema 4); el `git fetch` de Overleaf se cuelga |
+| Sin commitear | todo el trabajo del tema 5 (tex, nb05, 5 PDF, 2 retratos, créditos, REVIEW_PLAN, este fichero) |
 
 ## Next Steps
 
-1. Revisar el tema 3 según `REVIEW_PLAN.md`.
-2. Arreglar los 4 documentos que no compilan.
-3. Colocar las figuras en los temas 03--10; cada uno necesita además `figs/`
-   en su `\graphicspath`, que hoy apunta sólo a `graphics/`.
-4. Preámbulo común `qf2.sty` y limpieza de los restos de plantilla Tufte
-   (`lipsum`, `\doccmd`...), pendientes en los 13 ficheros.
-5. Pendiente de tema02: ejemplo resuelto de normalización y notación de Dirac
-   con referencia cruzada a `math01`.
+1. Commitear el tema 5; antes de empujar a `origin`, comprobar si hay
+   ediciones en Overleaf (el fetch no responde).
+2. Revisar el tema 6 según `REVIEW_PLAN.md` (no compila).
+3. 🔵 pendientes del tema 5, opcionales: energía en eV y $\langle r\rangle$ en
+   el texto, puntero a orbitales reales del tema 4, espín-órbita, título
+   «…del hidrógeno» → «hidrogenoides».
+4. Para el futuro: esquema de Stern–Gerlach e isosuperficies 3D
+   (`MAPA_CURSO.md` §9, punto 12).
 
 ## Key Files
 
 - `CLAUDE.md` — convenciones del repositorio y trampas de maquetación
 - `REVIEW_PLAN.md` — plan por temas; sus números de línea son de 2023
-- `tema01.tex`, `tema02.tex` — terminados, referencia de estilo
-- `notebooks/nb02_postulados.ipynb` — genera las 4 figuras de tema02
-- `Makefile` — `make`, `make figuras`, `make comprobar`
+- `tema01.tex`, `tema02.tex` — referencia de estilo
+- `notebooks/nb05_hidrogeno.ipynb` — genera las 5 figuras del tema 5
+- `figs/retratos/CREDITOS.md` — procedencia de los retratos
